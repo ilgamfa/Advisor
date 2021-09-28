@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ic0-dN-SuF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,6 +20,18 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DtW-9E-vzI">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
+                            <clLocationButton opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" icon="arrowFilled" cornerRadius="25" translatesAutoresizingMaskIntoConstraints="NO" id="XnG-4z-Khq">
+                                <rect key="frame" x="354" y="733" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="tintColor" systemColor="systemWhiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="sKo-is-dGu"/>
+                                    <constraint firstAttribute="width" constant="50" id="wXa-3Y-t2j"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="myLocationButtonDidTap:" destination="BJz-M2-h0y" eventType="touchUpInside" id="ek8-iI-W47"/>
+                                </connections>
+                            </clLocationButton>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aZm-ch-4HU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -26,6 +39,8 @@
                             <constraint firstItem="aZm-ch-4HU" firstAttribute="trailing" secondItem="DtW-9E-vzI" secondAttribute="trailing" id="9AZ-jp-JuQ"/>
                             <constraint firstItem="DtW-9E-vzI" firstAttribute="top" secondItem="aZm-ch-4HU" secondAttribute="top" id="Uqd-oH-0q8"/>
                             <constraint firstItem="aZm-ch-4HU" firstAttribute="bottom" secondItem="DtW-9E-vzI" secondAttribute="bottom" id="k8D-rY-k6x"/>
+                            <constraint firstItem="aZm-ch-4HU" firstAttribute="bottom" secondItem="XnG-4z-Khq" secondAttribute="bottom" constant="30" id="moy-yf-etw"/>
+                            <constraint firstItem="aZm-ch-4HU" firstAttribute="trailing" secondItem="XnG-4z-Khq" secondAttribute="trailing" constant="10" id="pHG-8y-RlG"/>
                             <constraint firstItem="DtW-9E-vzI" firstAttribute="leading" secondItem="aZm-ch-4HU" secondAttribute="leading" id="sEC-Jo-R42"/>
                         </constraints>
                     </view>
@@ -36,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4R0-N3-bKn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="558"/>
+            <point key="canvasLocation" x="1153.6231884057972" y="557.8125"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="TIW-qN-MX6">
@@ -155,6 +170,12 @@
         <image name="map" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemWhiteColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
