@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B7F60C9C2705AEE500F56730 /* ObjectOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9B2705AEE500F56730 /* ObjectOnMap.swift */; };
+		B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9B2705AEE500F56730 /* AttractionModel.swift */; };
 		B7F60C9E2705CEC300F56730 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9D2705CEC300F56730 /* NetworkManager.swift */; };
 		BB653EC62703170700F14915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EC52703170700F14915 /* AppDelegate.swift */; };
 		BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EC72703170700F14915 /* SceneDelegate.swift */; };
@@ -19,10 +19,12 @@
 		BB653EDE27031C8C00F14915 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EDD27031C8C00F14915 /* SavedViewController.swift */; };
 		BB653EE027031C9900F14915 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EDF27031C9900F14915 /* MapViewController.swift */; };
 		BB7D2F402703950A00DB6383 /* CoreLocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7D2F3F2703950A00DB6383 /* CoreLocationUI.framework */; };
+		BBB11EAB2706487D00A8BF66 /* AttractionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB11EAA2706487D00A8BF66 /* AttractionViewModel.swift */; };
+		BBB11EAD270653C200A8BF66 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB11EAC270653C200A8BF66 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B7F60C9B2705AEE500F56730 /* ObjectOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectOnMap.swift; sourceTree = "<group>"; };
+		B7F60C9B2705AEE500F56730 /* AttractionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionModel.swift; sourceTree = "<group>"; };
 		B7F60C9D2705CEC300F56730 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BB653EC22703170700F14915 /* Advisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Advisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB653EC52703170700F14915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,8 @@
 		BB653EDF27031C9900F14915 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BB7D2F392703919F00DB6383 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BB7D2F3F2703950A00DB6383 /* CoreLocationUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocationUI.framework; path = System/Library/Frameworks/CoreLocationUI.framework; sourceTree = SDKROOT; };
+		BBB11EAA2706487D00A8BF66 /* AttractionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionViewModel.swift; sourceTree = "<group>"; };
+		BBB11EAC270653C200A8BF66 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 		B7F60C9927059B3500F56730 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BBB11EAC270653C200A8BF66 /* HomeTableViewCell.swift */,
 				BB653ED02703170900F14915 /* LaunchScreen.storyboard */,
 				BB653ECB2703170700F14915 /* Main.storyboard */,
 			);
@@ -74,8 +79,7 @@
 		B7F60C9A2705AECA00F56730 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B7F60C9B2705AEE500F56730 /* ObjectOnMap.swift */,
-				B7F60C9D2705CEC300F56730 /* NetworkManager.swift */,
+				B7F60C9B2705AEE500F56730 /* AttractionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -100,6 +104,8 @@
 		BB653EC42703170700F14915 /* Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				BBB11EAF2706570000A8BF66 /* Network */,
+				BBB11EAE270656E700A8BF66 /* ViewModel */,
 				B7F60C9A2705AECA00F56730 /* Model */,
 				B7F60C9927059B3500F56730 /* View */,
 				B7F60C9827059B1E00F56730 /* Controllers */,
@@ -118,6 +124,22 @@
 				BB7D2F392703919F00DB6383 /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBB11EAE270656E700A8BF66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BBB11EAA2706487D00A8BF66 /* AttractionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BBB11EAF2706570000A8BF66 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B7F60C9D2705CEC300F56730 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +219,10 @@
 				BB653EC62703170700F14915 /* AppDelegate.swift in Sources */,
 				BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */,
 				BB653EDE27031C8C00F14915 /* SavedViewController.swift in Sources */,
+				BBB11EAD270653C200A8BF66 /* HomeTableViewCell.swift in Sources */,
 				BB653EDC27031C7A00F14915 /* HomeViewController.swift in Sources */,
-				B7F60C9C2705AEE500F56730 /* ObjectOnMap.swift in Sources */,
+				BBB11EAB2706487D00A8BF66 /* AttractionViewModel.swift in Sources */,
+				B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

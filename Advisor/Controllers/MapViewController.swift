@@ -11,9 +11,8 @@ import CoreLocationUI
 
 class MapViewController: UIViewController {
 
-    
-    
-    private let networkManager = NetworkManager()
+    private let attractionViewModel = AttractionViewModel()
+    private var attractionData = [Attraction]()
     private let locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
@@ -23,11 +22,9 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        
-        
-        
-        let attractions = networkManager.fetchData(url: url)
-        print(attractions)
+        attractionViewModel.fetchData {
+            self.setAnnotation(attractions: self.attractionData)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,6 +94,8 @@ class MapViewController: UIViewController {
             mapView.addAnnotation(annotation)
         }
     }
+     
+
     
 }
 
