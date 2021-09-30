@@ -11,9 +11,7 @@ class SavedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Saved"
-        view.backgroundColor = .cyan
-        // Do any additional setup after loading the view.
+       
     }
     
 

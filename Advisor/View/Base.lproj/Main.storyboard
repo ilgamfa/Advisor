@@ -2,14 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ic0-dN-SuF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="2lY-Ax-ox7">
             <objects>
                 <viewController id="BJz-M2-h0y" customClass="MapViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +43,7 @@
                             <constraint firstItem="DtW-9E-vzI" firstAttribute="leading" secondItem="aZm-ch-4HU" secondAttribute="leading" id="sEC-Jo-R42"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ARA-bd-tcJ"/>
+                    <navigationItem key="navigationItem" title="Map" id="ARA-bd-tcJ"/>
                     <connections>
                         <outlet property="mapView" destination="DtW-9E-vzI" id="tQ7-32-uWr"/>
                     </connections>
@@ -53,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="1153.6231884057972" y="557.8125"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="TIW-qN-MX6">
             <objects>
                 <viewController id="gQR-VO-jNZ" customClass="HomeViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,13 +62,13 @@
                         <viewLayoutGuide key="safeArea" id="PlA-Yw-er5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jOV-lT-TnE"/>
+                    <navigationItem key="navigationItem" title="Home" id="jOV-lT-TnE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mh4-GB-8kW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1154" y="-810"/>
         </scene>
-        <!--Saved View Controller-->
+        <!--Saved-->
         <scene sceneID="J9Z-RQ-78Z">
             <objects>
                 <viewController id="Fl1-BW-Q4e" customClass="SavedViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,7 +78,7 @@
                         <viewLayoutGuide key="safeArea" id="Nka-1E-YB7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hNE-gZ-Dbe"/>
+                    <navigationItem key="navigationItem" title="Saved" id="hNE-gZ-Dbe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKp-NE-58M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,6 +114,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4fZ-Y6-fqo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="compactAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

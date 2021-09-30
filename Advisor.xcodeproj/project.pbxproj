@@ -47,6 +47,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7F60C9827059B1E00F56730 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB653ED92703195F00F14915 /* TabBarController.swift */,
+				BB653EDB27031C7A00F14915 /* HomeViewController.swift */,
+				BB653EDD27031C8C00F14915 /* SavedViewController.swift */,
+				BB653EDF27031C9900F14915 /* MapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B7F60C9927059B3500F56730 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB653ED02703170900F14915 /* LaunchScreen.storyboard */,
+				BB653ECB2703170700F14915 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BB653EB92703170700F14915 = {
 			isa = PBXGroup;
 			children = (
@@ -67,16 +87,12 @@
 		BB653EC42703170700F14915 /* Advisor */ = {
 			isa = PBXGroup;
 			children = (
-				BB653EC52703170700F14915 /* AppDelegate.swift */,
+				B7F60C9927059B3500F56730 /* View */,
+				B7F60C9827059B1E00F56730 /* Controllers */,
 				BB653EC72703170700F14915 /* SceneDelegate.swift */,
-				BB653ECB2703170700F14915 /* Main.storyboard */,
+				BB653EC52703170700F14915 /* AppDelegate.swift */,
 				BB653ECE2703170900F14915 /* Assets.xcassets */,
-				BB653ED02703170900F14915 /* LaunchScreen.storyboard */,
 				BB653ED32703170900F14915 /* Info.plist */,
-				BB653ED92703195F00F14915 /* TabBarController.swift */,
-				BB653EDB27031C7A00F14915 /* HomeViewController.swift */,
-				BB653EDD27031C8C00F14915 /* SavedViewController.swift */,
-				BB653EDF27031C9900F14915 /* MapViewController.swift */,
 			);
 			path = Advisor;
 			sourceTree = "<group>";
@@ -315,7 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9U2BQ8RU3L;
+				DEVELOPMENT_TEAM = F52N69662H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -344,7 +360,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9U2BQ8RU3L;
+				DEVELOPMENT_TEAM = XQ7NPZ385G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
