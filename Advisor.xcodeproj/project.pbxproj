@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7F60C9C2705AEE500F56730 /* ObjectOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9B2705AEE500F56730 /* ObjectOnMap.swift */; };
+		B7F60C9E2705CEC300F56730 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9D2705CEC300F56730 /* NetworkManager.swift */; };
 		BB653EC62703170700F14915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EC52703170700F14915 /* AppDelegate.swift */; };
 		BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EC72703170700F14915 /* SceneDelegate.swift */; };
 		BB653ECD2703170700F14915 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB653ECB2703170700F14915 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7F60C9B2705AEE500F56730 /* ObjectOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectOnMap.swift; sourceTree = "<group>"; };
+		B7F60C9D2705CEC300F56730 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BB653EC22703170700F14915 /* Advisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Advisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB653EC52703170700F14915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB653EC72703170700F14915 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B7F60C9A2705AECA00F56730 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B7F60C9B2705AEE500F56730 /* ObjectOnMap.swift */,
+				B7F60C9D2705CEC300F56730 /* NetworkManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BB653EB92703170700F14915 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +100,7 @@
 		BB653EC42703170700F14915 /* Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				B7F60C9A2705AECA00F56730 /* Model */,
 				B7F60C9927059B3500F56730 /* View */,
 				B7F60C9827059B1E00F56730 /* Controllers */,
 				BB653EC72703170700F14915 /* SceneDelegate.swift */,
@@ -178,11 +192,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB653EDA2703195F00F14915 /* TabBarController.swift in Sources */,
+				B7F60C9E2705CEC300F56730 /* NetworkManager.swift in Sources */,
 				BB653EE027031C9900F14915 /* MapViewController.swift in Sources */,
 				BB653EC62703170700F14915 /* AppDelegate.swift in Sources */,
 				BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */,
 				BB653EDE27031C8C00F14915 /* SavedViewController.swift in Sources */,
 				BB653EDC27031C7A00F14915 /* HomeViewController.swift in Sources */,
+				B7F60C9C2705AEE500F56730 /* ObjectOnMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,11 +345,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F52N69662H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -347,6 +365,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.Advisor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,11 +377,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XQ7NPZ385G;
+				DEVELOPMENT_TEAM = F52N69662H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -376,6 +397,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.Advisor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
