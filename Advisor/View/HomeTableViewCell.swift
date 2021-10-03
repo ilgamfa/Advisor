@@ -20,8 +20,8 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     private func updateUI(nameTitle: String?, latitudeTitle: Double?, longitudeTitle: Double?) {
-        self.longitudeLabel.text = String(format: "%f", longitudeTitle!)
-        self.latitudeLabel.text = String(format: "%f", latitudeTitle!)
+        self.longitudeLabel.text! += " " + String(format: "%f", longitudeTitle!)
+        self.latitudeLabel.text! += " " + String(format: "%f", latitudeTitle!)
         self.nameLabel.text = nameTitle
     }
  

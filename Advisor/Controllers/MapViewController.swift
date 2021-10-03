@@ -10,7 +10,8 @@ import MapKit
 import CoreLocationUI
 
 class MapViewController: UIViewController {
-
+    
+    // MARK: Private
     private let attractionViewModel = AttractionViewModel()
     private var attractionData = [Attraction]()
     private let locationManager = CLLocationManager()
@@ -20,11 +21,11 @@ class MapViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        attractionViewModel.fetchData { [self] in
+            self.attractionViewModel.setAnnotation(mapView: mapView)
+        }
         
         locationManager.delegate = self
-        attractionViewModel.fetchData {
-            self.setAnnotation(attractions: self.attractionData)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,21 +83,18 @@ class MapViewController: UIViewController {
         
     }
     
-    private func setAnnotation(attractions:[Attraction]) {
-        for attraction in attractions {
-            
-            let annotation = MKPointAnnotation()
-            
-            annotation.title = attraction.name
-            
-            annotation.coordinate = CLLocationCoordinate2D(latitude: attraction.point.lat, longitude: attraction.point.lon)
-            
-            mapView.addAnnotation(annotation)
-        }
-    }
-     
-
-    
+//    private func setAnnotation(attractions:[Attraction]) {
+//        for attraction in attractions {
+//
+//            let annotation = MKPointAnnotation()
+//
+//            annotation.title = attraction.name
+//
+//            annotation.coordinate = CLLocationCoordinate2D(latitude: attraction.point.lat, longitude: attraction.point.lon)
+//
+//            mapView.addAnnotation(annotation)
+//        }
+//    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {

@@ -10,11 +10,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    // MARK: private 
     private let reuseIdCell = "cell"
-    
-    @IBOutlet weak var homeTableView: UITableView!
-    
     private var viewModel = AttractionViewModel()
+    
+    // MARK: Outlet
+    @IBOutlet weak var homeTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,13 @@ class HomeViewController: UIViewController {
             self?.homeTableView.reloadData()
         }
     }
+    
+    
+    
 
 }
 
+// MARK: Data source
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numbersOfRowsInSection(section: section)

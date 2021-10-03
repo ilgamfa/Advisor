@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import MapKit
+import CoreLocationUI
 
 class AttractionViewModel {
     private var networkManager = NetworkManager()
@@ -23,6 +25,14 @@ class AttractionViewModel {
         }
     }
     
+    func setAnnotation(mapView: MKMapView) {
+        for attraction in attractionData {
+            let annotation = MKPointAnnotation()
+            annotation.title = attraction.name
+            annotation.coordinate = CLLocationCoordinate2D(latitude: attraction.point.lat, longitude: attraction.point.lon)
+            mapView.addAnnotation(annotation)
+        }
+    }
     
     
     func numbersOfRowsInSection(section: Int) -> Int {
