@@ -170,8 +170,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <tabBarAppearance key="standardAppearance" backgroundEffect="regular"/>
-                        <tabBarAppearance key="scrollEdgeAppearance"/>
+                        <tabBarAppearance key="scrollEdgeAppearance" backgroundEffect="systemChromeMaterial"/>
                     </tabBar>
                     <connections>
                         <segue destination="KmN-pR-9lc" kind="relationship" relationship="viewControllers" id="WPQ-Qp-7Fc"/>
@@ -192,7 +191,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4fZ-Y6-fqo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="compactAppearance"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -212,6 +211,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HLs-Bm-YPq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance" backgroundEffect="systemMaterial"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -231,6 +231,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Da-LV-Bde">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
+                        <navigationBarAppearance key="compactScrollEdgeAppearance" backgroundEffect="prominent"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

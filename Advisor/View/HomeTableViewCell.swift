@@ -10,9 +10,10 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var latitudeLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    // MARK: Outlet
+    @IBOutlet private weak var longitudeLabel: UILabel!
+    @IBOutlet private weak var latitudeLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
     
     
     func setCellWithValues(_ attraction: Attraction) {

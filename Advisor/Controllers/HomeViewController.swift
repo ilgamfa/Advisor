@@ -15,17 +15,24 @@ class HomeViewController: UIViewController {
     private var viewModel = AttractionViewModel()
     
     // MARK: Outlet
-    @IBOutlet weak var homeTableView: UITableView!
+    @IBOutlet private weak var homeTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadAttractionsData()
+       loadAttractionsData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     private func loadAttractionsData() {
         viewModel.fetchData { [weak self] in
-            self?.homeTableView.dataSource = self
-            self?.homeTableView.reloadData()
+            DispatchQueue.main.async {
+                self?.homeTableView.dataSource = self
+                self?.homeTableView.reloadData()
+            }
+            
         }
     }
     

@@ -7,13 +7,29 @@
 
 import Foundation
 
-class NetworkManager {
-   
+class NetworkService {
+    
+    private let locationService = LocationService()
+    
+    let baseUrl = "https://api.opentripmap.com/0.1/"
+    let apiKey = "5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
+    var languageType = "en"
+    var radius = "25000"
+    
+    var latitude = ""
+    var longitude = ""
     
     func fetchData(completion: @escaping (Result<[Attraction], Error>) -> Void) {
         
-        let urlString = "https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=49.1233&lat=55.7879&format=json&apikey=5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
-        guard let url = URL(string: urlString) else {return}
+        locationService.getUserLocation { lat, lon in
+            latitude = lat
+            longitude = lon
+        }
+        
+        let finalUrl = baseUrl + languageType + "/places/radius?radius=" + radius + "&lon=" + longitude + "&lat=" + latitude + "&format=json" + "&apikey=" + apiKey
+        
+        
+        guard let url = URL(string: finalUrl) else {return}
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             

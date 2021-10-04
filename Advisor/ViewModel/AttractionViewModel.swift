@@ -10,7 +10,7 @@ import MapKit
 import CoreLocationUI
 
 class AttractionViewModel {
-    private var networkManager = NetworkManager()
+    private var networkManager = NetworkService()
     private var attractionData = [Attraction]()
     
     func fetchData(completion: @escaping () -> ()) {

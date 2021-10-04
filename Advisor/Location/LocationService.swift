@@ -16,22 +16,41 @@ class LocationService {
 
         case .authorizedAlways, .authorizedWhenInUse:
             mapView.showsUserLocation = true
+            print("authorized always")
 
         case .notDetermined:
-            manager.requestWhenInUseAuthorization()
+            print("authorized not determind")
+            
+            locationManager.requestWhenInUseAuthorization()
             mapView.showsUserLocation = true
+            
 
-        case .restricted, .denied:
+        case .denied:
+            print("authorized denied")
             displayLocationAlert()
 
+        case .restricted:
+            print("authorized restricted")
+            displayLocationAlert()
         @unknown default:
             break
         }
     }
     
+    func getUserLocation(completion: (_ lat: String, _ lon: String) -> Void) {
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways) {
+            guard let currentLocation = locationManager.location else { return }
+            let latitude = String(format: "%.4f", currentLocation.coordinate.latitude)
+            let longitude = String(format: "%.4f", currentLocation.coordinate.longitude)
+            
+            completion(latitude, longitude)
+        }
+    }
+    
     func setLocationManager() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
     
@@ -46,9 +65,9 @@ class LocationService {
     
     
     func displayLocationAlert() {
-        let message = "This awesome app needs authorization to do some cool stuff with the map"
+        let message = "This app needs location access permissions \n Turn on the geolocation service in the privacy settings"
         
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Location service is disabled", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
