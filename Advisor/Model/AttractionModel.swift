@@ -13,7 +13,9 @@ struct AttractionData: Decodable {
 
 struct Attraction: Decodable {
     var name: String?
-    var point: Point 
+    var point: Point
+    var xid: String
+    var kind: String
 }
 
 struct Point: Decodable {

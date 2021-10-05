@@ -11,6 +11,8 @@ import CoreLocationUI
 
 class MapViewController: UIViewController {
     
+    @IBOutlet weak var locationView: UIView!
+    
     // MARK: Private
     private let attractionViewModel = AttractionViewModel()
     private var attractionData = [Attraction]()
@@ -22,6 +24,10 @@ class MapViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationView.layer.borderWidth = 1
+        locationView.layer.borderColor = UIColor.lightGray.cgColor
+        locationView.layer.cornerRadius = 5
+        locationView.layer.masksToBounds = true
         
         locationService.isLocationServiceEnabled(mapView)
         locationService.setLocationManager()
@@ -46,7 +52,7 @@ class MapViewController: UIViewController {
     }
    
     
-    @IBAction func myLocationButtonDidTap(_ sender: CLLocationButton) {
+    @IBAction func myLocationButtonDidTap(_ sender: UIButton) {
         locationService.locationManager.startUpdatingLocation()
     }
     

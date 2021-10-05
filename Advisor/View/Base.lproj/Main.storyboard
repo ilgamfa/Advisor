@@ -20,32 +20,61 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DtW-9E-vzI">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
-                            <clLocationButton opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" icon="arrowFilled" cornerRadius="25" translatesAutoresizingMaskIntoConstraints="NO" id="XnG-4z-Khq">
-                                <rect key="frame" x="354" y="733" width="50" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <color key="tintColor" systemColor="systemWhiteColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkO-Qc-KkV" userLabel="LocationView">
+                                <rect key="frame" x="364" y="138" width="40" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="kAt-vL-8s6">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRF-1b-8hE" userLabel="info">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="39.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="info.circle" catalog="system" cornerStyle="fixed">
+                                                    <backgroundConfiguration key="background" cornerRadius="0.0">
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </backgroundConfiguration>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-01-uJT" userLabel="loc">
+                                                <rect key="frame" x="0.0" y="40.5" width="40" height="39.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="location" catalog="system">
+                                                    <backgroundConfiguration key="background" cornerRadius="0.0">
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </backgroundConfiguration>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="myLocationButtonDidTap:" destination="BJz-M2-h0y" eventType="touchUpInside" id="tdA-ow-kCX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="sKo-is-dGu"/>
-                                    <constraint firstAttribute="width" constant="50" id="wXa-3Y-t2j"/>
+                                    <constraint firstItem="kAt-vL-8s6" firstAttribute="top" secondItem="gkO-Qc-KkV" secondAttribute="top" id="C1v-Vr-wR6"/>
+                                    <constraint firstAttribute="trailing" secondItem="kAt-vL-8s6" secondAttribute="trailing" id="DdT-tt-zSf"/>
+                                    <constraint firstAttribute="width" constant="40" id="Wra-ja-aY3"/>
+                                    <constraint firstItem="kAt-vL-8s6" firstAttribute="leading" secondItem="gkO-Qc-KkV" secondAttribute="leading" id="ccO-5c-wJg"/>
+                                    <constraint firstAttribute="bottom" secondItem="kAt-vL-8s6" secondAttribute="bottom" id="mSH-bA-gMW"/>
+                                    <constraint firstAttribute="height" constant="80" id="yU8-kq-eGp"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="myLocationButtonDidTap:" destination="BJz-M2-h0y" eventType="touchUpInside" id="ek8-iI-W47"/>
-                                </connections>
-                            </clLocationButton>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aZm-ch-4HU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aZm-ch-4HU" firstAttribute="trailing" secondItem="DtW-9E-vzI" secondAttribute="trailing" id="9AZ-jp-JuQ"/>
+                            <constraint firstItem="gkO-Qc-KkV" firstAttribute="top" secondItem="aZm-ch-4HU" secondAttribute="top" constant="50" id="Og4-RI-RMR"/>
                             <constraint firstItem="DtW-9E-vzI" firstAttribute="top" secondItem="aZm-ch-4HU" secondAttribute="top" id="Uqd-oH-0q8"/>
                             <constraint firstItem="aZm-ch-4HU" firstAttribute="bottom" secondItem="DtW-9E-vzI" secondAttribute="bottom" id="k8D-rY-k6x"/>
-                            <constraint firstItem="aZm-ch-4HU" firstAttribute="bottom" secondItem="XnG-4z-Khq" secondAttribute="bottom" constant="30" id="moy-yf-etw"/>
-                            <constraint firstItem="aZm-ch-4HU" firstAttribute="trailing" secondItem="XnG-4z-Khq" secondAttribute="trailing" constant="10" id="pHG-8y-RlG"/>
                             <constraint firstItem="DtW-9E-vzI" firstAttribute="leading" secondItem="aZm-ch-4HU" secondAttribute="leading" id="sEC-Jo-R42"/>
+                            <constraint firstItem="aZm-ch-4HU" firstAttribute="trailing" secondItem="gkO-Qc-KkV" secondAttribute="trailing" constant="10" id="utI-if-SWH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="ARA-bd-tcJ"/>
                     <connections>
+                        <outlet property="locationView" destination="gkO-Qc-KkV" id="jRW-SC-Uz6"/>
                         <outlet property="mapView" destination="DtW-9E-vzI" id="tQ7-32-uWr"/>
                     </connections>
                 </viewController>
@@ -211,7 +240,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HLs-Bm-YPq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="scrollEdgeAppearance" backgroundEffect="systemMaterial"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance" backgroundEffect="systemUltraThinMaterial"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -247,12 +276,11 @@
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="location" catalog="system" width="128" height="118"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -260,8 +288,8 @@
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemWhiteColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
