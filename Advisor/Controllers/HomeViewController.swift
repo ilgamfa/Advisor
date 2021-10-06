@@ -19,7 +19,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       loadAttractionsData()
+        homeTableView.dataSource = self
+        homeTableView.delegate = self
+        loadAttractionsData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,7 +31,6 @@ class HomeViewController: UIViewController {
     private func loadAttractionsData() {
         viewModel.fetchData { [weak self] in
             DispatchQueue.main.async {
-                self?.homeTableView.dataSource = self
                 self?.homeTableView.reloadData()
             }
             
@@ -54,5 +55,15 @@ extension HomeViewController: UITableViewDataSource {
         cell.setCellWithValues(attraction)
         return cell
     
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailVC = storyboard?.instantiateViewController(identifier: "detailVC") as? DetailViewController else {
+            return
+        }
+        navigationController?.pushViewController(detailVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

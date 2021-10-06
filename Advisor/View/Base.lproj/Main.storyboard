@@ -175,6 +175,21 @@
             </objects>
             <point key="canvasLocation" x="1153.6231884057972" y="-810.26785714285711"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="HdO-46-gzB">
+            <objects>
+                <viewController storyboardIdentifier="detailVC" id="M9A-dC-CcD" customClass="DetailViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WzH-TW-EBO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OkB-ML-UFD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tiY-2e-IDH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1875" y="-810"/>
+        </scene>
         <!--Saved-->
         <scene sceneID="J9Z-RQ-78Z">
             <objects>

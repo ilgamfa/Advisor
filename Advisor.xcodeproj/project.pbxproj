@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B731D860270DE7EF00063331 /* AttractionDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B731D85F270DE7EF00063331 /* AttractionDetailModel.swift */; };
+		B731D862270DED6C00063331 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B731D861270DED6C00063331 /* DetailViewController.swift */; };
 		B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9B2705AEE500F56730 /* AttractionModel.swift */; };
 		B7F60C9E2705CEC300F56730 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9D2705CEC300F56730 /* NetworkService.swift */; };
 		BB3CCC87270A4E9A00EB558A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3CCC86270A4E9A00EB558A /* LocationService.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B731D85F270DE7EF00063331 /* AttractionDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionDetailModel.swift; sourceTree = "<group>"; };
+		B731D861270DED6C00063331 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B7F60C9B2705AEE500F56730 /* AttractionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionModel.swift; sourceTree = "<group>"; };
 		B7F60C9D2705CEC300F56730 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BB3CCC86270A4E9A00EB558A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 				BB653EDB27031C7A00F14915 /* HomeViewController.swift */,
 				BB653EDD27031C8C00F14915 /* SavedViewController.swift */,
 				BB653EDF27031C9900F14915 /* MapViewController.swift */,
+				B731D861270DED6C00063331 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -82,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				B7F60C9B2705AEE500F56730 /* AttractionModel.swift */,
+				B731D85F270DE7EF00063331 /* AttractionDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,9 +230,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B731D862270DED6C00063331 /* DetailViewController.swift in Sources */,
 				BB653EDA2703195F00F14915 /* TabBarController.swift in Sources */,
 				B7F60C9E2705CEC300F56730 /* NetworkService.swift in Sources */,
 				BB653EE027031C9900F14915 /* MapViewController.swift in Sources */,
+				B731D860270DE7EF00063331 /* AttractionDetailModel.swift in Sources */,
 				BB3CCC87270A4E9A00EB558A /* LocationService.swift in Sources */,
 				BB653EC62703170700F14915 /* AppDelegate.swift in Sources */,
 				BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */,

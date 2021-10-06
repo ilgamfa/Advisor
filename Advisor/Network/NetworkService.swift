@@ -56,5 +56,43 @@ class NetworkService {
         }
         task.resume()
     }
+    
+    func fetchDetails(completion: @escaping (Result<[Attraction], Error>) -> Void) {
+        
+        locationService.getUserLocation { lat, lon in
+            latitude = lat
+            longitude = lon
+        }
+        
+        let finalUrl = baseUrl + languageType + "/places/radius?radius=" + radius + "&lon=" + longitude + "&lat=" + latitude + "&format=json" + "&apikey=" + apiKey
+        
+        
+        guard let url = URL(string: finalUrl) else {return}
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let error = error {
+                completion(.failure(error))
+                print("DataTask error \(error.localizedDescription)")
+                return
+            }
+            guard let response = response as? HTTPURLResponse else {
+                print("Empty Response")
+                return
+            }
+            print("Response status code: \(response.statusCode)")
+            
+            guard let data = data else { return }
+            
+            do {
+                let attraction = try JSONDecoder().decode([Attraction].self, from: data)
+                completion(.success(attraction))
+            }
+            catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
   
 }

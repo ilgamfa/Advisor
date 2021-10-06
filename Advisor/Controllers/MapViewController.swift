@@ -43,12 +43,12 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        attractionViewModel.fetchData { [self] in
-            DispatchQueue.main.async {
-                self.attractionViewModel.setAnnotation(mapView: mapView)
-            }
-
-        }
+//        attractionViewModel.fetchData { [self] in
+//            DispatchQueue.main.async {
+//                self.attractionViewModel.setAnnotation(mapView: mapView)
+//            }
+//
+//        }
     }
    
     
