@@ -11,7 +11,8 @@ import CoreLocationUI
 
 class AttractionViewModel {
     private var networkManager = NetworkService()
-    private var attractionData = [Attraction]()
+    var attractionData = [Attraction]()
+    var annotationData = [Annotation]()
     
     func fetchData(completion: @escaping () -> ()) {
         networkManager.fetchData { result in
@@ -24,6 +25,21 @@ class AttractionViewModel {
             }
         }
     }
+    
+    
+    func fetchGeoJsonData(completion: @escaping () -> ()) {
+        networkManager.fetchGeoJsonData { result in
+            switch result {
+            case .success(let annotations):
+                self.annotationData = annotations
+                completion()
+            case .failure(let error):
+                print("Error procession Geo Json data: \(error)")
+            }
+        }
+    }
+    
+    
     
     func setAnnotation(mapView: MKMapView) {
         for attraction in attractionData {

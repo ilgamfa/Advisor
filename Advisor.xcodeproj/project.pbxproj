@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B731D85E270DB75800063331 /* AnnotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B731D85D270DB75800063331 /* AnnotationModel.swift */; };
 		B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9B2705AEE500F56730 /* AttractionModel.swift */; };
 		B7F60C9E2705CEC300F56730 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9D2705CEC300F56730 /* NetworkService.swift */; };
 		BB3CCC87270A4E9A00EB558A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3CCC86270A4E9A00EB558A /* LocationService.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B731D85D270DB75800063331 /* AnnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationModel.swift; sourceTree = "<group>"; };
 		B7F60C9B2705AEE500F56730 /* AttractionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionModel.swift; sourceTree = "<group>"; };
 		B7F60C9D2705CEC300F56730 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BB3CCC86270A4E9A00EB558A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				B7F60C9B2705AEE500F56730 /* AttractionModel.swift */,
+				B731D85D270DB75800063331 /* AnnotationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB653EDA2703195F00F14915 /* TabBarController.swift in Sources */,
+				B731D85E270DB75800063331 /* AnnotationModel.swift in Sources */,
 				B7F60C9E2705CEC300F56730 /* NetworkService.swift in Sources */,
 				BB653EE027031C9900F14915 /* MapViewController.swift in Sources */,
 				BB3CCC87270A4E9A00EB558A /* LocationService.swift in Sources */,
