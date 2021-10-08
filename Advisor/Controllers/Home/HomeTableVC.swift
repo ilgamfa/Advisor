@@ -58,7 +58,7 @@ extension HomeTableViewController: UITableViewDataSource {
 extension HomeTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let tableItemVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? TableItemVC else {
+        guard let tableItemVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? FeedItemsVC else {
             return
         }
         tableItemVC.selfIndexPath = indexPath.row

@@ -7,15 +7,16 @@
 
 import UIKit
 
-class TableItemVC: UIViewController {
+class FeedItemsVC: UIViewController {
 
     // MARK: Private
     private var viewModel = AttractionViewModel()
     
-    private var reuseIdCell = "tableViewCell"
+    private var reuseTableIdCell = "tableViewCell"
+    private var reuseCollectionIdCell = "collectionViewCell"
     private let goToControllerId = "detailVC"
     
-    private let collectionViewCellNames = ["Architecture", "Cultural", "Historical", "Industrial facilities", "Natural", "Other", "Religion"]
+    private var collectionViewCellNames = [String]()
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -29,27 +30,33 @@ class TableItemVC: UIViewController {
         switch selfIndexPath{
         case 0:
             collectionItemName = "interesting_places"
+            collectionViewCellNames = ["Architecture", "Cultural", "Historical", "Industrial facilities", "Natural", "Other", "Religion"]
         case 1:
             collectionItemName = "tourist_facilities"
+            collectionViewCellNames = ["Banks", "Foods", "Shops", "Transport"]
         case 2:
             collectionItemName = "amusements"
+            collectionViewCellNames = ["Parks", "Ferris wheels", "Mini parks", "Roller coaster", "Water parks"]
         case 3:
             collectionItemName = "accomodations"
+            collectionViewCellNames = ["Apartments", "Hotels", "Hostels", "Resorts", "Villas and chalet"]
         case 4:
             collectionItemName = "sport"
+            collectionViewCellNames = ["Pools", "Stadiums", "Winter sport", "Climbind", "Diving", "Kitesurfing", "Surfing"]
         case 5:
             collectionItemName = "adult"
+            collectionViewCellNames = ["Alcohol", "Casino", "Hookah", "Night clubs"]
         default:
             collectionItemName = ""
         }
         
         loadItemsData()
         
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-        
         tableView.delegate = self
         tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
     }
     
  
@@ -64,7 +71,7 @@ class TableItemVC: UIViewController {
 }
 
 
-extension TableItemVC: UITableViewDelegate {
+extension FeedItemsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let detailVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? DetailViewController else {
@@ -74,18 +81,13 @@ extension TableItemVC: UITableViewDelegate {
     }
 }
 
-extension TableItemVC: UITableViewDataSource {
+extension FeedItemsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numbersOfRowsInSection(section: section)
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Great Spots Near You"
-    }
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdCell, for: indexPath) as! ItemTVCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseTableIdCell, for: indexPath) as! ItemTVCell
         
         let attraction = viewModel.cellForRowAt(indexPath: indexPath)
         
@@ -98,22 +100,23 @@ extension TableItemVC: UITableViewDataSource {
 }
 
 
+extension FeedItemsVC: UICollectionViewDelegate {
+    
+}
 
 
-
-//extension TableItemVC: UICollectionViewDelegate {
-//
-//}
-//
-//extension TableItemVC: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 3
-//
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        return UICollectionViewCell()
-//    }
-//
-//
-//}
+extension FeedItemsVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collectionViewCellNames.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCollectionIdCell, for: indexPath) as! ItemCVCell
+        cell.collectionCellLabel.text = collectionViewCellNames[indexPath.row]
+        return cell
+    }
+    
+    
+    
+    
+}
