@@ -10,11 +10,12 @@ import MapKit
 import CoreLocationUI
 
 class AttractionViewModel {
-    private var networkManager = NetworkService()
+    private var networkService = NetworkService()
     private var attractionData = [Attraction]()
     
-    func fetchData(completion: @escaping () -> ()) {
-        networkManager.fetchData { result in
+    func fetchData(kinds: String, completion: @escaping () -> ()) {
+        
+        networkService.fetchData(kinds: kinds) { result in
             switch result {
             case .success(let attractions):
                 self.attractionData = attractions

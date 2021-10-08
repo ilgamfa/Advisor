@@ -11,13 +11,13 @@ import UIKit
 class CollectionViewController: UIViewController {
     
     // MARK: private
-    private var collections = ["Interesting places","Accommodations", "Adult", "Amusements", "Sport", "Tourist facilities"]
+    private var collections = ["Interesting places", "Tourist facilities", "Amusements", "Accommodations", "Sport", "Adult"]
     
     private let reuseIdCell = "collectionCell"
     
     private let goToControllerId = "collectionItem"
     
-//    private var viewModel = AttractionViewModel()
+
     
     // MARK: Outlet
     @IBOutlet private weak var tableView: UITableView!
@@ -29,24 +29,12 @@ class CollectionViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-//        loadAttractionsData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
-//    private func loadAttractionsData() {
-//        viewModel.fetchData { [weak self] in
-//            DispatchQueue.main.async {
-//                self?.homeTableView.reloadData()
-//            }
-//
-//        }
-//    }
-    
-    
-    
+   
 
 }
 
@@ -68,9 +56,11 @@ extension CollectionViewController: UITableViewDataSource {
 extension CollectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let collectionItemVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? CollectionItemViewController else {
+        guard let collectionItemVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? ItemOfCollectionVC else {
             return
         }
+        collectionItemVC.selfIndexPath = indexPath.row
+        
         collectionItemVC.title = collections[indexPath.row]
         
         navigationController?.pushViewController(collectionItemVC, animated: true)
