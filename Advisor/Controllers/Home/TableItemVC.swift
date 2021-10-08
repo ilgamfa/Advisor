@@ -7,14 +7,18 @@
 
 import UIKit
 
-class ItemOfCollectionVC: UIViewController {
+class TableItemVC: UIViewController {
 
-    // MARK: Privat
+    // MARK: Private
     private var viewModel = AttractionViewModel()
-    private var reuseIdCell = "collectionItemCell"
+    
+    private var reuseIdCell = "tableViewCell"
     private let goToControllerId = "detailVC"
     
+    private let collectionViewCellNames = ["Architecture", "Cultural", "Historical", "Industrial facilities", "Natural", "Other", "Religion"]
+    
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     var selfIndexPath = 0
     var collectionItemName = ""
@@ -39,6 +43,10 @@ class ItemOfCollectionVC: UIViewController {
             collectionItemName = ""
         }
         
+        loadItemsData()
+        
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -56,7 +64,7 @@ class ItemOfCollectionVC: UIViewController {
 }
 
 
-extension ItemOfCollectionVC: UITableViewDelegate {
+extension TableItemVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let detailVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? DetailViewController else {
@@ -66,14 +74,23 @@ extension ItemOfCollectionVC: UITableViewDelegate {
     }
 }
 
-extension ItemOfCollectionVC: UITableViewDataSource {
+extension TableItemVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.numbersOfRowsInSection(section: section)
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Great Spots Near You"
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdCell, for: indexPath) as! CollectionItemTVCell
-        cell.collectionItemLabel.text = "place name"
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdCell, for: indexPath) as! ItemTVCell
+        
+        let attraction = viewModel.cellForRowAt(indexPath: indexPath)
+        
+        cell.setCellWithValuesOf(attraction)
+        
         return cell
     }
     
@@ -84,18 +101,19 @@ extension ItemOfCollectionVC: UITableViewDataSource {
 
 
 
-extension ItemOfCollectionVC: UICollectionViewDelegate {
-    
-}
-
-extension ItemOfCollectionVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
-    
-}
+//extension TableItemVC: UICollectionViewDelegate {
+//
+//}
+//
+//extension TableItemVC: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 3
+//
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        return UICollectionViewCell()
+//    }
+//
+//
+//}

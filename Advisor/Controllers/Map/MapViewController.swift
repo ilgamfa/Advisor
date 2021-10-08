@@ -32,7 +32,7 @@ class MapViewController: UIViewController {
         locationService.isLocationServiceEnabled(mapView)
         locationService.setLocationManager()
         
-        attractionViewModel.fetchData(kinds: "adult") { [self] in
+        attractionViewModel.fetchData(kinds: "interesting_places") { [self] in
             DispatchQueue.main.async {
                 self.attractionViewModel.setAnnotation(mapView: mapView)
             }
