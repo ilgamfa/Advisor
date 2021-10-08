@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemCVCell: UICollectionViewCell {
+class FeedItemCVCell: UICollectionViewCell {
     
     @IBOutlet weak var collectionCellLabel: UILabel!
     @IBOutlet weak var collectionCellImage: UIImageView!

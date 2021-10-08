@@ -10,8 +10,9 @@
 		B731D860270DE7EF00063331 /* AttractionDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B731D85F270DE7EF00063331 /* AttractionDetailModel.swift */; };
 		B731D862270DED6C00063331 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B731D861270DED6C00063331 /* DetailVC.swift */; };
 		B76DA378270EE63B003A17EA /* FeedItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DA377270EE63B003A17EA /* FeedItemsVC.swift */; };
-		B76DA385270EF2D4003A17EA /* ItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DA384270EF2D4003A17EA /* ItemTVCell.swift */; };
-		B7A23BA627107BE500BD9885 /* ItemCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A23BA527107BE500BD9885 /* ItemCVCell.swift */; };
+		B76DA385270EF2D4003A17EA /* FeedItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DA384270EF2D4003A17EA /* FeedItemTVCell.swift */; };
+		B7A23BA627107BE500BD9885 /* FeedItemCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A23BA527107BE500BD9885 /* FeedItemCVCell.swift */; };
+		B7A23BA827108C8900BD9885 /* ItemCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A23BA727108C8900BD9885 /* ItemCVController.swift */; };
 		B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9B2705AEE500F56730 /* AttractionModel.swift */; };
 		B7F60C9E2705CEC300F56730 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9D2705CEC300F56730 /* NetworkService.swift */; };
 		BB3CCC87270A4E9A00EB558A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3CCC86270A4E9A00EB558A /* LocationService.swift */; };
@@ -33,8 +34,9 @@
 		B731D85F270DE7EF00063331 /* AttractionDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionDetailModel.swift; sourceTree = "<group>"; };
 		B731D861270DED6C00063331 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		B76DA377270EE63B003A17EA /* FeedItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsVC.swift; sourceTree = "<group>"; };
-		B76DA384270EF2D4003A17EA /* ItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTVCell.swift; sourceTree = "<group>"; };
-		B7A23BA527107BE500BD9885 /* ItemCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCVCell.swift; sourceTree = "<group>"; };
+		B76DA384270EF2D4003A17EA /* FeedItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemTVCell.swift; sourceTree = "<group>"; };
+		B7A23BA527107BE500BD9885 /* FeedItemCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCVCell.swift; sourceTree = "<group>"; };
+		B7A23BA727108C8900BD9885 /* ItemCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCVController.swift; sourceTree = "<group>"; };
 		B7F60C9B2705AEE500F56730 /* AttractionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionModel.swift; sourceTree = "<group>"; };
 		B7F60C9D2705CEC300F56730 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BB3CCC86270A4E9A00EB558A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				BB653EDB27031C7A00F14915 /* HomeTableVC.swift */,
 				B76DA377270EE63B003A17EA /* FeedItemsVC.swift */,
 				B731D861270DED6C00063331 /* DetailVC.swift */,
+				B7A23BA727108C8900BD9885 /* ItemCVController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -107,8 +110,8 @@
 		B7F60C9927059B3500F56730 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B7A23BA527107BE500BD9885 /* ItemCVCell.swift */,
-				B76DA384270EF2D4003A17EA /* ItemTVCell.swift */,
+				B7A23BA527107BE500BD9885 /* FeedItemCVCell.swift */,
+				B76DA384270EF2D4003A17EA /* FeedItemTVCell.swift */,
 				BBB11EAC270653C200A8BF66 /* HomeTVCell.swift */,
 				BB653ED02703170900F14915 /* LaunchScreen.storyboard */,
 				BB653ECB2703170700F14915 /* Main.storyboard */,
@@ -266,18 +269,19 @@
 				B731D862270DED6C00063331 /* DetailVC.swift in Sources */,
 				BB653EDA2703195F00F14915 /* TabBarController.swift in Sources */,
 				B7F60C9E2705CEC300F56730 /* NetworkService.swift in Sources */,
-				B7A23BA627107BE500BD9885 /* ItemCVCell.swift in Sources */,
+				B7A23BA627107BE500BD9885 /* FeedItemCVCell.swift in Sources */,
 				BB653EE027031C9900F14915 /* MapViewController.swift in Sources */,
 				B731D860270DE7EF00063331 /* AttractionDetailModel.swift in Sources */,
 				B76DA378270EE63B003A17EA /* FeedItemsVC.swift in Sources */,
 				BB3CCC87270A4E9A00EB558A /* LocationService.swift in Sources */,
 				BB653EC62703170700F14915 /* AppDelegate.swift in Sources */,
 				BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */,
-				B76DA385270EF2D4003A17EA /* ItemTVCell.swift in Sources */,
+				B76DA385270EF2D4003A17EA /* FeedItemTVCell.swift in Sources */,
 				BB653EDE27031C8C00F14915 /* SavedViewController.swift in Sources */,
 				BBB11EAD270653C200A8BF66 /* HomeTVCell.swift in Sources */,
 				BB653EDC27031C7A00F14915 /* HomeTableVC.swift in Sources */,
 				BBB11EAB2706487D00A8BF66 /* AttractionViewModel.swift in Sources */,
+				B7A23BA827108C8900BD9885 /* ItemCVController.swift in Sources */,
 				B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

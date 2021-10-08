@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemTVCell: UITableViewCell {
+class FeedItemTVCell: UITableViewCell {
 
     @IBOutlet weak var collectionItemImage: UIImageView!
     @IBOutlet weak var collectionItemLabel: UILabel!

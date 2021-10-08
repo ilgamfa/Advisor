@@ -14,7 +14,8 @@ class FeedItemsVC: UIViewController {
     
     private var reuseTableIdCell = "tableViewCell"
     private var reuseCollectionIdCell = "collectionViewCell"
-    private let goToControllerId = "detailVC"
+    private let goToDetailController = "detailVC"
+    private let goToCollectionDetailController = "ItemCVController"
     
     private var collectionViewCellNames = [String]()
     
@@ -74,9 +75,10 @@ class FeedItemsVC: UIViewController {
 extension FeedItemsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let detailVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? DetailViewController else {
+        guard let detailVC = storyboard?.instantiateViewController(identifier: goToDetailController) as? DetailViewController else {
             return
         }
+        
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -87,7 +89,7 @@ extension FeedItemsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseTableIdCell, for: indexPath) as! ItemTVCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseTableIdCell, for: indexPath) as! FeedItemTVCell
         
         let attraction = viewModel.cellForRowAt(indexPath: indexPath)
         
@@ -101,6 +103,15 @@ extension FeedItemsVC: UITableViewDataSource {
 
 
 extension FeedItemsVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let itemCVController = storyboard?.instantiateViewController(identifier: goToCollectionDetailController) as? ItemCVController else {
+            return
+        }
+        
+        itemCVController.title = collectionViewCellNames[indexPath.row]
+        navigationController?.pushViewController(itemCVController, animated: true)
+        
+    }
     
 }
 
@@ -111,7 +122,7 @@ extension FeedItemsVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCollectionIdCell, for: indexPath) as! ItemCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCollectionIdCell, for: indexPath) as! FeedItemCVCell
         cell.collectionCellLabel.text = collectionViewCellNames[indexPath.row]
         return cell
     }
