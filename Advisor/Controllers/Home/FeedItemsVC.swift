@@ -78,7 +78,11 @@ extension FeedItemsVC: UITableViewDelegate {
         guard let detailVC = storyboard?.instantiateViewController(identifier: goToDetailController) as? DetailViewController else {
             return
         }
+        let attraction = viewModel.cellForRowAt(indexPath: indexPath)
+        guard let name = attraction.name else { return }
         
+        detailVC.xid = attraction.xid
+        detailVC.name = name
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

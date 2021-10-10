@@ -12,6 +12,7 @@ import CoreLocationUI
 class AttractionViewModel {
     private var networkService = NetworkService()
     private var attractionData = [Attraction]()
+    private var attractionDetail: AttractionDetail?
     
     func fetchData(kinds: String, completion: @escaping () -> ()) {
         
@@ -25,6 +26,20 @@ class AttractionViewModel {
             }
         }
     }
+    
+    
+    func fetchDetailData(xid: String, completion: @escaping () -> ()) {
+        networkService.fetchDetailsData(xid: xid) { result in
+            switch result {
+            case .success(let detail):
+                self.attractionDetail = detail
+                completion()
+            case .failure(let error):
+                print("Error procession json data: \(error)")
+            }
+        }
+    }
+    
     
     func setAnnotation(mapView: MKMapView) {
         for attraction in attractionData {

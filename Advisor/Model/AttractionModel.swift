@@ -6,10 +6,6 @@
 //
 
 import Foundation
-struct AttractionData: Decodable {
-    let attractions: [Attraction]
-}
-
 
 struct Attraction: Decodable {
     var xid: String

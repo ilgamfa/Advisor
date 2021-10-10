@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AnnotationDetals {
+struct AttractionDetail: Decodable {
     var xid: String
     var name: String?
     var address: Address
@@ -19,20 +19,20 @@ struct AnnotationDetals {
     var point: Point
 }
 
- struct Address {
+struct Address: Decodable{
     var country: String
     var city: String
     var road: String
     var houseNumber: String
 }
 
-struct Preview {
+struct Preview: Decodable {
     var source: String
     var height: Int
     var width: Int
 }
 
-struct WikiExtracts {
+struct WikiExtracts: Decodable {
     var title: String
     var text: String
 }
