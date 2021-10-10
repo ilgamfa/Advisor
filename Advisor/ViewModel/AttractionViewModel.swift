@@ -12,7 +12,7 @@ import CoreLocationUI
 class AttractionViewModel {
     private var networkService = NetworkService()
     private var attractionData = [Attraction]()
-    private var attractionDetail: AttractionDetail?
+    var attractionDetail: AttractionDetail?
     
     func fetchData(kinds: String, completion: @escaping () -> ()) {
         

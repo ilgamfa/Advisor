@@ -82,7 +82,6 @@ extension FeedItemsVC: UITableViewDelegate {
         guard let name = attraction.name else { return }
         
         detailVC.xid = attraction.xid
-        detailVC.name = name
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 class NetworkService {
     
     private let locationService = LocationService()
-    
+//                        "https://api.opentripmap.com/0.1/ru/places/xid/W572416599?apikey=5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
     private let baseUrl = "https://api.opentripmap.com/0.1/ru/places/"
     private var firstPartUrl = ""
     private var secondPartUrl = ""
@@ -25,7 +25,7 @@ class NetworkService {
     
     func fetchDetailsData(xid: String, completion: @escaping (Result<AttractionDetail, Error>) -> Void) {
         
-        finalUrl = baseUrl + "xid/" + xid + "?apikey" + apiKey
+        finalUrl = baseUrl + "xid/" + xid + "?apikey=" + apiKey
         
         guard let url = URL(string: finalUrl) else {return}
         
