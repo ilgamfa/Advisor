@@ -33,6 +33,7 @@ class DetailViewController: UIViewController {
             self?.detail = self!.viewModel.attractionDetail
             
             let nameText = self?.detail?.name == "" ? "No name yet" : self?.detail?.name
+            guard let name = nameText else { return }
             
             let descriptionText = self?.detail?.wikipedia_extracts?.text
             
@@ -40,13 +41,13 @@ class DetailViewController: UIViewController {
          
             self!.setImage(imageUrl: imageUrl)
             
-            let latitude = self!.detail?.point?.lat
-            let longitude = self!.detail?.point?.lon
+            guard let latitude = self!.detail?.point?.lat else { return }
+            guard let longitude = self!.detail?.point?.lon else { return }
             
             DispatchQueue.main.async {
                 self!.nameLabel.text = nameText
                 self!.descriptionTextView.text = descriptionText == nil ? "No description yet": descriptionText
-                self!.setAnnotation(latitude: latitude!, longitude: longitude!, nameTitle: nameText!)
+                self!.setAnnotation(latitude: latitude, longitude: longitude, nameTitle: name)
                
             }
         
