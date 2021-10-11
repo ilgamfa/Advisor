@@ -15,13 +15,16 @@ struct AttractionDetail: Decodable {
     var kinds: String?
     var image: String?
     var preview: Preview?
-    var wikipediaExtracts: WikiExtracts?
+    var wikipedia_extracts: WikiExtracts?
     var point: Point?
 }
 
 enum CodingKeys: String, CodingKey {
     case xid, name, address, rate, kinds, image, preview
-    case wikipediaExtracts = "wikipedia_extracts"
+//    Не работает вот так
+//    case wikipediaExtracts = "wikipedia_extracts"
+//    Так работает
+    case wikipedia_extracts
     case point
 }
 

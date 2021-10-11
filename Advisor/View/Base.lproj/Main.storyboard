@@ -354,7 +354,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="49T-WR-sA7">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="49T-WR-sA7">
                                 <rect key="frame" x="20" y="44" width="374" height="818"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="JGq-dv-18I">
@@ -363,26 +363,25 @@
                                             <constraint firstAttribute="height" constant="220" id="4PG-0e-UbB"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iA-z2-4bb">
-                                        <rect key="frame" x="0.0" y="225" width="374" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="2iA-z2-4bb">
+                                        <rect key="frame" x="0.0" y="230" width="374" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Kqj-3o-Ma5"/>
+                                            <constraint firstAttribute="height" constant="40" id="Kqj-3o-Ma5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="52Z-9f-JN3">
-                                        <rect key="frame" x="0.0" y="266" width="374" height="256"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="52Z-9f-JN3">
+                                        <rect key="frame" x="0.0" y="280" width="374" height="244"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHf-Gj-bc8">
-                                        <rect key="frame" x="0.0" y="527" width="374" height="36"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                        <rect key="frame" x="0.0" y="534" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -397,8 +396,6 @@
                                     <constraint firstAttribute="trailing" secondItem="JGq-dv-18I" secondAttribute="trailing" id="2ay-rD-WLg"/>
                                     <constraint firstAttribute="trailing" secondItem="2iA-z2-4bb" secondAttribute="trailing" id="41V-bp-Y6N"/>
                                     <constraint firstItem="JGq-dv-18I" firstAttribute="top" secondItem="49T-WR-sA7" secondAttribute="top" id="6Fl-OH-ECg"/>
-                                    <constraint firstItem="52Z-9f-JN3" firstAttribute="top" secondItem="2iA-z2-4bb" secondAttribute="bottom" constant="5" id="b97-hf-P0X"/>
-                                    <constraint firstItem="2iA-z2-4bb" firstAttribute="top" secondItem="JGq-dv-18I" secondAttribute="bottom" constant="5" id="bPJ-iQ-z1D"/>
                                     <constraint firstItem="JGq-dv-18I" firstAttribute="leading" secondItem="49T-WR-sA7" secondAttribute="leading" id="xop-re-v4z"/>
                                     <constraint firstItem="2iA-z2-4bb" firstAttribute="leading" secondItem="49T-WR-sA7" secondAttribute="leading" id="z2Y-ia-RaU"/>
                                 </constraints>
@@ -413,6 +410,12 @@
                             <constraint firstItem="49T-WR-sA7" firstAttribute="top" secondItem="OkB-ML-UFD" secondAttribute="top" id="yqz-bL-6Qp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="52Z-9f-JN3" id="Gov-TA-xig"/>
+                        <outlet property="imageView" destination="JGq-dv-18I" id="V2N-5t-QIB"/>
+                        <outlet property="mapView" destination="W1E-1z-iKR" id="CT7-hV-KRU"/>
+                        <outlet property="nameLabel" destination="2iA-z2-4bb" id="dFs-JL-Rcx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tiY-2e-IDH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

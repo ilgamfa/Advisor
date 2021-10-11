@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailViewController: UIViewController {
     
@@ -15,27 +16,60 @@ class DetailViewController: UIViewController {
     private var viewModel = AttractionViewModel()
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var xidLabel: UILabel!
-    
-    
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Detail info"
-//        xidLabel.text = xid
-//        loadDetailData()
+        loadDetailData()
         
     }
     
     
     private func loadDetailData() {
         viewModel.fetchDetailData(xid: xid) { [weak self] in
+            self?.detail = self!.viewModel.attractionDetail
+            
+            let nameText = self?.detail?.name == "" ? "No name yet" : self?.detail?.name
+            
+            let descriptionText = self?.detail?.wikipedia_extracts?.text
+            
+            let imageUrl: String = self!.detail?.preview?.source ?? "image URl"
+         
+            self!.setImage(imageUrl: imageUrl)
+            
+            let latitude = self!.detail?.point?.lat
+            let longitude = self!.detail?.point?.lon
+            
             DispatchQueue.main.async {
-                self?.detail = self!.viewModel.attractionDetail
-                self!.nameLabel.text = self!.detail?.name
+                self!.nameLabel.text = nameText
+                self!.descriptionTextView.text = descriptionText == nil ? "No description yet": descriptionText
+                self!.setAnnotation(latitude: latitude!, longitude: longitude!, nameTitle: nameText!)
+               
             }
         
         }
+    }
+    
+    
+    private func setImage(imageUrl: String) {
+        viewModel.downloadData(imageUrl: imageUrl) { [weak self] in
+            DispatchQueue.main.async {
+                self!.imageView.image = self!.viewModel.detailImage
+            }
+        }
+    }
+    
+    private func setAnnotation(latitude: Double, longitude: Double, nameTitle: String) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        annotation.title = nameTitle
+
+        let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
+        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.addAnnotation(annotation)
     }
     
 

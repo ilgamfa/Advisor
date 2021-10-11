@@ -12,7 +12,23 @@ import CoreLocationUI
 class AttractionViewModel {
     private var networkService = NetworkService()
     private var attractionData = [Attraction]()
+    var detailImage: UIImage?
     var attractionDetail: AttractionDetail?
+    
+    func downloadData(imageUrl: String, completion: @escaping () -> ()) {
+        
+        networkService.downloadImage(imageURL: imageUrl) { result in
+            switch result {
+            case .success(let image):
+                self.detailImage = UIImage(data: image)
+                completion()
+            case .failure(let error):
+                print("Error procession json data: \(error)")
+            }
+        }
+    }
+    
+    
     
     func fetchData(kinds: String, completion: @escaping () -> ()) {
         
