@@ -11,6 +11,7 @@
 		B731D862270DED6C00063331 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B731D861270DED6C00063331 /* DetailVC.swift */; };
 		B76DA378270EE63B003A17EA /* FeedItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DA377270EE63B003A17EA /* FeedItemsVC.swift */; };
 		B76DA385270EF2D4003A17EA /* FeedItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DA384270EF2D4003A17EA /* FeedItemTVCell.swift */; };
+		B78106F42715D9DE00A5BA48 /* HomeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78106F32715D9DE00A5BA48 /* HomeCVCell.swift */; };
 		B7A23BA627107BE500BD9885 /* FeedItemCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A23BA527107BE500BD9885 /* FeedItemCVCell.swift */; };
 		B7A23BA827108C8900BD9885 /* ItemCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A23BA727108C8900BD9885 /* ItemCVController.swift */; };
 		B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9B2705AEE500F56730 /* AttractionModel.swift */; };
@@ -27,7 +28,6 @@
 		BB653EE027031C9900F14915 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EDF27031C9900F14915 /* MapViewController.swift */; };
 		BB7D2F402703950A00DB6383 /* CoreLocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7D2F3F2703950A00DB6383 /* CoreLocationUI.framework */; };
 		BBB11EAB2706487D00A8BF66 /* AttractionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB11EAA2706487D00A8BF66 /* AttractionViewModel.swift */; };
-		BBB11EAD270653C200A8BF66 /* HomeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB11EAC270653C200A8BF66 /* HomeTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +35,7 @@
 		B731D861270DED6C00063331 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		B76DA377270EE63B003A17EA /* FeedItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsVC.swift; sourceTree = "<group>"; };
 		B76DA384270EF2D4003A17EA /* FeedItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemTVCell.swift; sourceTree = "<group>"; };
+		B78106F32715D9DE00A5BA48 /* HomeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVCell.swift; sourceTree = "<group>"; };
 		B7A23BA527107BE500BD9885 /* FeedItemCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCVCell.swift; sourceTree = "<group>"; };
 		B7A23BA727108C8900BD9885 /* ItemCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCVController.swift; sourceTree = "<group>"; };
 		B7F60C9B2705AEE500F56730 /* AttractionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionModel.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		BB7D2F392703919F00DB6383 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BB7D2F3F2703950A00DB6383 /* CoreLocationUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocationUI.framework; path = System/Library/Frameworks/CoreLocationUI.framework; sourceTree = SDKROOT; };
 		BBB11EAA2706487D00A8BF66 /* AttractionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionViewModel.swift; sourceTree = "<group>"; };
-		BBB11EAC270653C200A8BF66 /* HomeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +112,9 @@
 			children = (
 				B7A23BA527107BE500BD9885 /* FeedItemCVCell.swift */,
 				B76DA384270EF2D4003A17EA /* FeedItemTVCell.swift */,
-				BBB11EAC270653C200A8BF66 /* HomeTVCell.swift */,
 				BB653ED02703170900F14915 /* LaunchScreen.storyboard */,
 				BB653ECB2703170700F14915 /* Main.storyboard */,
+				B78106F32715D9DE00A5BA48 /* HomeCVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,6 +268,7 @@
 			files = (
 				B731D862270DED6C00063331 /* DetailVC.swift in Sources */,
 				BB653EDA2703195F00F14915 /* TabBarController.swift in Sources */,
+				B78106F42715D9DE00A5BA48 /* HomeCVCell.swift in Sources */,
 				B7F60C9E2705CEC300F56730 /* NetworkService.swift in Sources */,
 				B7A23BA627107BE500BD9885 /* FeedItemCVCell.swift in Sources */,
 				BB653EE027031C9900F14915 /* MapViewController.swift in Sources */,
@@ -278,7 +279,6 @@
 				BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */,
 				B76DA385270EF2D4003A17EA /* FeedItemTVCell.swift in Sources */,
 				BB653EDE27031C8C00F14915 /* SavedViewController.swift in Sources */,
-				BBB11EAD270653C200A8BF66 /* HomeTVCell.swift in Sources */,
 				BB653EDC27031C7A00F14915 /* HomeTableVC.swift in Sources */,
 				BBB11EAB2706487D00A8BF66 /* AttractionViewModel.swift in Sources */,
 				B7A23BA827108C8900BD9885 /* ItemCVController.swift in Sources */,
