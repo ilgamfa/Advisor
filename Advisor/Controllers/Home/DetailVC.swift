@@ -35,6 +35,8 @@ class DetailViewController: UIViewController {
             let nameText = self?.detail?.name == "" ? "No name yet" : self?.detail?.name
             guard let name = nameText else { return }
             
+            let kinds = self?.detail?.kinds
+            
             let descriptionText = self?.detail?.wikipedia_extracts?.text
             
             let imageUrl: String = self!.detail?.preview?.source ?? "image URl"
@@ -46,7 +48,7 @@ class DetailViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self!.nameLabel.text = nameText
-                self!.descriptionTextView.text = descriptionText == nil ? "No description yet": descriptionText
+                self!.descriptionTextView.text = descriptionText == nil ? kinds : descriptionText
                 self!.setAnnotation(latitude: latitude, longitude: longitude, nameTitle: name)
                
             }

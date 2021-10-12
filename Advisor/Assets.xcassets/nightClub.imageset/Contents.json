@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "night-club.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

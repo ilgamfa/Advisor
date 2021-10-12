@@ -18,8 +18,8 @@ class NetworkService {
     private var finalUrl = ""
     private let apiKey = "5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
     private var languageType = "en"
-    private var radius = "1050000"
-    private var limit = "10000"
+    private var radius = "100000"
+    private var limit = "1000"
     private var latitude = ""
     private var longitude = ""
     
@@ -84,14 +84,14 @@ class NetworkService {
 
     
     
-    func fetchData(kinds: String, completion: @escaping (Result<[Attraction], Error>) -> Void) {
+    func fetchData(rate: String, kinds: String, completion: @escaping (Result<[Attraction], Error>) -> Void) {
         
         locationService.getUserLocation { lat, lon in
             latitude = lat
             longitude = lon
         }
 
-        firstPartUrl = "radius?radius=" + radius + "&lon=" + longitude + "&lat=" + latitude + "&kinds=" + kinds
+        firstPartUrl = "radius?radius=" + radius + "&lon=" + longitude + "&lat=" + latitude + "&kinds=" + kinds + "&rate=" + rate
         
         secondPartUrl = "&format=json" + "&limit=" + limit + "&apikey=" + apiKey
         
