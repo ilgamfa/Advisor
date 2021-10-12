@@ -42,6 +42,7 @@ class HomeTableViewController: UIViewController {
 // MARK: Data source
 extension HomeTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return collectionNames.count
     }
     

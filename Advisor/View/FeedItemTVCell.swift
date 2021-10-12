@@ -9,7 +9,6 @@ import UIKit
 
 class FeedItemTVCell: UITableViewCell {
 
-    @IBOutlet weak var collectionItemImage: UIImageView!
     @IBOutlet weak var collectionItemLabel: UILabel!
     
     func setCellWithValuesOf(_ attraction: Attraction) {
@@ -20,9 +19,6 @@ class FeedItemTVCell: UITableViewCell {
         self.collectionItemLabel.text = itemLabel
     }
     
-    private func getImageDataFrom(url: URL) {
-        // do response to get image
-    }
     
     
 }
