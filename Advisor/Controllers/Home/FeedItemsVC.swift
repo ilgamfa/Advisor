@@ -23,12 +23,18 @@ class FeedItemsVC: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var spinnerIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var spinnerView: UIView!
+    
     var rate = ""
     var selfIndexPath = 0
     var collectionItemName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        spinnerView.layer.masksToBounds = false
+        spinnerView.layer.cornerRadius = 20
         
         switch selfIndexPath{
         case 0:
@@ -65,7 +71,7 @@ class FeedItemsVC: UIViewController {
         default:
             collectionItemName = ""
         }
-        
+        showSpinner()
         loadItemsData()
         
         tableView.delegate = self
@@ -75,12 +81,30 @@ class FeedItemsVC: UIViewController {
         
     }
     
- 
+//    override func viewDidAppear(_ animated: Bool) {
+//        showSpinner()
+//        loadItemsData()
+//    }
+    
+    private func showSpinner() {
+        DispatchQueue.main.async {
+            self.spinnerIndicator.startAnimating()
+            self.spinnerView.isHidden = false
+        }
+    }
+    
+    private func hideSpinner() {
+        DispatchQueue.main.async {
+            self.spinnerIndicator.stopAnimating()
+            self.spinnerView.isHidden = true
+        }
+    }
     
     private func loadItemsData() {
         viewModel.fetchData(rate: rate, kinds: collectionItemName) { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+                self?.hideSpinner()
             }
         }
     }

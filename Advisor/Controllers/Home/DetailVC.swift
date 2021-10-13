@@ -21,18 +21,23 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapButtonDidTap: UIButton!
     @IBOutlet weak var likeView: UIView!
-    
     @IBOutlet weak var likeButtonOutlet: UIButton!
     
+    @IBOutlet weak var spinnerIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var spinnerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Detail info"
+        spinnerView.layer.masksToBounds = false
+        spinnerView.layer.cornerRadius = 20
         mapButtonDidTap.layer.masksToBounds = false
         mapButtonDidTap.layer.cornerRadius = 30
         likeView.layer.masksToBounds = false
         likeView.layer.cornerRadius = 20
+        
         loadDetailData()
+        
         
     }
     
@@ -45,7 +50,23 @@ class DetailViewController: UIViewController {
         }
     }
     
+    private func showSpinner() {
+        DispatchQueue.main.async {
+            self.spinnerIndicator.startAnimating()
+            self.spinnerView.isHidden = false
+        }
+    }
+    
+    private func hideSpinner() {
+        DispatchQueue.main.async {
+            self.spinnerIndicator.stopAnimating()
+            self.spinnerView.isHidden = true
+        }
+    }
+    
+    
     private func loadDetailData() {
+        showSpinner()
         viewModel.fetchDetailData(xid: xid) { [weak self] in
             self?.detail = self!.viewModel.attractionDetail
             
@@ -64,10 +85,11 @@ class DetailViewController: UIViewController {
             guard let longitude = self!.detail?.point?.lon else { return }
             
             DispatchQueue.main.async {
+                
                 self!.nameLabel.text = nameText
                 self!.descriptionTextView.text = descriptionText == nil ? kinds : descriptionText
                 self!.setAnnotation(latitude: latitude, longitude: longitude, nameTitle: name)
-               
+                self!.hideSpinner()
             }
         
         }
