@@ -65,6 +65,15 @@ extension HomeTableViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdCell, for: indexPath) as! HomeCVCell
         cell.collectionLabel.text = collectionNames[indexPath.row]
         cell.collectionImage.image = collectionImages[indexPath.row]
+        
+        cell.layer.cornerRadius = 10
+        cell.contentView.layer.cornerRadius = 10
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 1, height: 2)
+        cell.layer.shadowRadius = 3
+        cell.layer.shadowOpacity = 0.75
+        cell.layer.masksToBounds = false
         return cell
     }
     
