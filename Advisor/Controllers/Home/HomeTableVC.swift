@@ -72,6 +72,13 @@ extension HomeTableViewController: UICollectionViewDataSource {
         cell.layer.masksToBounds = false
         return cell
     }
-    
-    
+
+}
+
+extension HomeTableViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = view.frame.height
+        let width = view.frame.width
+        return CGSize(width: width * 0.42, height: height * 0.245)
+    }
 }
