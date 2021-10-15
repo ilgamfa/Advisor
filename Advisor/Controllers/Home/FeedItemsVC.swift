@@ -19,12 +19,15 @@ class FeedItemsVC: UIViewController {
     
     private var collectionViewCellNames = [String]()
     private var collectionViewCellImages = [UIImage]()
+    private var collectionViewCellRequestNames = [String]()
     
+    // MARK: Outlet
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var headerTableView: UILabel!
     
-    @IBOutlet weak var spinnerIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var spinnerView: UIView!
+    @IBOutlet private weak var spinnerIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var spinnerView: UIView!
     
     var rate = ""
     var selfIndexPath = 0
@@ -36,41 +39,189 @@ class FeedItemsVC: UIViewController {
         spinnerView.layer.masksToBounds = false
         spinnerView.layer.cornerRadius = 20
         
+        // MARK: Switch
         switch selfIndexPath{
+            // MARK: Case 0
         case 0:
             rate = "1h"
             collectionItemName = "interesting_places"
-            collectionViewCellNames = ["Architecture", "Cultural", "Historical", "Industrial facilities", "Natural", "Other", "Religion"]
-            collectionViewCellImages = [UIImage(named: "architecture")!, UIImage(named: "culture")!, UIImage(named: "historical")!, UIImage(named: "industrial")!, UIImage(named: "nature")!, UIImage(named: "other")!, UIImage(named: "religion")!]
+            
+            collectionViewCellNames = [
+                "Architecture",
+                "Cultural",
+                "Historical",
+                "Industrial facilities",
+                "Natural",
+                "Other",
+                "Religion"
+            ]
+            
+            collectionViewCellImages = [
+                UIImage(named: "architecture")!,
+                UIImage(named: "culture")!,
+                UIImage(named: "historical")!,
+                UIImage(named: "industrial")!,
+                UIImage(named: "nature")!,
+                UIImage(named: "other")!,
+                UIImage(named: "religion")!
+            ]
+            
+            collectionViewCellRequestNames = [
+                "architecture",
+                "cultural",
+                "historic",
+                "industrial_facilities",
+                "natural",
+                "other",
+                "religion"
+            ]
+            
+            // MARK: Case 1
         case 1:
             rate = "2"
             collectionItemName = "tourist_facilities"
-            collectionViewCellNames = ["Banks", "Foods", "Shops", "Transport"]
-            collectionViewCellImages = [UIImage(named: "banks")!, UIImage(named: "foods")!, UIImage(named: "shops")!, UIImage(named: "transport")!]
+            collectionViewCellNames = [
+                "Banks",
+                "Foods",
+                "Shops",
+                "Transport"
+            ]
+            
+            collectionViewCellImages = [
+                UIImage(named: "banks")!,
+                UIImage(named: "foods")!,
+                UIImage(named: "shops")!,
+                UIImage(named: "transport")!
+            ]
+            
+            collectionViewCellRequestNames = [
+                "banks",
+                "foods",
+                "shops",
+                "transport"
+            ]
+            
+            // MARK: Case 2
         case 2:
             rate = "1"
             collectionItemName = "amusements"
-            collectionViewCellNames = ["Parks", "Ferris wheels", "Mini parks", "Roller coaster", "Water parks"]
-            collectionViewCellImages = [UIImage(named: "parks")!, UIImage(named: "ferrisWheel")!, UIImage(named: "miniPark")!, UIImage(named: "rollerCoaster")!, UIImage(named: "waterPark")!]
+            collectionViewCellNames = [
+                "Parks",
+                "Ferris wheels",
+                "Mini parks",
+                "Roller coaster",
+                "Water parks"
+            ]
+            
+            collectionViewCellImages = [
+                UIImage(named: "parks")!,
+                UIImage(named: "ferrisWheel")!,
+                UIImage(named: "miniPark")!,
+                UIImage(named: "rollerCoaster")!,
+                UIImage(named: "waterPark")!
+            ]
+        
+            collectionViewCellRequestNames = [
+                "architecture",
+                "cultural",
+                "historic",
+                "industrial_facilities",
+                "natural",
+                "other",
+                "religion"
+            ]
+            
+            // MARK: Case 3
         case 3:
             rate = "3"
             collectionItemName = "accomodations"
-            collectionViewCellNames = ["Apartments", "Hotels", "Hostels", "Resorts", "Villas and chalet"]
-            collectionViewCellImages = [UIImage(named: "apartment")!, UIImage(named: "hotel")!, UIImage(named: "hostel")!, UIImage(named: "resort")!, UIImage(named: "villas")!]
+            collectionViewCellNames = [
+                "Apartments",
+                "Hotels",
+                "Hostels",
+                "Resorts",
+                "Villas and chalet"
+            ]
+            
+            collectionViewCellImages = [
+                UIImage(named: "apartment")!,
+                UIImage(named: "hotel")!,
+                UIImage(named: "hostel")!,
+                UIImage(named: "resort")!,
+                UIImage(named: "villas")!
+            ]
+            
+            collectionViewCellRequestNames = [
+                "apartments",
+                "other_hotels",
+                "hostels",
+                "resorts",
+                "villas_and_chalet"
+            ]
+            
+            // MARK: Case 4
         case 4:
             rate = "3"
             collectionItemName = "sport"
-            collectionViewCellNames = ["Pools", "Stadiums", "Winter sport", "Climbind", "Diving", "Kitesurfing", "Surfing"]
+            collectionViewCellNames = [
+                "Pools",
+                "Stadiums",
+                "Winter sport",
+                "Climbind",
+                "Diving",
+                "Kitesurfing",
+                "Surfing"
+            ]
             
-            collectionViewCellImages = [UIImage(named: "pools")!, UIImage(named: "stadium")!, UIImage(named: "winterSports")!, UIImage(named: "climbing")!, UIImage(named: "diving")!, UIImage(named: "kitesurfing")!, UIImage(named: "surf")!]
+            collectionViewCellImages = [
+                UIImage(named: "pools")!,
+                UIImage(named: "stadium")!,
+                UIImage(named: "winterSports")!,
+                UIImage(named: "climbing")!,
+                UIImage(named: "diving")!,
+                UIImage(named: "kitesurfing")!,
+                UIImage(named: "surf")!
+            ]
+            collectionViewCellRequestNames = [
+                "pools",
+                "stadiums",
+                "winter_sports",
+                "climbing",
+                "diving",
+                "kitesurfing",
+                "surfing"
+            ]
+            
+            // MARK: Case 5
         case 5:
             rate = "3"
             collectionItemName = "adult"
-            collectionViewCellNames = ["Alcohol", "Casino", "Hookah", "Night clubs"]
-            collectionViewCellImages = [UIImage(named: "alcohol")!, UIImage(named: "casino")!, UIImage(named: "hookah")!, UIImage(named: "nightClub")!]
+            collectionViewCellNames = [
+                "Alcohol",
+                "Casino",
+                "Hookah",
+                "Night clubs"
+            ]
+            
+            collectionViewCellImages = [
+                UIImage(named: "alcohol")!,
+                UIImage(named: "casino")!,
+                UIImage(named: "hookah")!,
+                UIImage(named: "nightClub")!
+            ]
+            
+            collectionViewCellRequestNames = [
+                "alcohol",
+                "casino",
+                "hookah",
+                "nightclubs"
+            ]
+            
+            // MARK: Case Default
         default:
             collectionItemName = ""
         }
+        
         showSpinner()
         loadItemsData()
         
@@ -85,6 +236,7 @@ class FeedItemsVC: UIViewController {
 //        showSpinner()
 //        tableView.reloadData()
 //    }
+    // MARK: Private functions
     
     private func showSpinner() {
         DispatchQueue.main.async {
@@ -108,9 +260,18 @@ class FeedItemsVC: UIViewController {
             }
         }
     }
+    
+    private func loadSubcategoryItemsData(kinds: String) {
+        viewModel.fetchData(rate: rate, kinds: kinds) { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.hideSpinner()
+            }
+        }
+    }
 }
 
-// MARK: Extension UITableView
+// MARK: UITableView
 extension UITableView {
 
     func setEmptyMessage(_ message: String) {
@@ -132,7 +293,7 @@ extension UITableView {
     }
 }
 
-// MARK: Extension UITableViewDelegate
+// MARK: UI TableView Delegate
 extension FeedItemsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -146,7 +307,7 @@ extension FeedItemsVC: UITableViewDelegate {
     }
 }
 
-// MARK: Extension DataSource
+// MARK: UI TableView DataSource
 extension FeedItemsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowInSection = viewModel.numbersOfRowsInSection(section: section)
@@ -184,21 +345,18 @@ extension FeedItemsVC: UITableViewDataSource {
     
 }
 
-// MARK: Extension UICollectionViewDelegate
+// MARK: UI CollectionView Delegate
 extension FeedItemsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let itemCVController = storyboard?.instantiateViewController(identifier: goToCollectionDetailController) as? ItemCVController else {
-            return
-        }
-        
-        itemCVController.title = collectionViewCellNames[indexPath.row]
-        navigationController?.pushViewController(itemCVController, animated: true)
-        
+        headerTableView.text = collectionViewCellNames[indexPath.row]
+        let kinds = collectionViewCellRequestNames[indexPath.row]
+        showSpinner()
+        loadSubcategoryItemsData(kinds: kinds)
     }
     
 }
 
-// MARK: Extension UICollectionViewDataSource
+// MARK: UI CollectionView DataSource
 extension FeedItemsVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewCellNames.count
