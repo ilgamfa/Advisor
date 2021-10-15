@@ -10,21 +10,20 @@ import MapKit
 
 class DetailViewController: UIViewController {
     
-    var detail: AttractionDetail?
-    var xid: String = ""
-    
     private var viewModel = AttractionViewModel()
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var mapButtonDidTap: UIButton!
-    @IBOutlet weak var likeView: UIView!
-    @IBOutlet weak var likeButtonOutlet: UIButton!
+    // MARK: Outlets
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var mapButtonDidTap: UIButton!
+    @IBOutlet private weak var likeView: UIView!
+    @IBOutlet private weak var likeButtonOutlet: UIButton!
+    @IBOutlet private weak var spinnerIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var spinnerView: UIView!
     
-    @IBOutlet weak var spinnerIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var spinnerView: UIView!
+    var detail: AttractionDetail?
+    var xid: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +34,13 @@ class DetailViewController: UIViewController {
         mapButtonDidTap.layer.cornerRadius = 30
         likeView.layer.masksToBounds = false
         likeView.layer.cornerRadius = 20
-        
+        showSpinner()
         loadDetailData()
         
         
     }
-    
-    @IBAction func likeButtonDidTap(_ sender: UIButton) {
+    // MARK: Private functions
+    @IBAction private func likeButtonDidTap(_ sender: UIButton) {
         if likeButtonOutlet.tintColor != .red {
             likeButtonOutlet.tintColor = .red
         }
@@ -63,10 +62,9 @@ class DetailViewController: UIViewController {
             self.spinnerView.isHidden = true
         }
     }
-    
-    
+   
     private func loadDetailData() {
-        showSpinner()
+        
         viewModel.fetchDetailData(xid: xid) { [weak self] in
             self?.detail = self!.viewModel.attractionDetail
             
@@ -85,24 +83,23 @@ class DetailViewController: UIViewController {
             guard let longitude = self!.detail?.point?.lon else { return }
             
             DispatchQueue.main.async {
-                
                 self!.nameLabel.text = nameText
                 self!.descriptionTextView.text = descriptionText == nil ? kinds : descriptionText
                 self!.setAnnotation(latitude: latitude, longitude: longitude, nameTitle: name)
                 self!.hideSpinner()
             }
-        
         }
     }
     
-    
     private func setImage(imageUrl: String) {
-        viewModel.downloadData(imageUrl: imageUrl) { [weak self] in
+         
+        viewModel.fetchImageData(imageUrl: imageUrl) { [weak self] in
             DispatchQueue.main.async {
                 self!.imageView.image = self!.viewModel.detailImage
                 self!.imageView.layer.cornerRadius = 30
                 self!.imageView.layer.masksToBounds = true
             }
+            self!.hideSpinner()
         }
     }
     
@@ -115,8 +112,4 @@ class DetailViewController: UIViewController {
 //        mapView.setRegion(coordinateRegion, animated: true)
 //        mapView.addAnnotation(annotation)
     }
-    
-
-
-
 }

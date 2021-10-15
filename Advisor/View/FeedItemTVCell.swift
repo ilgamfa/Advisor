@@ -19,6 +19,12 @@ class FeedItemTVCell: UITableViewCell {
         self.collectionItemLabel.text = itemLabel
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let padding = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        contentView.frame.inset(by: padding)
+    }
+    
     
     
 }

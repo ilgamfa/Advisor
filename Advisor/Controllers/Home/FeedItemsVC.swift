@@ -83,7 +83,7 @@ class FeedItemsVC: UIViewController {
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        showSpinner()
-//        loadItemsData()
+//        tableView.reloadData()
 //    }
     
     private func showSpinner() {
@@ -110,7 +110,29 @@ class FeedItemsVC: UIViewController {
     }
 }
 
+// MARK: Extension UITableView
+extension UITableView {
 
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont.systemFont(ofSize: 15)
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
+    }
+}
+
+// MARK: Extension UITableViewDelegate
 extension FeedItemsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -124,22 +146,19 @@ extension FeedItemsVC: UITableViewDelegate {
     }
 }
 
+// MARK: Extension DataSource
 extension FeedItemsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowInSection = viewModel.numbersOfRowsInSection(section: section)
-        if numberOfRowInSection == 0 {
-//            showAllert()
-        }
-        return numberOfRowInSection
-    }
-    
-    private func showAllert() {
-        let message = "There are no places in the selected category within a radius of 100 km from you"
         
-        let alert = UIAlertController(title: "Sorry!", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        self.present(alert, animated: true)
-       
+        if numberOfRowInSection == 0 {
+            self.tableView.setEmptyMessage("No results were found for your parameters")
+        }
+        else {
+            self.tableView.restore()
+        }
+        
+        return numberOfRowInSection
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -165,7 +184,7 @@ extension FeedItemsVC: UITableViewDataSource {
     
 }
 
-
+// MARK: Extension UICollectionViewDelegate
 extension FeedItemsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let itemCVController = storyboard?.instantiateViewController(identifier: goToCollectionDetailController) as? ItemCVController else {
@@ -179,7 +198,7 @@ extension FeedItemsVC: UICollectionViewDelegate {
     
 }
 
-
+// MARK: Extension UICollectionViewDataSource
 extension FeedItemsVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewCellNames.count
@@ -200,8 +219,5 @@ extension FeedItemsVC: UICollectionViewDataSource {
         cell.layer.masksToBounds = false
         return cell
     }
-    
-    
-    
-    
+
 }

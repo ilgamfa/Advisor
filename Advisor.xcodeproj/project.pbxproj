@@ -23,7 +23,7 @@
 		BB653ECF2703170900F14915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB653ECE2703170900F14915 /* Assets.xcassets */; };
 		BB653ED22703170900F14915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB653ED02703170900F14915 /* LaunchScreen.storyboard */; };
 		BB653EDA2703195F00F14915 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653ED92703195F00F14915 /* TabBarController.swift */; };
-		BB653EDC27031C7A00F14915 /* HomeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EDB27031C7A00F14915 /* HomeTableVC.swift */; };
+		BB653EDC27031C7A00F14915 /* HomeCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EDB27031C7A00F14915 /* HomeCollectionVC.swift */; };
 		BB653EDE27031C8C00F14915 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EDD27031C8C00F14915 /* SavedViewController.swift */; };
 		BB653EE027031C9900F14915 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EDF27031C9900F14915 /* MapViewController.swift */; };
 		BB7D2F402703950A00DB6383 /* CoreLocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7D2F3F2703950A00DB6383 /* CoreLocationUI.framework */; };
@@ -49,7 +49,7 @@
 		BB653ED12703170900F14915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB653ED32703170900F14915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB653ED92703195F00F14915 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		BB653EDB27031C7A00F14915 /* HomeTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableVC.swift; sourceTree = "<group>"; };
+		BB653EDB27031C7A00F14915 /* HomeCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionVC.swift; sourceTree = "<group>"; };
 		BB653EDD27031C8C00F14915 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		BB653EDF27031C9900F14915 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BB7D2F392703919F00DB6383 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -72,7 +72,7 @@
 		B76DA379270EE683003A17EA /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				BB653EDB27031C7A00F14915 /* HomeTableVC.swift */,
+				BB653EDB27031C7A00F14915 /* HomeCollectionVC.swift */,
 				B76DA377270EE63B003A17EA /* FeedItemsVC.swift */,
 				B731D861270DED6C00063331 /* DetailVC.swift */,
 				B7A23BA727108C8900BD9885 /* ItemCVController.swift */,
@@ -279,7 +279,7 @@
 				BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */,
 				B76DA385270EF2D4003A17EA /* FeedItemTVCell.swift in Sources */,
 				BB653EDE27031C8C00F14915 /* SavedViewController.swift in Sources */,
-				BB653EDC27031C7A00F14915 /* HomeTableVC.swift in Sources */,
+				BB653EDC27031C7A00F14915 /* HomeCollectionVC.swift in Sources */,
 				BBB11EAB2706487D00A8BF66 /* AttractionViewModel.swift in Sources */,
 				B7A23BA827108C8900BD9885 /* ItemCVController.swift in Sources */,
 				B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */,

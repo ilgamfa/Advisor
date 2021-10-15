@@ -8,7 +8,7 @@
 import UIKit
 
 
-class HomeTableViewController: UIViewController {
+class HomeCollectionViewController: UIViewController {
     
     // MARK: private
     private var collectionNames = ["Interesting places", "Tourist facilities", "Amusements", "Accommodations", "Sport", "Adult"]
@@ -38,7 +38,7 @@ class HomeTableViewController: UIViewController {
 
 }
 
-extension HomeTableViewController: UICollectionViewDelegate {
+extension HomeCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let feedItemsVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? FeedItemsVC else {
             return
@@ -52,7 +52,7 @@ extension HomeTableViewController: UICollectionViewDelegate {
     }
 }
 
-extension HomeTableViewController: UICollectionViewDataSource {
+extension HomeCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionNames.count
     }
@@ -70,12 +70,13 @@ extension HomeTableViewController: UICollectionViewDataSource {
         cell.layer.shadowRadius = 3
         cell.layer.shadowOpacity = 0.75
         cell.layer.masksToBounds = false
+        
+        
         return cell
     }
-
 }
 
-extension HomeTableViewController: UICollectionViewDelegateFlowLayout {
+extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = view.frame.height
         let width = view.frame.width

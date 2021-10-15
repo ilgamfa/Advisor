@@ -15,7 +15,7 @@ class AttractionViewModel {
     var detailImage: UIImage?
     var attractionDetail: AttractionDetail?
     
-    func downloadData(imageUrl: String, completion: @escaping () -> ()) {
+    func fetchImageData(imageUrl: String, completion: @escaping () -> ()) {
         
         networkService.downloadImage(imageURL: imageUrl) { result in
             switch result {
