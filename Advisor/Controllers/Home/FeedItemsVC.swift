@@ -19,7 +19,8 @@ class FeedItemsVC: UIViewController {
     
     private var collectionViewCellNames = [String]()
     private var collectionViewCellImages = [UIImage]()
-    private var collectionViewCellRequestNames = [String]()
+    private var collectionViewCellRequestSubcatNames = [String]()
+    private var collectionViewCellRequestSubcatRates = [String]()
     
     // MARK: Outlet
     @IBOutlet private weak var tableView: UITableView!
@@ -29,6 +30,7 @@ class FeedItemsVC: UIViewController {
     @IBOutlet private weak var spinnerIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var spinnerView: UIView!
     
+    // MARK: Public
     var rate = ""
     var selfIndexPath = 0
     var collectionItemName = ""
@@ -66,7 +68,7 @@ class FeedItemsVC: UIViewController {
                 UIImage(named: "religion")!
             ]
             
-            collectionViewCellRequestNames = [
+            collectionViewCellRequestSubcatNames = [
                 "architecture",
                 "cultural",
                 "historic",
@@ -74,6 +76,16 @@ class FeedItemsVC: UIViewController {
                 "natural",
                 "other",
                 "religion"
+            ]
+            
+            collectionViewCellRequestSubcatRates = [
+                "1h",
+                "3",
+                "3",
+                "1",
+                "3",
+                "1",
+                "3",
             ]
             
             // MARK: Case 1
@@ -94,11 +106,18 @@ class FeedItemsVC: UIViewController {
                 UIImage(named: "transport")!
             ]
             
-            collectionViewCellRequestNames = [
+            collectionViewCellRequestSubcatNames = [
                 "banks",
                 "foods",
                 "shops",
                 "transport"
+            ]
+            
+            collectionViewCellRequestSubcatRates = [
+                "1",
+                "1",
+                "1",
+                "1"
             ]
             
             // MARK: Case 2
@@ -121,14 +140,20 @@ class FeedItemsVC: UIViewController {
                 UIImage(named: "waterPark")!
             ]
         
-            collectionViewCellRequestNames = [
-                "architecture",
-                "cultural",
-                "historic",
-                "industrial_facilities",
-                "natural",
-                "other",
-                "religion"
+            collectionViewCellRequestSubcatNames = [
+                "amusement_parks",
+                "ferris_wheels",
+                "miniature_parks",
+                "roller_coasters",
+                "water_parks"
+            ]
+            
+            collectionViewCellRequestSubcatRates = [
+                "1",
+                "0",
+                "0",
+                "0",
+                "1"
             ]
             
             // MARK: Case 3
@@ -151,12 +176,20 @@ class FeedItemsVC: UIViewController {
                 UIImage(named: "villas")!
             ]
             
-            collectionViewCellRequestNames = [
+            collectionViewCellRequestSubcatNames = [
                 "apartments",
                 "other_hotels",
                 "hostels",
                 "resorts",
                 "villas_and_chalet"
+            ]
+            
+            collectionViewCellRequestSubcatRates = [
+                "1",
+                "1",
+                "1",
+                "1",
+                "1"
             ]
             
             // MARK: Case 4
@@ -182,7 +215,8 @@ class FeedItemsVC: UIViewController {
                 UIImage(named: "kitesurfing")!,
                 UIImage(named: "surf")!
             ]
-            collectionViewCellRequestNames = [
+            
+            collectionViewCellRequestSubcatNames = [
                 "pools",
                 "stadiums",
                 "winter_sports",
@@ -190,6 +224,16 @@ class FeedItemsVC: UIViewController {
                 "diving",
                 "kitesurfing",
                 "surfing"
+            ]
+            
+            collectionViewCellRequestSubcatRates = [
+                "1",
+                "1",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
             ]
             
             // MARK: Case 5
@@ -210,11 +254,18 @@ class FeedItemsVC: UIViewController {
                 UIImage(named: "nightClub")!
             ]
             
-            collectionViewCellRequestNames = [
+            collectionViewCellRequestSubcatNames = [
                 "alcohol",
                 "casino",
                 "hookah",
                 "nightclubs"
+            ]
+            
+            collectionViewCellRequestSubcatRates = [
+                "1",
+                "3",
+                "0",
+                "1"
             ]
             
             // MARK: Case Default
@@ -236,6 +287,7 @@ class FeedItemsVC: UIViewController {
 //        showSpinner()
 //        tableView.reloadData()
 //    }
+    
     // MARK: Private functions
     
     private func showSpinner() {
@@ -261,7 +313,7 @@ class FeedItemsVC: UIViewController {
         }
     }
     
-    private func loadSubcategoryItemsData(kinds: String) {
+    private func loadSubcategoryItemsData(kinds: String, rate: String) {
         viewModel.fetchData(rate: rate, kinds: kinds) { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -349,9 +401,11 @@ extension FeedItemsVC: UITableViewDataSource {
 extension FeedItemsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         headerTableView.text = collectionViewCellNames[indexPath.row]
-        let kinds = collectionViewCellRequestNames[indexPath.row]
+        let kinds = collectionViewCellRequestSubcatNames[indexPath.row]
+        let rate = collectionViewCellRequestSubcatRates[indexPath.row]
+        print(rate)
         showSpinner()
-        loadSubcategoryItemsData(kinds: kinds)
+        loadSubcategoryItemsData(kinds: kinds, rate: rate)
     }
     
 }
