@@ -21,8 +21,6 @@ class HomeTableViewController: UIViewController {
 
     
     // MARK: Outlet
-    @IBOutlet private weak var tableView: UITableView!
-
     @IBOutlet weak var collectionView: UICollectionView!
     
     
@@ -31,8 +29,6 @@ class HomeTableViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-//        tableView.dataSource = self
-//        tableView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,43 +72,13 @@ extension HomeTableViewController: UICollectionViewDataSource {
         cell.layer.masksToBounds = false
         return cell
     }
-    
-    
+
 }
 
-
-
-
-
-
-//// MARK: Data source
-//extension HomeTableViewController: UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//
-//        return collectionNames.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdCell, for: indexPath) as! HomeTVCell
-//        cell.collectionLabel.text = collectionNames[indexPath.row]
-//        cell.collectionImage.image = collectionImages[indexPath.row]
-//        return cell
-//
-//
-//    }
-//}
-////
-//extension HomeTableViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        guard let feedItemsVC = storyboard?.instantiateViewController(identifier: goToControllerId) as? FeedItemsVC else {
-//            return
-//        }
-//        feedItemsVC.selfIndexPath = indexPath.row
-//
-//        feedItemsVC.title = collectionNames[indexPath.row]
-//
-//        navigationController?.pushViewController(feedItemsVC, animated: true)
-//
-//    }
-//}
+extension HomeTableViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = view.frame.height
+        let width = view.frame.width
+        return CGSize(width: width * 0.42, height: height * 0.245)
+    }
+}
