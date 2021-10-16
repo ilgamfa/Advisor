@@ -403,7 +403,6 @@ extension FeedItemsVC: UICollectionViewDelegate {
         headerTableView.text = collectionViewCellNames[indexPath.row]
         let kinds = collectionViewCellRequestSubcatNames[indexPath.row]
         let rate = collectionViewCellRequestSubcatRates[indexPath.row]
-        print(rate)
         showSpinner()
         loadSubcategoryItemsData(kinds: kinds, rate: rate)
     }
