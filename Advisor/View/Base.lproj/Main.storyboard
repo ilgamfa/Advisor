@@ -324,6 +324,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="ldS-dy-cPD" id="z2R-z3-TWx"/>
+                        <outlet property="headerTableView" destination="huZ-qd-wGa" id="uP2-EF-Mou"/>
                         <outlet property="spinnerIndicator" destination="qMt-op-4s3" id="S6e-nn-is6"/>
                         <outlet property="spinnerView" destination="Yqo-Qj-pgp" id="Eqc-PI-DlR"/>
                         <outlet property="tableView" destination="TEP-GN-9gp" id="Sal-pA-Gmc"/>
