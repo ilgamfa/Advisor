@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class FeedItemsVC: UIViewController {
 
@@ -34,6 +35,7 @@ class FeedItemsVC: UIViewController {
     var rate = ""
     var selfIndexPath = 0
     var collectionItemName = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -281,12 +283,9 @@ class FeedItemsVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        viewModel.delegate = self
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        showSpinner()
-//        tableView.reloadData()
-//    }
+
     
     // MARK: Private functions
     
@@ -365,7 +364,7 @@ extension FeedItemsVC: UITableViewDataSource {
         let numberOfRowInSection = viewModel.numbersOfRowsInSection(section: section)
         
         if numberOfRowInSection == 0 {
-            self.tableView.setEmptyMessage("No results were found for your parameters")
+            self.tableView.setEmptyMessage("No results were found")
         }
         else {
             self.tableView.restore()
@@ -431,4 +430,22 @@ extension FeedItemsVC: UICollectionViewDataSource {
         return cell
     }
 
+}
+extension FeedItemsVC: ShowAlertWhenError {
+    
+    func showAlertWhenError() {
+        let alert = UIAlertController(title: "Data will not appear until you give access" , message: "Please turn on 'Always' or 'When in use'\n In Location Services", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { alert in
+            if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
+                UIApplication.shared.open(url,options: [:], completionHandler:  nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
 }
