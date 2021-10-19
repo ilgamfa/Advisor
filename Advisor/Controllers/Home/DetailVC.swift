@@ -11,13 +11,17 @@ import MapKit
 class DetailViewController: UIViewController {
     
     private var viewModel = AttractionViewModel()
+    private let goToMapVC = "mapVC"
+    var aaa: Double = 0.0
+    var bbb: Double = 0.0
+    var ccc: String = ""
 
     // MARK: Outlets
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var mapButtonDidTap: UIButton!
+    @IBOutlet private weak var mapButton: UIButton!
     @IBOutlet private weak var likeView: UIView!
     @IBOutlet private weak var likeButtonOutlet: UIButton!
     @IBOutlet private weak var spinnerIndicator: UIActivityIndicatorView!
@@ -31,8 +35,8 @@ class DetailViewController: UIViewController {
         title = "Detail info"
         spinnerView.layer.masksToBounds = false
         spinnerView.layer.cornerRadius = 20
-        mapButtonDidTap.layer.masksToBounds = false
-        mapButtonDidTap.layer.cornerRadius = 30
+        mapButton.layer.masksToBounds = false
+        mapButton.layer.cornerRadius = 30
         likeView.layer.masksToBounds = false
         likeView.layer.cornerRadius = 20
         showSpinner()
@@ -40,6 +44,7 @@ class DetailViewController: UIViewController {
         
         
     }
+    
     // MARK: Private functions
     @IBAction private func likeButtonDidTap(_ sender: UIButton) {
         if likeButtonOutlet.tintColor != .red {
@@ -49,6 +54,18 @@ class DetailViewController: UIViewController {
             likeButtonOutlet.tintColor = .darkGray
         }
     }
+    
+    @IBAction func mapButtonDidTap(_ sender: UIButton) {
+        guard let mapVC = storyboard?.instantiateViewController(identifier: goToMapVC) as? MapViewController else {
+            return
+        }
+        mapVC.latitude = aaa
+        mapVC.longitude = bbb
+        mapVC.nameTitle = ccc
+        
+        navigationController?.pushViewController(mapVC, animated: true)
+    }
+    
     
     private func showSpinner() {
         DispatchQueue.main.async {
@@ -87,8 +104,11 @@ class DetailViewController: UIViewController {
             
             self!.setImage(imageUrl: imageUrl)
             
-//            guard let latitude = self!.detail?.point?.lat else { return }
-//            guard let longitude = self!.detail?.point?.lon else { return }
+            guard let latitude = self!.detail?.point?.lat else { return }
+            guard let longitude = self!.detail?.point?.lon else { return }
+            self?.aaa = latitude
+            self?.bbb = longitude
+            self?.ccc = name
             
             DispatchQueue.main.async {
                 self!.nameLabel.text = name
@@ -108,15 +128,5 @@ class DetailViewController: UIViewController {
             }
             self!.hideSpinner()
         }
-    }
-    
-    private func setAnnotation(latitude: Double, longitude: Double, nameTitle: String) {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        annotation.title = nameTitle
-
-//        let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
-//        mapView.setRegion(coordinateRegion, animated: true)
-//        mapView.addAnnotation(annotation)
     }
 }

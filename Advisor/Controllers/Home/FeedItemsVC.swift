@@ -12,7 +12,17 @@ class FeedItemsVC: UIViewController {
 
     // MARK: Private
     private var viewModel = AttractionViewModel()
-    private var locationManager = CLLocationManager()
+    private let locationService = LocationService()
+    
+    private let refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        return control
+    }()
+    
+    private var kind: String = ""
+    private var rate: String = ""
+    private var collectionItemName = ""
     
     private var reuseTableIdCell = "tableViewCell"
     private var reuseCollectionIdCell = "collectionViewCell"
@@ -32,9 +42,8 @@ class FeedItemsVC: UIViewController {
     @IBOutlet private weak var spinnerView: UIView!
     
     // MARK: Public
-    var rate = ""
     var selfIndexPath = 0
-    var collectionItemName = ""
+  
     
     
     override func viewDidLoad() {
@@ -274,58 +283,29 @@ class FeedItemsVC: UIViewController {
         default:
             collectionItemName = ""
         }
-        
-        checkLocationEnabled()
-        
-        showSpinner()
-        loadItemsData()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
         collectionView.delegate = self
         collectionView.dataSource = self
         
         viewModel.delegate = self
+        locationService.delegate = self
+        locationService.locationManager.delegate = self
+        
+        locationService.checkLocationEnabled()
+        showSpinner()
+        loadItemsData()
     }
 
     
     // MARK: Private functions
     
-    private func checkLocationEnabled() {
-
-        let status = locationManager.authorizationStatus
+    @objc private func refresh(sender: UIRefreshControl) {
         
-        if !CLLocationManager.locationServicesEnabled() {
-            showAlert(title: "Device location is unavailable", message: "Do you want to turn on?")
-        }
-        
-        else if status != .authorizedAlways && status != .authorizedWhenInUse {
-            showAlert(title: "Advisor needs permission access to your location", message: "Please turn on 'Always' or 'When in use'\n In Location Services")
-        }
-        else {
-            setupManager()
-        }
-    }
-
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title , message: message, preferredStyle: .alert)
-        
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { alert in
-            if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
-                UIApplication.shared.open(url,options: [:], completionHandler:  nil)
-            }
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alert.addAction(settingsAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
-    }
-
-    private func setupManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        loadSubcategoryItemsData(kinds: kind, rate: rate)
+        sender.endRefreshing()
     }
     
     private func showSpinner() {
@@ -436,10 +416,11 @@ extension FeedItemsVC: UITableViewDataSource {
 extension FeedItemsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         headerTableView.text = collectionViewCellNames[indexPath.row]
-        let kinds = collectionViewCellRequestSubcatNames[indexPath.row]
-        let rate = collectionViewCellRequestSubcatRates[indexPath.row]
+        kind = collectionViewCellRequestSubcatNames[indexPath.row]
+        rate = collectionViewCellRequestSubcatRates[indexPath.row]
+ 
         showSpinner()
-        loadSubcategoryItemsData(kinds: kinds, rate: rate)
+        loadSubcategoryItemsData(kinds: kind, rate: rate)
     }
     
 }
@@ -467,7 +448,9 @@ extension FeedItemsVC: UICollectionViewDataSource {
     }
 
 }
-extension FeedItemsVC: ShowAlertWhenError {
+
+// MARK: ShowAlertWhenErrorDelegate
+extension FeedItemsVC: ShowAlertWhenErrorDelegate {
     
     func showAlertWhenError() {
         let alert = UIAlertController(title: "Data will not appear until you give access" , message: "Please turn on 'Always' or 'When in use'\n In Location Services", preferredStyle: .alert)
@@ -486,7 +469,27 @@ extension FeedItemsVC: ShowAlertWhenError {
     }
 }
 
+// MARK: ShowAlertLocationDelegate
+extension FeedItemsVC: ShowAlertLocationDelegate {
+    func showAlertLocation(title: String, message: String, url: String) {
+        let alert = UIAlertController(title: title , message: message, preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { alert in
+            if let url = URL(string: url) {
+                UIApplication.shared.open(url,options: [:], completionHandler:  nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
+}
 
+// MARK: CLLocationManagerDelegate
 extension FeedItemsVC: CLLocationManagerDelegate {
     
 }
+
+
