@@ -9,18 +9,13 @@ import Foundation
 import MapKit
 import CoreLocationUI
 
-protocol ShowAlertWhenError: AnyObject {
+protocol ShowAlertWhenErrorDelegate: AnyObject {
     func showAlertWhenError()
-}
-
-protocol ShowSpinnerDelegate: AnyObject {
-    func showSpinner()
-    func hideSpinner()
 }
 
 class AttractionViewModel {
     
-    weak var delegate: ShowAlertWhenError?
+    weak var delegate: ShowAlertWhenErrorDelegate?
     
     private var networkService = NetworkService()
     private var attractionData = [Attraction]()

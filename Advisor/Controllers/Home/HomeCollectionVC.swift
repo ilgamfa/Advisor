@@ -33,7 +33,9 @@ class HomeCollectionViewController: UIViewController {
     private let reuseIdCell = "collectionCell"
     private let goToControllerId = "TableItemVC"
     
-    private let locationManager = CLLocationManager()
+    private let locationService = LocationService()
+    
+    
     private let monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "Monitor")
 
@@ -44,7 +46,7 @@ class HomeCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.requestWhenInUseAuthorization()
+        locationService.locationManager.requestWhenInUseAuthorization()
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -84,7 +86,7 @@ class HomeCollectionViewController: UIViewController {
 }
 
 
-
+// MARK: UI CollectionView Delegate
 
 extension HomeCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -99,6 +101,8 @@ extension HomeCollectionViewController: UICollectionViewDelegate {
         
     }
 }
+
+// MARK: UI CollectionView DataSource
 
 extension HomeCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -124,6 +128,7 @@ extension HomeCollectionViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
 extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = view.frame.height
