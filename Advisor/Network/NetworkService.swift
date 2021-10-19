@@ -11,13 +11,11 @@ import UIKit
 class NetworkService {
     
     private let locationService = LocationService()
-//                        "https://api.opentripmap.com/0.1/ru/places/xid/W572416599?apikey=5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
     private let baseUrl = "https://api.opentripmap.com/0.1/en/places/"
     private var firstPartUrl = ""
     private var secondPartUrl = ""
     private var finalUrl = ""
     private let apiKey = "5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
-    private var languageType = "en"
     private var radius = "100000"
     private var limit = "1000"
     private var latitude = ""
@@ -43,7 +41,7 @@ class NetworkService {
                 let image = data
                 completion(.success(image))
             }
-            catch {
+            catch{
                 completion(.failure(error))
             }
         }

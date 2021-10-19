@@ -29,8 +29,8 @@ class MapViewController: UIViewController {
         locationView.layer.cornerRadius = 5
         locationView.layer.masksToBounds = true
         
-        locationService.isLocationServiceEnabled(mapView)
-        locationService.setLocationManager()
+//        locationService.isLocationServiceEnabled(mapView)
+//        locationService.setLocationManager()
         
         attractionViewModel.fetchData(rate: "2h", kinds: "interesting_places") { [self] in
             DispatchQueue.main.async {

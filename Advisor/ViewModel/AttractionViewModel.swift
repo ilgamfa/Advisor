@@ -9,7 +9,19 @@ import Foundation
 import MapKit
 import CoreLocationUI
 
+protocol ShowAlertWhenError: AnyObject {
+    func showAlertWhenError()
+}
+
+protocol ShowSpinnerDelegate: AnyObject {
+    func showSpinner()
+    func hideSpinner()
+}
+
 class AttractionViewModel {
+    
+    weak var delegate: ShowAlertWhenError?
+    
     private var networkService = NetworkService()
     private var attractionData = [Attraction]()
     var detailImage: UIImage?
@@ -21,9 +33,10 @@ class AttractionViewModel {
             switch result {
             case .success(let image):
                 self.detailImage = UIImage(data: image)
+                print(completion())
                 completion()
             case .failure(let error):
-                print("Error procession json data: \(error)")
+                print("Error procession json fetch image data: \(error)")
             }
         }
     }
@@ -38,7 +51,13 @@ class AttractionViewModel {
                 self.attractionData = attractions
                 completion()
             case .failure(let error):
-                print("Error procession json data: \(error)")
+                completion()
+                DispatchQueue.main.async {
+                    self.delegate?.showAlertWhenError()
+                    print("Error procession json fetch data: \(error)")
+                }
+               
+                
             }
         }
     }
@@ -51,7 +70,7 @@ class AttractionViewModel {
                 self.attractionDetail = detail
                 completion()
             case .failure(let error):
-                print("Error procession json data: \(error)")
+                print("Error procession json fetch detail data: \(error)")
             }
         }
     }
@@ -72,14 +91,6 @@ class AttractionViewModel {
             
             return attractionData.count
         }
-//        else {
-//            let message = "There are no places in the selected category within a radius of 100 km from you"
-//            let alert = UIAlertController(title: "Sorry!", message: message, preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-//            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-////            self.present(alert, animated: true)
-//            print("num num num = \(attractionData.count)")
-//        }
         return 0
     }
     

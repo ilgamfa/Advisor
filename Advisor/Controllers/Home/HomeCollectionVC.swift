@@ -6,37 +6,85 @@
 //
 
 import UIKit
-
+import MapKit
+import Network
 
 class HomeCollectionViewController: UIViewController {
-    
+
     // MARK: private
-    private var collectionNames = ["Interesting places", "Tourist facilities", "Amusements", "Accommodations", "Sport", "Adult"]
+    private var collectionNames = [
+        "Interesting places",
+        "Tourist facilities",
+        "Amusements",
+        "Accommodations",
+        "Sport",
+        "Adult"
+    ]
     
-    private var collectionImages = [UIImage(named: "interestingPlaces"), UIImage(named: "touristFacilities"), UIImage(named: "amusements"), UIImage(named: "accommodations"), UIImage(named: "sport"), UIImage(named: "adult")]
+    private var collectionImages = [
+        UIImage(named: "interestingPlaces"),
+        UIImage(named: "touristFacilities"),
+        UIImage(named: "amusements"),
+        UIImage(named: "accommodations"),
+        UIImage(named: "sport"),
+        UIImage(named: "adult")
+    ]
     
     private let reuseIdCell = "collectionCell"
     private let goToControllerId = "TableItemVC"
     
+    private let locationManager = CLLocationManager()
+    private let monitor = NWPathMonitor()
+    let queue = DispatchQueue(label: "Monitor")
 
     
     // MARK: Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.requestWhenInUseAuthorization()
+        
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status != .satisfied {
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Something wrong with internet connection", message: "Check the internet connection")
+                }
+                
+            }
+        }
+        monitor.start(queue: queue)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-   
-
+    
+    // MARK: Private functions
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title , message: message, preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { alert in
+            if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
+                UIApplication.shared.open(url,options: [:], completionHandler:  nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
 }
+
+
+
 
 extension HomeCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -82,4 +130,8 @@ extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
         let width = view.frame.width
         return CGSize(width: width * 0.42, height: height * 0.245)
     }
+}
+
+extension HomeCollectionViewController: CLLocationManagerDelegate {
+    
 }

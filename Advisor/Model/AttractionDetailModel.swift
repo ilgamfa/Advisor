@@ -9,6 +9,7 @@ import Foundation
 
 struct AttractionDetail: Decodable {
     var name: String?
+    var address: Address?
     var kinds: String?
     var preview: Preview?
     var wikipedia_extracts: WikiExtracts?
@@ -22,6 +23,13 @@ enum CodingKeys: String, CodingKey {
 //    Так работает
     case wikipedia_extracts
     case point
+}
+
+struct Address: Decodable {
+    var state: String?
+    var city: String?
+    var road: String?
+    var house_number: String?
 }
 
 struct Preview: Decodable {

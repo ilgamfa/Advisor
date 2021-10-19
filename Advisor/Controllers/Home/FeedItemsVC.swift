@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import MapKit
 
 class FeedItemsVC: UIViewController {
 
     // MARK: Private
     private var viewModel = AttractionViewModel()
+    private var locationManager = CLLocationManager()
     
     private var reuseTableIdCell = "tableViewCell"
     private var reuseCollectionIdCell = "collectionViewCell"
@@ -34,6 +36,7 @@ class FeedItemsVC: UIViewController {
     var rate = ""
     var selfIndexPath = 0
     var collectionItemName = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -273,6 +276,8 @@ class FeedItemsVC: UIViewController {
             collectionItemName = ""
         }
         
+        checkLocationEnabled()
+        
         showSpinner()
         loadItemsData()
         
@@ -281,14 +286,48 @@ class FeedItemsVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        viewModel.delegate = self
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        showSpinner()
-//        tableView.reloadData()
-//    }
+
     
     // MARK: Private functions
+    
+    private func checkLocationEnabled() {
+
+        let status = locationManager.authorizationStatus
+        
+        if !CLLocationManager.locationServicesEnabled() {
+            showAlert(title: "Device location is unavailable", message: "Do you want to turn on?")
+        }
+        
+        else if status != .authorizedAlways && status != .authorizedWhenInUse {
+            showAlert(title: "Advisor needs permission access to your location", message: "Please turn on 'Always' or 'When in use'\n In Location Services")
+        }
+        else {
+            setupManager()
+        }
+    }
+
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title , message: message, preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { alert in
+            if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
+                UIApplication.shared.open(url,options: [:], completionHandler:  nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
+
+    private func setupManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
     
     private func showSpinner() {
         DispatchQueue.main.async {
@@ -365,7 +404,7 @@ extension FeedItemsVC: UITableViewDataSource {
         let numberOfRowInSection = viewModel.numbersOfRowsInSection(section: section)
         
         if numberOfRowInSection == 0 {
-            self.tableView.setEmptyMessage("No results were found for your parameters")
+            self.tableView.setEmptyMessage("No results were found")
         }
         else {
             self.tableView.restore()
@@ -431,4 +470,27 @@ extension FeedItemsVC: UICollectionViewDataSource {
         return cell
     }
 
+}
+extension FeedItemsVC: ShowAlertWhenError {
+    
+    func showAlertWhenError() {
+        let alert = UIAlertController(title: "Data will not appear until you give access" , message: "Please turn on 'Always' or 'When in use'\n In Location Services", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { alert in
+            if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
+                UIApplication.shared.open(url,options: [:], completionHandler:  nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
+}
+
+
+extension FeedItemsVC: CLLocationManagerDelegate {
+    
 }

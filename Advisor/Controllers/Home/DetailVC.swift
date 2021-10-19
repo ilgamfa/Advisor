@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var mapButtonDidTap: UIButton!
     @IBOutlet private weak var likeView: UIView!
@@ -71,22 +72,30 @@ class DetailViewController: UIViewController {
             let nameText = self?.detail?.name == "" ? "No name yet" : self?.detail?.name
             guard let name = nameText else { return }
             
+            
             let kinds = self?.detail?.kinds
             
             let descriptionText = self?.detail?.wikipedia_extracts?.text
             
-            let imageUrl: String = self!.detail?.preview?.source ?? "image URl"
-         
+            let state = self?.detail?.address?.state
+            guard let stateName = state else {return}
+
+            let imageUrl: String = self!.detail?.preview?.source ?? ""
+            if imageUrl == "" {
+                self!.hideSpinner()
+            }
+            
             self!.setImage(imageUrl: imageUrl)
             
-            guard let latitude = self!.detail?.point?.lat else { return }
-            guard let longitude = self!.detail?.point?.lon else { return }
+//            guard let latitude = self!.detail?.point?.lat else { return }
+//            guard let longitude = self!.detail?.point?.lon else { return }
             
             DispatchQueue.main.async {
-                self!.nameLabel.text = nameText
+                self!.nameLabel.text = name
                 self!.descriptionTextView.text = descriptionText == nil ? kinds : descriptionText
-                self!.setAnnotation(latitude: latitude, longitude: longitude, nameTitle: name)
-                self!.hideSpinner()
+                self!.addressLabel.text = stateName
+                
+//                self!.hideSpinner()
             }
         }
     }
