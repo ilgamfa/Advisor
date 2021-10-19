@@ -94,8 +94,6 @@ class DetailViewController: UIViewController {
                 self!.nameLabel.text = name
                 self!.descriptionTextView.text = descriptionText == nil ? kinds : descriptionText
                 self!.addressLabel.text = stateName
-                
-//                self!.hideSpinner()
             }
         }
     }

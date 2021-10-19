@@ -11,6 +11,8 @@ class FeedItemTVCell: UITableViewCell {
 
     @IBOutlet weak var collectionItemLabel: UILabel!
     
+    @IBOutlet weak var viewTableCell: UIView!
+    
     func setCellWithValuesOf(_ attraction: Attraction) {
         updateUI(itemLabel: attraction.name)
     }
@@ -18,13 +20,4 @@ class FeedItemTVCell: UITableViewCell {
     private func updateUI(itemLabel: String?) {
         self.collectionItemLabel.text = itemLabel
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let padding = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        contentView.frame.inset(by: padding)
-    }
-    
-    
-    
 }

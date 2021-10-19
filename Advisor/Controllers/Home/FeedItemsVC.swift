@@ -28,7 +28,6 @@ class FeedItemsVC: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var headerTableView: UILabel!
-    
     @IBOutlet private weak var spinnerIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var spinnerView: UIView!
     
@@ -414,21 +413,18 @@ extension FeedItemsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        self.tableView.separatorStyle = .none
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseTableIdCell, for: indexPath) as! FeedItemTVCell
         
         let attraction = viewModel.cellForRowAt(indexPath: indexPath)
         
         cell.setCellWithValuesOf(attraction)
-        cell.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
-        
-        cell.layer.cornerRadius = 10
-        cell.contentView.layer.cornerRadius = 10
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 1, height: 2)
-        cell.layer.shadowRadius = 3
-        cell.layer.shadowOpacity = 0.75
-        cell.layer.masksToBounds = false
+        cell.viewTableCell.layer.cornerRadius = 10
+        cell.viewTableCell.layer.borderWidth = 0.5
+        cell.viewTableCell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.viewTableCell.layer.shadowOffset = CGSize(width: 1, height: 2)
+        cell.viewTableCell.layer.shadowRadius = 3
+        cell.viewTableCell.layer.masksToBounds = false
         
         return cell
     }
