@@ -13,7 +13,7 @@
         <!--Map-->
         <scene sceneID="2lY-Ax-ox7">
             <objects>
-                <viewController id="BJz-M2-h0y" customClass="MapViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapVC" id="BJz-M2-h0y" customClass="MapViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vBu-sv-GOp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,6 +391,9 @@
                                 <state key="normal">
                                     <imageReference key="image" image="map.fill" catalog="system" symbolScale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="mapButtonDidTap:" destination="M9A-dC-CcD" eventType="touchUpInside" id="AIP-gR-zB6"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="A6o-Po-gfj">
                                 <rect key="frame" x="20" y="499" width="294" height="20"/>
@@ -485,7 +488,7 @@
                         <outlet property="imageView" destination="I10-uh-DOL" id="xmW-c1-La0"/>
                         <outlet property="likeButtonOutlet" destination="rpR-QJ-sDj" id="FmP-A5-i96"/>
                         <outlet property="likeView" destination="Ff3-pL-nmR" id="QL7-1b-6gN"/>
-                        <outlet property="mapButtonDidTap" destination="R5b-Om-SyV" id="VwL-FB-hwR"/>
+                        <outlet property="mapButton" destination="R5b-Om-SyV" id="VwL-FB-hwR"/>
                         <outlet property="nameLabel" destination="cuZ-u6-Zy3" id="tZN-ri-baH"/>
                         <outlet property="spinnerIndicator" destination="6RC-0G-w9C" id="mEd-jy-BFJ"/>
                         <outlet property="spinnerView" destination="YHz-Xm-v2h" id="jZi-v1-a4S"/>

@@ -21,6 +21,11 @@ class MapViewController: UIViewController {
     // MARK: Outlet
     @IBOutlet private weak var mapView: MKMapView!
 
+    // MARK: Public
+    
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var nameTitle: String = ""
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +56,35 @@ class MapViewController: UIViewController {
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        mapView.setRegion(MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3)), animated: true)
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3)
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: span)
+        
+        mapView.setRegion(coordinateRegion, animated: true)
         mapView.showsUserLocation = true
         locationService.locationManager.stopUpdatingLocation()
         
-        attractionViewModel.fetchData(rate: "2h", kinds: "interesting_places") { [self] in
-            DispatchQueue.main.async {
-                self.attractionViewModel.setAnnotation(mapView: mapView)
+        if latitude == 0.0 {
+            attractionViewModel.fetchData(rate: "2h", kinds: "interesting_places") { [self] in
+                DispatchQueue.main.async {
+                    self.attractionViewModel.setAnnotation(mapView: mapView)
+                }
             }
         }
+        else {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            annotation.title = nameTitle
+            
+            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, span: span)
+            
+            mapView.setRegion(coordinateRegion, animated: true)
+            mapView.addAnnotation(annotation)
+        }
+        
+        
+        
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

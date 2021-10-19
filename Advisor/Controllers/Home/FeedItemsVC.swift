@@ -487,6 +487,7 @@ extension FeedItemsVC: ShowAlertLocationDelegate {
     }
 }
 
+// MARK: CLLocationManagerDelegate
 extension FeedItemsVC: CLLocationManagerDelegate {
     
 }
