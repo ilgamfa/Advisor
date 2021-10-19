@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>пожаааааалуйста When in Use Usage</string>
+	<string>The app needs your permission to use your location</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>пожаааааааалуйста Always and when in use</string>
+	<string>The app needs your permission to use your location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

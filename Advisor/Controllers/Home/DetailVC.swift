@@ -76,20 +76,15 @@ class DetailViewController: UIViewController {
             let kinds = self?.detail?.kinds
             
             let descriptionText = self?.detail?.wikipedia_extracts?.text
-//            
-//            let state = self?.detail?.address?.state
-//            guard let stateName = state else {return}
-//            let city = self?.detail?.address?.city
-//            guard let cityName = city else {return}
-//            let road = self?.detail?.address?.road
-//            guard let roadName = road else {return}
-//            let house = self?.detail?.address?.house_number
-//            guard let houseNumber = house else {return}
-//            
-//            let finalAddress = stateName + ", " + cityName + ", " + roadName + " " + houseNumber
-//            
-            let imageUrl: String = self!.detail?.preview?.source ?? "image URl"
-         
+            
+            let state = self?.detail?.address?.state
+            guard let stateName = state else {return}
+
+            let imageUrl: String = self!.detail?.preview?.source ?? ""
+            if imageUrl == "" {
+                self!.hideSpinner()
+            }
+            
             self!.setImage(imageUrl: imageUrl)
             
 //            guard let latitude = self!.detail?.point?.lat else { return }
@@ -98,6 +93,7 @@ class DetailViewController: UIViewController {
             DispatchQueue.main.async {
                 self!.nameLabel.text = name
                 self!.descriptionTextView.text = descriptionText == nil ? kinds : descriptionText
+                self!.addressLabel.text = stateName
                 
 //                self!.hideSpinner()
             }

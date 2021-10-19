@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Network
 
 class HomeCollectionViewController: UIViewController {
 
@@ -33,41 +34,38 @@ class HomeCollectionViewController: UIViewController {
     private let goToControllerId = "TableItemVC"
     
     private let locationManager = CLLocationManager()
-    
+    private let monitor = NWPathMonitor()
+    let queue = DispatchQueue(label: "Monitor")
 
     
     // MARK: Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.requestWhenInUseAuthorization()
+        
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status != .satisfied {
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Something wrong with internet connection", message: "Check the internet connection")
+                }
+                
+            }
+        }
+        monitor.start(queue: queue)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        checkLocationEnabled()
     }
     
     // MARK: Private functions
     
-    private func checkLocationEnabled() {
-        let status = locationManager.authorizationStatus
-        
-        if !CLLocationManager.locationServicesEnabled() {
-            showAlert(title: "Device location is unavailable", message: "Do you want to turn on?")
-        }
-        
-        else if status != .authorizedAlways && status != .authorizedWhenInUse {
-            showAlert(title: "Advisor needs permission access to your location", message: "Please turn on 'Always' or 'When in use'\n In Location Services")
-        }
-        else {
-            setupManager()
-        }
-    }
-
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title , message: message, preferredStyle: .alert)
         
@@ -83,12 +81,8 @@ class HomeCollectionViewController: UIViewController {
         
         present(alert, animated: true)
     }
-
-    private func setupManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
 }
+
 
 
 

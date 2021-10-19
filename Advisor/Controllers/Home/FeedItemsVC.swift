@@ -12,6 +12,7 @@ class FeedItemsVC: UIViewController {
 
     // MARK: Private
     private var viewModel = AttractionViewModel()
+    private var locationManager = CLLocationManager()
     
     private var reuseTableIdCell = "tableViewCell"
     private var reuseCollectionIdCell = "collectionViewCell"
@@ -275,6 +276,8 @@ class FeedItemsVC: UIViewController {
             collectionItemName = ""
         }
         
+        checkLocationEnabled()
+        
         showSpinner()
         loadItemsData()
         
@@ -288,6 +291,43 @@ class FeedItemsVC: UIViewController {
 
     
     // MARK: Private functions
+    
+    private func checkLocationEnabled() {
+
+        let status = locationManager.authorizationStatus
+        
+        if !CLLocationManager.locationServicesEnabled() {
+            showAlert(title: "Device location is unavailable", message: "Do you want to turn on?")
+        }
+        
+        else if status != .authorizedAlways && status != .authorizedWhenInUse {
+            showAlert(title: "Advisor needs permission access to your location", message: "Please turn on 'Always' or 'When in use'\n In Location Services")
+        }
+        else {
+            setupManager()
+        }
+    }
+
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title , message: message, preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { alert in
+            if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
+                UIApplication.shared.open(url,options: [:], completionHandler:  nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
+
+    private func setupManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
     
     private func showSpinner() {
         DispatchQueue.main.async {
@@ -448,4 +488,9 @@ extension FeedItemsVC: ShowAlertWhenError {
         
         present(alert, animated: true)
     }
+}
+
+
+extension FeedItemsVC: CLLocationManagerDelegate {
+    
 }

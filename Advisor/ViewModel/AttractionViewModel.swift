@@ -13,6 +13,11 @@ protocol ShowAlertWhenError: AnyObject {
     func showAlertWhenError()
 }
 
+protocol ShowSpinnerDelegate: AnyObject {
+    func showSpinner()
+    func hideSpinner()
+}
+
 class AttractionViewModel {
     
     weak var delegate: ShowAlertWhenError?
