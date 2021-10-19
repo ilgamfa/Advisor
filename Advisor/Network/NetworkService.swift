@@ -41,9 +41,6 @@ class NetworkService {
                 let image = data
                 completion(.success(image))
             }
-            catch{
-                completion(.failure(error))
-            }
         }
         task.resume()
     }
