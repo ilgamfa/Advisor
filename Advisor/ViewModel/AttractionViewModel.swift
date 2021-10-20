@@ -28,7 +28,6 @@ class AttractionViewModel {
             switch result {
             case .success(let image):
                 self.detailImage = UIImage(data: image)
-                print(completion())
                 completion()
             case .failure(let error):
                 print("Error procession json fetch image data: \(error)")

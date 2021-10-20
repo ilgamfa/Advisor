@@ -310,9 +310,7 @@ class FeedItemsVC: UIViewController {
         default:
             collectionItemName = ""
         }
-
-        print("kind: \(kind)")
-        print("rate: \(rate)")
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.refreshControl = refreshControl
@@ -411,7 +409,7 @@ extension UITableView {
 // MARK: UI TableView Delegate
 extension FeedItemsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        
         guard let detailVC = storyboard?.instantiateViewController(identifier: goToDetailController) as? DetailViewController else {
             return
         }
