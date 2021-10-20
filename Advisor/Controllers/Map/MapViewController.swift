@@ -23,12 +23,10 @@ class MapViewController: UIViewController {
 
     // MARK: Public
     var categoryAttractionData = [Attraction]()
-    var categoryShowMapButtonDidTap: Bool = false
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     var nameTitle: String = ""
     
-    var defaultState: Bool = false
     var categoryState: Bool = false
     var detailState: Bool = false
     
