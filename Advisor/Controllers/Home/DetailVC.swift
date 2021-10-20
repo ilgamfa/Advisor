@@ -12,9 +12,9 @@ class DetailViewController: UIViewController {
     
     private var viewModel = AttractionViewModel()
     private let goToMapVC = "mapVC"
-    var aaa: Double = 0.0
-    var bbb: Double = 0.0
-    var ccc: String = ""
+    var lat: Double = 0.0
+    var lon: Double = 0.0
+    var name: String = ""
 
     // MARK: Outlets
     @IBOutlet private weak var nameLabel: UILabel!
@@ -59,10 +59,10 @@ class DetailViewController: UIViewController {
         guard let mapVC = storyboard?.instantiateViewController(identifier: goToMapVC) as? MapViewController else {
             return
         }
-        mapVC.latitude = aaa
-        mapVC.longitude = bbb
-        mapVC.nameTitle = ccc
-        
+        mapVC.latitude = lat
+        mapVC.longitude = lon
+        mapVC.nameTitle = name
+        mapVC.detailState = true
         navigationController?.pushViewController(mapVC, animated: true)
     }
     
@@ -106,9 +106,9 @@ class DetailViewController: UIViewController {
             
             guard let latitude = self!.detail?.point?.lat else { return }
             guard let longitude = self!.detail?.point?.lon else { return }
-            self?.aaa = latitude
-            self?.bbb = longitude
-            self?.ccc = name
+            self?.lat = latitude
+            self?.lon = longitude
+            self?.name = name
             
             DispatchQueue.main.async {
                 self!.nameLabel.text = name
