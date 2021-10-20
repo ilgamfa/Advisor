@@ -310,7 +310,7 @@ class FeedItemsVC: UIViewController {
         default:
             collectionItemName = ""
         }
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.refreshControl = refreshControl
@@ -340,9 +340,15 @@ class FeedItemsVC: UIViewController {
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
+        if kind.isEmpty {
+            loadSubcategoryItemsData(kinds: collectionItemName, rate: rate)
+            sender.endRefreshing()
+        }
+        else {
+            loadSubcategoryItemsData(kinds: kind, rate: rate)
+            sender.endRefreshing()
+        }
         
-        loadSubcategoryItemsData(kinds: kind, rate: rate)
-        sender.endRefreshing()
     }
     
     private func showSpinner() {
@@ -403,7 +409,7 @@ extension UITableView {
 // MARK: UI TableView Delegate
 extension FeedItemsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        
         guard let detailVC = storyboard?.instantiateViewController(identifier: goToDetailController) as? DetailViewController else {
             return
         }

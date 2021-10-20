@@ -501,18 +501,74 @@
         <!--Saved-->
         <scene sceneID="J9Z-RQ-78Z">
             <objects>
-                <viewController id="Fl1-BW-Q4e" customClass="SavedViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="savedVC" id="Fl1-BW-Q4e" customClass="SavedViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1x-5V-HwS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nAZ-z6-ZC1">
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="savedCell" id="n9U-9s-MKr" customClass="SavedItemTVCell" customModule="Advisor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n9U-9s-MKr" id="bNF-9V-SPb">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giL-LE-nXQ">
+                                                    <rect key="frame" x="0.0" y="5" width="374" height="90"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ejx-g9-hW1">
+                                                            <rect key="frame" x="70" y="0.0" width="234" height="90"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="ejx-g9-hW1" secondAttribute="bottom" id="EVj-gQ-X84"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ejx-g9-hW1" secondAttribute="trailing" constant="70" id="LGQ-w2-s7t"/>
+                                                        <constraint firstItem="ejx-g9-hW1" firstAttribute="leading" secondItem="giL-LE-nXQ" secondAttribute="leading" constant="70" id="cOs-Vb-RdL"/>
+                                                        <constraint firstItem="ejx-g9-hW1" firstAttribute="top" secondItem="giL-LE-nXQ" secondAttribute="top" id="vVu-du-p7a"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="giL-LE-nXQ" secondAttribute="trailing" id="5qe-db-y6Y"/>
+                                                <constraint firstItem="giL-LE-nXQ" firstAttribute="top" secondItem="bNF-9V-SPb" secondAttribute="top" constant="5" id="Q2c-VA-XVb"/>
+                                                <constraint firstAttribute="bottom" secondItem="giL-LE-nXQ" secondAttribute="bottom" constant="5" id="lQX-Hh-YZZ"/>
+                                                <constraint firstItem="giL-LE-nXQ" firstAttribute="leading" secondItem="bNF-9V-SPb" secondAttribute="leading" id="mM4-jh-ysg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="tableViewCellLabel" destination="ejx-g9-hW1" id="bYv-Gx-dyh"/>
+                                            <outlet property="viewTableCell" destination="giL-LE-nXQ" id="7q8-Wg-nlR"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Nka-1E-YB7"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nAZ-z6-ZC1" firstAttribute="top" secondItem="Nka-1E-YB7" secondAttribute="top" id="HnZ-zw-2Kt"/>
+                            <constraint firstItem="Nka-1E-YB7" firstAttribute="bottom" secondItem="nAZ-z6-ZC1" secondAttribute="bottom" id="Y7P-jb-rjw"/>
+                            <constraint firstItem="Nka-1E-YB7" firstAttribute="trailing" secondItem="nAZ-z6-ZC1" secondAttribute="trailing" constant="20" id="iRd-pf-RdB"/>
+                            <constraint firstItem="nAZ-z6-ZC1" firstAttribute="leading" secondItem="Nka-1E-YB7" secondAttribute="leading" constant="20" id="m4c-G4-1Sp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Saved" id="hNE-gZ-Dbe"/>
+                    <connections>
+                        <outlet property="tableView" destination="nAZ-z6-ZC1" id="CbB-g6-uNE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKp-NE-58M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="-137"/>
+            <point key="canvasLocation" x="1153.6231884057972" y="-137.27678571428569"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="AVc-My-c5i">
@@ -582,6 +638,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Da-LV-Bde">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <navigationBarAppearance key="scrollEdgeAppearance"/>
                         <navigationBarAppearance key="compactScrollEdgeAppearance" backgroundEffect="prominent"/>
                     </navigationBar>

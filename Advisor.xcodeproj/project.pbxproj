@@ -16,6 +16,8 @@
 		B7A23BA827108C8900BD9885 /* ItemCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A23BA727108C8900BD9885 /* ItemCVController.swift */; };
 		B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9B2705AEE500F56730 /* AttractionModel.swift */; };
 		B7F60C9E2705CEC300F56730 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F60C9D2705CEC300F56730 /* NetworkService.swift */; };
+		BB2CF50027206011007B61BF /* SavedItemTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2CF4FF27206011007B61BF /* SavedItemTVCell.swift */; };
+		BB2CF50327208D62007B61BF /* SavedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2CF50227208D62007B61BF /* SavedData.swift */; };
 		BB3CCC87270A4E9A00EB558A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3CCC86270A4E9A00EB558A /* LocationService.swift */; };
 		BB653EC62703170700F14915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EC52703170700F14915 /* AppDelegate.swift */; };
 		BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB653EC72703170700F14915 /* SceneDelegate.swift */; };
@@ -40,6 +42,8 @@
 		B7A23BA727108C8900BD9885 /* ItemCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCVController.swift; sourceTree = "<group>"; };
 		B7F60C9B2705AEE500F56730 /* AttractionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionModel.swift; sourceTree = "<group>"; };
 		B7F60C9D2705CEC300F56730 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		BB2CF4FF27206011007B61BF /* SavedItemTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemTVCell.swift; sourceTree = "<group>"; };
+		BB2CF50227208D62007B61BF /* SavedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedData.swift; sourceTree = "<group>"; };
 		BB3CCC86270A4E9A00EB558A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		BB653EC22703170700F14915 /* Advisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Advisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB653EC52703170700F14915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				BB653ED02703170900F14915 /* LaunchScreen.storyboard */,
 				BB653ECB2703170700F14915 /* Main.storyboard */,
 				B78106F32715D9DE00A5BA48 /* HomeCVCell.swift */,
+				BB2CF4FF27206011007B61BF /* SavedItemTVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +131,14 @@
 				B731D85F270DE7EF00063331 /* AttractionDetailModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BB2CF50127208D3A007B61BF /* SavedData */ = {
+			isa = PBXGroup;
+			children = (
+				BB2CF50227208D62007B61BF /* SavedData.swift */,
+			);
+			path = SavedData;
 			sourceTree = "<group>";
 		};
 		BB3CCC85270A4E6500EB558A /* Location */ = {
@@ -156,6 +169,7 @@
 		BB653EC42703170700F14915 /* Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				BB2CF50127208D3A007B61BF /* SavedData */,
 				BB3CCC85270A4E6500EB558A /* Location */,
 				BBB11EAF2706570000A8BF66 /* Network */,
 				BBB11EAE270656E700A8BF66 /* ViewModel */,
@@ -278,10 +292,12 @@
 				BB653EC62703170700F14915 /* AppDelegate.swift in Sources */,
 				BB653EC82703170700F14915 /* SceneDelegate.swift in Sources */,
 				B76DA385270EF2D4003A17EA /* FeedItemTVCell.swift in Sources */,
+				BB2CF50327208D62007B61BF /* SavedData.swift in Sources */,
 				BB653EDE27031C8C00F14915 /* SavedViewController.swift in Sources */,
 				BB653EDC27031C7A00F14915 /* HomeCollectionVC.swift in Sources */,
 				BBB11EAB2706487D00A8BF66 /* AttractionViewModel.swift in Sources */,
 				B7A23BA827108C8900BD9885 /* ItemCVController.swift in Sources */,
+				BB2CF50027206011007B61BF /* SavedItemTVCell.swift in Sources */,
 				B7F60C9C2705AEE500F56730 /* AttractionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

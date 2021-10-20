@@ -10,11 +10,20 @@ import MapKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: Private
     private var viewModel = AttractionViewModel()
-    private let goToMapVC = "mapVC"
+    private let idGoToMapVC = "mapVC"
+    private let idSavedVC = "savedVC"
+    
+    
+    // MARK: Public
     var lat: Double = 0.0
     var lon: Double = 0.0
     var name: String = ""
+    var isLiked: Bool = false
+    
+    var detail: AttractionDetail?
+    var xid: String = ""
 
     // MARK: Outlets
     @IBOutlet private weak var nameLabel: UILabel!
@@ -27,12 +36,19 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var spinnerIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var spinnerView: UIView!
     
-    var detail: AttractionDetail?
-    var xid: String = ""
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Detail info"
+        
+        if isLiked {
+            likeButtonOutlet.tintColor = .red
+        }
+        else {
+            likeButtonOutlet.tintColor = .darkGray
+        }
+        
         spinnerView.layer.masksToBounds = false
         spinnerView.layer.cornerRadius = 20
         mapButton.layer.masksToBounds = false
@@ -47,18 +63,20 @@ class DetailViewController: UIViewController {
     
     // MARK: Private functions
     @IBAction private func likeButtonDidTap(_ sender: UIButton) {
+        
         if likeButtonOutlet.tintColor != .red {
+            guard let itemTitle = nameLabel.text, !itemTitle.isEmpty else { return }
+            SavedData.shared.saveItem(title: itemTitle, xid: xid)
             likeButtonOutlet.tintColor = .red
         }
         else {
             likeButtonOutlet.tintColor = .darkGray
+            SavedData.shared.listITems.removeFirst()
         }
     }
     
     @IBAction func mapButtonDidTap(_ sender: UIButton) {
-        guard let mapVC = storyboard?.instantiateViewController(identifier: goToMapVC) as? MapViewController else {
-            return
-        }
+        guard let mapVC = storyboard?.instantiateViewController(identifier: idGoToMapVC) as? MapViewController else { return }
         mapVC.latitude = lat
         mapVC.longitude = lon
         mapVC.nameTitle = name
