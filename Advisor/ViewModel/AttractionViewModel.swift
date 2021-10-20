@@ -18,7 +18,7 @@ class AttractionViewModel {
     weak var delegate: ShowAlertWhenErrorDelegate?
     
     private var networkService = NetworkService()
-    private var attractionData = [Attraction]()
+    var attractionData = [Attraction]()
     var detailImage: UIImage?
     var attractionDetail: AttractionDetail?
     

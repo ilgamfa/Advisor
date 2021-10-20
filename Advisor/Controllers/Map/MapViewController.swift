@@ -22,10 +22,16 @@ class MapViewController: UIViewController {
     @IBOutlet private weak var mapView: MKMapView!
 
     // MARK: Public
-    
+    var categoryAttractionData = [Attraction]()
+    var categoryShowMapButtonDidTap: Bool = false
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     var nameTitle: String = ""
+    
+    var defaultState: Bool = false
+    var categoryState: Bool = false
+    var detailState: Bool = false
+    
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,15 +69,24 @@ extension MapViewController: CLLocationManagerDelegate {
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.showsUserLocation = true
         locationService.locationManager.stopUpdatingLocation()
+   
         
-        if latitude == 0.0 {
-            attractionViewModel.fetchData(rate: "2h", kinds: "interesting_places") { [self] in
+        if categoryState {
+            if !categoryAttractionData.isEmpty {
                 DispatchQueue.main.async {
-                    self.attractionViewModel.setAnnotation(mapView: mapView)
+                    for attraction in self.categoryAttractionData {
+                        let annotation = MKPointAnnotation()
+                        annotation.title = attraction.name
+                        annotation.coordinate = CLLocationCoordinate2D(latitude: attraction.point.lat, longitude: attraction.point.lon)
+                        self.mapView.addAnnotation(annotation)
+                    }
                 }
             }
+            else {
+                return
+            }
         }
-        else {
+        else if detailState {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             annotation.title = nameTitle
@@ -82,9 +97,13 @@ extension MapViewController: CLLocationManagerDelegate {
             mapView.setRegion(coordinateRegion, animated: true)
             mapView.addAnnotation(annotation)
         }
-        
-        
-        
+        else {
+            attractionViewModel.fetchData(rate: "3h", kinds: "interesting_places") { [self] in
+                DispatchQueue.main.async {
+                    self.attractionViewModel.setAnnotation(mapView: mapView)
+                }
+            }
+        }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

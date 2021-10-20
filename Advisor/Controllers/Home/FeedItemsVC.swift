@@ -24,6 +24,7 @@ class FeedItemsVC: UIViewController {
     private var rate: String = ""
     private var collectionItemName = ""
     
+    private let goToMapVC = "mapVC"
     private var reuseTableIdCell = "tableViewCell"
     private var reuseCollectionIdCell = "collectionViewCell"
     private let goToDetailController = "detailVC"
@@ -44,10 +45,12 @@ class FeedItemsVC: UIViewController {
     // MARK: Public
     var selfIndexPath = 0
   
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show On Map", style: .plain, target: self, action: #selector(showMapButtonDidTap))
         
         spinnerView.layer.masksToBounds = false
         spinnerView.layer.cornerRadius = 20
@@ -325,6 +328,16 @@ class FeedItemsVC: UIViewController {
 
     
     // MARK: Private functions
+    
+    @objc private func showMapButtonDidTap() {
+        guard let mapVC = storyboard?.instantiateViewController(identifier: goToMapVC) as? MapViewController else {
+            return
+        }
+        mapVC.categoryState = true
+        mapVC.categoryAttractionData = viewModel.attractionData
+        mapVC.title = title
+        navigationController?.pushViewController(mapVC, animated: true)
+    }
     
     @objc private func refresh(sender: UIRefreshControl) {
         
