@@ -501,14 +501,29 @@
         <!--Saved-->
         <scene sceneID="J9Z-RQ-78Z">
             <objects>
-                <viewController id="Fl1-BW-Q4e" customClass="SavedViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="savedVC" id="Fl1-BW-Q4e" customClass="SavedViewController" customModule="Advisor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1x-5V-HwS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nAZ-z6-ZC1">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Nka-1E-YB7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nAZ-z6-ZC1" firstAttribute="top" secondItem="Nka-1E-YB7" secondAttribute="top" id="HnZ-zw-2Kt"/>
+                            <constraint firstItem="Nka-1E-YB7" firstAttribute="bottom" secondItem="nAZ-z6-ZC1" secondAttribute="bottom" id="Y7P-jb-rjw"/>
+                            <constraint firstItem="Nka-1E-YB7" firstAttribute="trailing" secondItem="nAZ-z6-ZC1" secondAttribute="trailing" id="iRd-pf-RdB"/>
+                            <constraint firstItem="nAZ-z6-ZC1" firstAttribute="leading" secondItem="Nka-1E-YB7" secondAttribute="leading" id="m4c-G4-1Sp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Saved" id="hNE-gZ-Dbe"/>
+                    <connections>
+                        <outlet property="tableView" destination="nAZ-z6-ZC1" id="CbB-g6-uNE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKp-NE-58M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

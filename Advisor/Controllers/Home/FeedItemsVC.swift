@@ -311,6 +311,8 @@ class FeedItemsVC: UIViewController {
             collectionItemName = ""
         }
 
+        print("kind: \(kind)")
+        print("rate: \(rate)")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.refreshControl = refreshControl
@@ -340,9 +342,15 @@ class FeedItemsVC: UIViewController {
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
+        if kind.isEmpty {
+            loadSubcategoryItemsData(kinds: collectionItemName, rate: rate)
+            sender.endRefreshing()
+        }
+        else {
+            loadSubcategoryItemsData(kinds: kind, rate: rate)
+            sender.endRefreshing()
+        }
         
-        loadSubcategoryItemsData(kinds: kind, rate: rate)
-        sender.endRefreshing()
     }
     
     private func showSpinner() {
