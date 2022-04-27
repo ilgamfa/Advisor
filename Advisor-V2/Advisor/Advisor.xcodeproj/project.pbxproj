@@ -14,6 +14,35 @@
 		BB78C39228195C82009D868B /* Advisor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB78C39028195C82009D868B /* Advisor.xcdatamodeld */; };
 		BB78C39428195C84009D868B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB78C39328195C84009D868B /* Assets.xcassets */; };
 		BB78C39728195C84009D868B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB78C39528195C84009D868B /* LaunchScreen.storyboard */; };
+		BB78C3A22819635B009D868B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3A02819635B009D868B /* TabBarView.swift */; };
+		BB78C3A32819635B009D868B /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78C3A12819635B009D868B /* TabBarView.xib */; };
+		BB78C3A6281963AB009D868B /* NavigationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3A5281963AB009D868B /* NavigationConstants.swift */; };
+		BB78C3AD28199972009D868B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3AB28199972009D868B /* HomeView.swift */; };
+		BB78C3AE28199972009D868B /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78C3AC28199972009D868B /* HomeView.xib */; };
+		BB78C3B12819999B009D868B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3AF2819999B009D868B /* MapView.swift */; };
+		BB78C3B22819999B009D868B /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78C3B02819999B009D868B /* MapView.xib */; };
+		BB78C3B528199A87009D868B /* FafouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3B328199A87009D868B /* FafouritesView.swift */; };
+		BB78C3B628199A87009D868B /* FafouritesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78C3B428199A87009D868B /* FafouritesView.xib */; };
+		BB78C3B92819A287009D868B /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3B82819A287009D868B /* HomeInteractor.swift */; };
+		BB78C3BB2819A296009D868B /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3BA2819A296009D868B /* HomePresenter.swift */; };
+		BB78C3BD2819A2A5009D868B /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3BC2819A2A5009D868B /* HomeRouter.swift */; };
+		BB78C3BF2819A2B2009D868B /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3BE2819A2B2009D868B /* HomeEntity.swift */; };
+		BB78C3C12819A2CA009D868B /* HomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3C02819A2CA009D868B /* HomeConfigurator.swift */; };
+		BB78C3C32819A2F4009D868B /* BaseConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3C22819A2F4009D868B /* BaseConfigurator.swift */; };
+		BB78C3C52819A30D009D868B /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3C42819A30D009D868B /* BaseInteractor.swift */; };
+		BB78C3C72819A316009D868B /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3C62819A316009D868B /* BasePresenter.swift */; };
+		BB78C3C92819A31F009D868B /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3C82819A31F009D868B /* BaseRouter.swift */; };
+		BB78C3CB2819A33F009D868B /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3CA2819A33F009D868B /* BaseView.swift */; };
+		BB78C3D22819B7DF009D868B /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3D02819B7DF009D868B /* MapInteractor.swift */; };
+		BB78C3D52819B7F8009D868B /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3D42819B7F8009D868B /* MapPresenter.swift */; };
+		BB78C3D72819B7FE009D868B /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3D62819B7FE009D868B /* MapRouter.swift */; };
+		BB78C3D92819B809009D868B /* MapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3D82819B809009D868B /* MapEntity.swift */; };
+		BB78C3DB2819B81E009D868B /* MapConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3DA2819B81E009D868B /* MapConfigurator.swift */; };
+		BB78C3DD2819C6AA009D868B /* FavouritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3DC2819C6AA009D868B /* FavouritesInteractor.swift */; };
+		BB78C3DF2819C6B6009D868B /* FavouritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3DE2819C6B6009D868B /* FavouritesPresenter.swift */; };
+		BB78C3E12819C6C8009D868B /* FavouritesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3E02819C6C8009D868B /* FavouritesEntity.swift */; };
+		BB78C3E32819C6D0009D868B /* FavouritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3E22819C6D0009D868B /* FavouritesRouter.swift */; };
+		BB78C3E52819C6DA009D868B /* FavouritesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +56,35 @@
 		BB78C39628195C84009D868B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB78C39828195C84009D868B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB78C39E28195D76009D868B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BB78C3A02819635B009D868B /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		BB78C3A12819635B009D868B /* TabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
+		BB78C3A5281963AB009D868B /* NavigationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConstants.swift; sourceTree = "<group>"; };
+		BB78C3AB28199972009D868B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BB78C3AC28199972009D868B /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
+		BB78C3AF2819999B009D868B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BB78C3B02819999B009D868B /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		BB78C3B328199A87009D868B /* FafouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FafouritesView.swift; sourceTree = "<group>"; };
+		BB78C3B428199A87009D868B /* FafouritesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FafouritesView.xib; sourceTree = "<group>"; };
+		BB78C3B82819A287009D868B /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		BB78C3BA2819A296009D868B /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		BB78C3BC2819A2A5009D868B /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		BB78C3BE2819A2B2009D868B /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
+		BB78C3C02819A2CA009D868B /* HomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConfigurator.swift; sourceTree = "<group>"; };
+		BB78C3C22819A2F4009D868B /* BaseConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConfigurator.swift; sourceTree = "<group>"; };
+		BB78C3C42819A30D009D868B /* BaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
+		BB78C3C62819A316009D868B /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		BB78C3C82819A31F009D868B /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		BB78C3CA2819A33F009D868B /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		BB78C3D02819B7DF009D868B /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
+		BB78C3D42819B7F8009D868B /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		BB78C3D62819B7FE009D868B /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
+		BB78C3D82819B809009D868B /* MapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEntity.swift; sourceTree = "<group>"; };
+		BB78C3DA2819B81E009D868B /* MapConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConfigurator.swift; sourceTree = "<group>"; };
+		BB78C3DC2819C6AA009D868B /* FavouritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesInteractor.swift; sourceTree = "<group>"; };
+		BB78C3DE2819C6B6009D868B /* FavouritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPresenter.swift; sourceTree = "<group>"; };
+		BB78C3E02819C6C8009D868B /* FavouritesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesEntity.swift; sourceTree = "<group>"; };
+		BB78C3E22819C6D0009D868B /* FavouritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRouter.swift; sourceTree = "<group>"; };
+		BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +118,8 @@
 		BB78C38628195C82009D868B /* Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				BB78C3A428196399009D868B /* Base */,
+				BB78C39F28196318009D868B /* Screen */,
 				BB78C38728195C82009D868B /* AppDelegate.swift */,
 				BB78C38928195C82009D868B /* SceneDelegate.swift */,
 				BB78C38B28195C82009D868B /* ViewController.swift */,
@@ -70,6 +130,81 @@
 				BB78C39028195C82009D868B /* Advisor.xcdatamodeld */,
 			);
 			path = Advisor;
+			sourceTree = "<group>";
+		};
+		BB78C39F28196318009D868B /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				BB78C3AA281964A0009D868B /* Favourites */,
+				BB78C3A92819649B009D868B /* Map */,
+				BB78C3A828196481009D868B /* Home */,
+				BB78C3A728196473009D868B /* TabBar */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		BB78C3A428196399009D868B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BB78C3A5281963AB009D868B /* NavigationConstants.swift */,
+				BB78C3C22819A2F4009D868B /* BaseConfigurator.swift */,
+				BB78C3CA2819A33F009D868B /* BaseView.swift */,
+				BB78C3C42819A30D009D868B /* BaseInteractor.swift */,
+				BB78C3C62819A316009D868B /* BasePresenter.swift */,
+				BB78C3C82819A31F009D868B /* BaseRouter.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BB78C3A728196473009D868B /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BB78C3A02819635B009D868B /* TabBarView.swift */,
+				BB78C3A12819635B009D868B /* TabBarView.xib */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		BB78C3A828196481009D868B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BB78C3C02819A2CA009D868B /* HomeConfigurator.swift */,
+				BB78C3AB28199972009D868B /* HomeView.swift */,
+				BB78C3AC28199972009D868B /* HomeView.xib */,
+				BB78C3B82819A287009D868B /* HomeInteractor.swift */,
+				BB78C3BA2819A296009D868B /* HomePresenter.swift */,
+				BB78C3BE2819A2B2009D868B /* HomeEntity.swift */,
+				BB78C3BC2819A2A5009D868B /* HomeRouter.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BB78C3A92819649B009D868B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BB78C3AF2819999B009D868B /* MapView.swift */,
+				BB78C3B02819999B009D868B /* MapView.xib */,
+				BB78C3D02819B7DF009D868B /* MapInteractor.swift */,
+				BB78C3D42819B7F8009D868B /* MapPresenter.swift */,
+				BB78C3D62819B7FE009D868B /* MapRouter.swift */,
+				BB78C3D82819B809009D868B /* MapEntity.swift */,
+				BB78C3DA2819B81E009D868B /* MapConfigurator.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		BB78C3AA281964A0009D868B /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				BB78C3B328199A87009D868B /* FafouritesView.swift */,
+				BB78C3B428199A87009D868B /* FafouritesView.xib */,
+				BB78C3DC2819C6AA009D868B /* FavouritesInteractor.swift */,
+				BB78C3DE2819C6B6009D868B /* FavouritesPresenter.swift */,
+				BB78C3E02819C6C8009D868B /* FavouritesEntity.swift */,
+				BB78C3E22819C6D0009D868B /* FavouritesRouter.swift */,
+				BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */,
+			);
+			path = Favourites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +267,11 @@
 			files = (
 				BB78C39728195C84009D868B /* LaunchScreen.storyboard in Resources */,
 				BB78C39428195C84009D868B /* Assets.xcassets in Resources */,
+				BB78C3A32819635B009D868B /* TabBarView.xib in Resources */,
+				BB78C3B22819999B009D868B /* MapView.xib in Resources */,
 				BB78C38F28195C82009D868B /* Main.storyboard in Resources */,
+				BB78C3B628199A87009D868B /* FafouritesView.xib in Resources */,
+				BB78C3AE28199972009D868B /* HomeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,10 +282,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB78C3B528199A87009D868B /* FafouritesView.swift in Sources */,
+				BB78C3C92819A31F009D868B /* BaseRouter.swift in Sources */,
+				BB78C3E12819C6C8009D868B /* FavouritesEntity.swift in Sources */,
+				BB78C3BD2819A2A5009D868B /* HomeRouter.swift in Sources */,
+				BB78C3D22819B7DF009D868B /* MapInteractor.swift in Sources */,
 				BB78C39228195C82009D868B /* Advisor.xcdatamodeld in Sources */,
+				BB78C3E32819C6D0009D868B /* FavouritesRouter.swift in Sources */,
+				BB78C3B12819999B009D868B /* MapView.swift in Sources */,
+				BB78C3CB2819A33F009D868B /* BaseView.swift in Sources */,
+				BB78C3B92819A287009D868B /* HomeInteractor.swift in Sources */,
+				BB78C3D52819B7F8009D868B /* MapPresenter.swift in Sources */,
+				BB78C3DB2819B81E009D868B /* MapConfigurator.swift in Sources */,
+				BB78C3C52819A30D009D868B /* BaseInteractor.swift in Sources */,
+				BB78C3AD28199972009D868B /* HomeView.swift in Sources */,
+				BB78C3DF2819C6B6009D868B /* FavouritesPresenter.swift in Sources */,
 				BB78C38C28195C82009D868B /* ViewController.swift in Sources */,
 				BB78C38828195C82009D868B /* AppDelegate.swift in Sources */,
+				BB78C3A22819635B009D868B /* TabBarView.swift in Sources */,
 				BB78C38A28195C82009D868B /* SceneDelegate.swift in Sources */,
+				BB78C3DD2819C6AA009D868B /* FavouritesInteractor.swift in Sources */,
+				BB78C3BF2819A2B2009D868B /* HomeEntity.swift in Sources */,
+				BB78C3C12819A2CA009D868B /* HomeConfigurator.swift in Sources */,
+				BB78C3C72819A316009D868B /* BasePresenter.swift in Sources */,
+				BB78C3D92819B809009D868B /* MapEntity.swift in Sources */,
+				BB78C3E52819C6DA009D868B /* FavouritesConfigurator.swift in Sources */,
+				BB78C3C32819A2F4009D868B /* BaseConfigurator.swift in Sources */,
+				BB78C3D72819B7FE009D868B /* MapRouter.swift in Sources */,
+				BB78C3A6281963AB009D868B /* NavigationConstants.swift in Sources */,
+				BB78C3BB2819A296009D868B /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
