@@ -8,8 +8,3 @@
 Карта на весь экран с маркерами мест.
 - #### Saved ViewController
 Плитка с нашими сохраненными местами.
-
-#  New version of Advisor App
-
-Based on clean architecture
-
