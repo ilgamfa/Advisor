@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB130D83281ACE2C001E7679 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB130D81281ACE2C001E7679 /* CategoryCell.swift */; };
+		BB130D84281ACE2C001E7679 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB130D82281ACE2C001E7679 /* CategoryCell.xib */; };
+		BB130D86281AD15E001E7679 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB130D85281AD15E001E7679 /* ViewExtensions.swift */; };
 		BB78C38828195C82009D868B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C38728195C82009D868B /* AppDelegate.swift */; };
 		BB78C38A28195C82009D868B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C38928195C82009D868B /* SceneDelegate.swift */; };
 		BB78C38C28195C82009D868B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C38B28195C82009D868B /* ViewController.swift */; };
@@ -46,6 +49,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB130D81281ACE2C001E7679 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		BB130D82281ACE2C001E7679 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		BB130D85281AD15E001E7679 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		BB78C38428195C82009D868B /* Advisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Advisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB78C38728195C82009D868B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB78C38928195C82009D868B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB130D80281ACDFD001E7679 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BB130D81281ACE2C001E7679 /* CategoryCell.swift */,
+				BB130D82281ACE2C001E7679 /* CategoryCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		BB78C37B28195C82009D868B = {
 			isa = PBXGroup;
 			children = (
@@ -135,9 +150,6 @@
 		BB78C39F28196318009D868B /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				BB78C3AA281964A0009D868B /* Favourites */,
-				BB78C3A92819649B009D868B /* Map */,
-				BB78C3A828196481009D868B /* Home */,
 				BB78C3A728196473009D868B /* TabBar */,
 			);
 			path = Screen;
@@ -152,6 +164,7 @@
 				BB78C3C42819A30D009D868B /* BaseInteractor.swift */,
 				BB78C3C62819A316009D868B /* BasePresenter.swift */,
 				BB78C3C82819A31F009D868B /* BaseRouter.swift */,
+				BB130D85281AD15E001E7679 /* ViewExtensions.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -159,6 +172,9 @@
 		BB78C3A728196473009D868B /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				BB78C3AA281964A0009D868B /* Favourites */,
+				BB78C3A92819649B009D868B /* Map */,
+				BB78C3A828196481009D868B /* Home */,
 				BB78C3A02819635B009D868B /* TabBarView.swift */,
 				BB78C3A12819635B009D868B /* TabBarView.xib */,
 			);
@@ -175,6 +191,7 @@
 				BB78C3BA2819A296009D868B /* HomePresenter.swift */,
 				BB78C3BE2819A2B2009D868B /* HomeEntity.swift */,
 				BB78C3BC2819A2A5009D868B /* HomeRouter.swift */,
+				BB130D80281ACDFD001E7679 /* Cells */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -272,6 +289,7 @@
 				BB78C38F28195C82009D868B /* Main.storyboard in Resources */,
 				BB78C3B628199A87009D868B /* FafouritesView.xib in Resources */,
 				BB78C3AE28199972009D868B /* HomeView.xib in Resources */,
+				BB130D84281ACE2C001E7679 /* CategoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +310,7 @@
 				BB78C3B12819999B009D868B /* MapView.swift in Sources */,
 				BB78C3CB2819A33F009D868B /* BaseView.swift in Sources */,
 				BB78C3B92819A287009D868B /* HomeInteractor.swift in Sources */,
+				BB130D86281AD15E001E7679 /* ViewExtensions.swift in Sources */,
 				BB78C3D52819B7F8009D868B /* MapPresenter.swift in Sources */,
 				BB78C3DB2819B81E009D868B /* MapConfigurator.swift in Sources */,
 				BB78C3C52819A30D009D868B /* BaseInteractor.swift in Sources */,
@@ -311,6 +330,7 @@
 				BB78C3D72819B7FE009D868B /* MapRouter.swift in Sources */,
 				BB78C3A6281963AB009D868B /* NavigationConstants.swift in Sources */,
 				BB78C3BB2819A296009D868B /* HomePresenter.swift in Sources */,
+				BB130D83281ACE2C001E7679 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

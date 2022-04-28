@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "city-hall.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

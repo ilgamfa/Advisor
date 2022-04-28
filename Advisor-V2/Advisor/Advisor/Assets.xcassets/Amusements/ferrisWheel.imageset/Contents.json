@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ferris-wheel.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
