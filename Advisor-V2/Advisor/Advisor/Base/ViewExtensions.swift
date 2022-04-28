@@ -18,4 +18,8 @@ extension UICollectionViewCell {
         return "\(self.self)"
     }
 }
-
+extension UIViewController {
+    public class var identifier: String {
+        return "\(self.self)"
+    }
+}

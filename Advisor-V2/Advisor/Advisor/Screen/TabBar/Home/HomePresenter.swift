@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomePresenterProtocol: AnyObject {
     func getCategoryModels() -> [CategoryModel]
+    func presentFeedView()
 }
 
 class HomePresenter {
@@ -28,5 +29,9 @@ extension HomePresenter: HomePresenterProtocol {
     func getCategoryModels() -> [CategoryModel] {
         guard let models = entity?.getCategoryModels() else { return []}
         return models
+    }
+    
+    func presentFeedView() {
+        router?.routeToFeedView()
     }
 }

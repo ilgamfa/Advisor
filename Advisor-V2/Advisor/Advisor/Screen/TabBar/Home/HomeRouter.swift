@@ -8,13 +8,21 @@
 import Foundation
 
 protocol HomeRouterProtocol: AnyObject {
+    func routeToFeedView()
 }
 
-class HomeRouter: HomeRouterProtocol {
+class HomeRouter {
     
-    weak var view: HomeViewProtocol?
+    weak var view: HomeView?
     
-    init(view: HomeViewProtocol) {
+    init(view: HomeView) {
         self.view = view
+    }
+}
+
+extension HomeRouter: HomeRouterProtocol {
+    func routeToFeedView() {
+        let feedView = FeedView(nibName: FeedView.identifier, bundle: nil)
+        view?.navigationController?.pushViewController(feedView, animated: true)
     }
 }

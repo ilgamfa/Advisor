@@ -16,11 +16,6 @@ class TabBarView: UITabBarController {
         setupViews()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        tabBar.tintColor = .black
-//    }
-    
     func setupTabBarAppearance() {
         if #available(iOS 15, *) {
             let appearance = UITabBarAppearance()

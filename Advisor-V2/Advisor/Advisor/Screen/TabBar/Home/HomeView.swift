@@ -39,6 +39,9 @@ extension HomeView: HomeViewProtocol {
 
 // MARK: Delegate
 extension HomeView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.presentFeedView()
+    }
 }
 
 // MARK: Data source
