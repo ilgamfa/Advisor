@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "wine-glasses.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
