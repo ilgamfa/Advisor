@@ -57,6 +57,7 @@
 		BB78C3E52819C6DA009D868B /* FavouritesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */; };
 		BBF5CCD1281E94580010C456 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD0281E94580010C456 /* TableViewHeader.swift */; };
 		BBF5CCD5281EA7820010C456 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */; };
+		BBF5CCD8281EE5360010C456 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD7281EE5360010C456 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesConfigurator.swift; sourceTree = "<group>"; };
 		BBF5CCD0281E94580010C456 /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
+		BBF5CCD7281EE5360010C456 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 		BB78C38628195C82009D868B /* Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				BBF5CCD6281EE5160010C456 /* Network */,
 				BB78C3A428196399009D868B /* Base */,
 				BB78C39F28196318009D868B /* Screen */,
 				BB78C38728195C82009D868B /* AppDelegate.swift */,
@@ -279,6 +282,14 @@
 				BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */,
 			);
 			path = Favourites;
+			sourceTree = "<group>";
+		};
+		BBF5CCD6281EE5160010C456 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BBF5CCD7281EE5360010C456 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +388,7 @@
 				BB78C3C52819A30D009D868B /* BaseInteractor.swift in Sources */,
 				BB78C3AD28199972009D868B /* HomeView.swift in Sources */,
 				BB78C3DF2819C6B6009D868B /* FavouritesPresenter.swift in Sources */,
+				BBF5CCD8281EE5360010C456 /* NetworkManager.swift in Sources */,
 				BB78C38C28195C82009D868B /* ViewController.swift in Sources */,
 				BB78C38828195C82009D868B /* AppDelegate.swift in Sources */,
 				BB617FE8281AFEB1000320BF /* TableCell.swift in Sources */,

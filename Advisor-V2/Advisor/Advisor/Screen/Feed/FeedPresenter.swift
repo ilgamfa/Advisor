@@ -9,6 +9,7 @@ import Foundation
 
 protocol FeedPresenterProtocol: AnyObject {
     func presentFlow(indexPath: Int) -> Flow
+    func getAttractions() -> [Attraction]
 }
 
 class FeedPresenter {
@@ -26,8 +27,22 @@ class FeedPresenter {
 extension FeedPresenter: FeedPresenterProtocol {
     func presentFlow(indexPath: Int) -> Flow {
         if let flow = entity?.getFlow(indexPath: indexPath) {
+            interactor?.fetchTableData(rate: flow.rate, kind: flow.collectionItemName, completion: { result in
+                switch result {
+                case .success(let attractions):
+                    self.entity?.setAttractions(attractions: attractions)
+                    self.view?.reloadTableView()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
             return flow
         }
         fatalError()
+    }
+    
+    func getAttractions() -> [Attraction] {
+        guard let attractions = entity?.getAttractions() else { return []}
+        return attractions
     }
 }

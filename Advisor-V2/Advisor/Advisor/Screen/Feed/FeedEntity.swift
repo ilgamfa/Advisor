@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-protocol FeedEntityProtocol {
-    func getFlow(indexPath: Int) -> Flow
-}
-
 struct Flow {
     let rate: String
     let collectionItemName: String
@@ -19,10 +15,39 @@ struct Flow {
     let collectionViewCellImages: [String]
     let collectionViewCellRequestSubcatNames: [String]
     let collectionViewCellRequestSubcatRates: [String]
-    
+}
+
+struct Attraction: Decodable {
+    var xid: String
+    var name: String?
+    var point: Point
+    var kinds: String
+}
+
+struct Point: Decodable {
+    var lat: Double
+    var lon: Double
+}
+
+
+protocol FeedEntityProtocol {
+    func getFlow(indexPath: Int) -> Flow
+    func setAttractions(attractions: [Attraction])
+    func getAttractions() -> [Attraction]
 }
 
 class FeedEntity: FeedEntityProtocol {
+    
+    var attractions: [Attraction] = []
+    
+    func getAttractions() -> [Attraction] {
+        return self.attractions
+    }
+    
+    func setAttractions(attractions: [Attraction]) {
+        self.attractions = attractions
+    }
+    
     func getFlow(indexPath: Int) -> Flow {
         switch indexPath {
         case 0:

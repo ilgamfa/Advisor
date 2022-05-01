@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FeedViewProtocol: AnyObject {
-    
+    func reloadTableView()
 }
 
 class FeedView: UIViewController {
@@ -56,7 +56,11 @@ class FeedView: UIViewController {
 
 // MARK: Feed view protocol
 extension FeedView: FeedViewProtocol {
-    
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 // MARK: Table delegate
@@ -67,12 +71,17 @@ extension FeedView: UITableViewDelegate {
 // MARK: Table Data Source
 extension FeedView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        
+        guard let count = presenter?.getAttractions().count else { return 0}
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableCell.identifier, for: indexPath) as? TableCell else { return UITableViewCell()}
-        cell.configureCell(label: "test name")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableCell.identifier, for: indexPath) as? TableCell,
+              let attractions = presenter?.getAttractions(),
+              let name = attractions[indexPath.row].name else { return UITableViewCell()}
+        
+        cell.configureCell(label: name)
         tableView.separatorStyle = .none
         return cell
     }
