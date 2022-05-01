@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FeedPresenterProtocol: AnyObject {
-    func presentFlow(indexPath: Int)
+    func presentFlow(indexPath: Int) -> Flow
 }
 
 class FeedPresenter {
@@ -24,7 +24,10 @@ class FeedPresenter {
 }
 
 extension FeedPresenter: FeedPresenterProtocol {
-    func presentFlow(indexPath: Int) {
-        entity?.getFlow(indexPath: indexPath)
+    func presentFlow(indexPath: Int) -> Flow {
+        if let flow = entity?.getFlow(indexPath: indexPath) {
+            return flow
+        }
+        fatalError()
     }
 }

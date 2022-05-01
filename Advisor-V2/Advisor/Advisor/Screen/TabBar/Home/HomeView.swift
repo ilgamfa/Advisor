@@ -18,20 +18,27 @@ class HomeView: UIViewController {
     var presenter: HomePresenterProtocol?
     var configurator = HomeConfigurator()
     
+    // MARK: Main
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configurator.configure(view: self)
         setupCollectionView()
-        
+        setupNavigationBar()
     }
     
+    // MARK: Private functions
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: CategoryCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryCell.identifier)
     }
+    
+    private func setupNavigationBar() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
 }
+
 // MARK: Home view protocol
 extension HomeView: HomeViewProtocol {
     
@@ -40,7 +47,9 @@ extension HomeView: HomeViewProtocol {
 // MARK: Delegate
 extension HomeView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.presentFeedView()
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell else { return }
+        let title = cell.getTitle()
+        presenter?.presentFeedView(title: title, indexFlow: indexPath.row)
     }
 }
 

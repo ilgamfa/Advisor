@@ -35,5 +35,10 @@ class CategoryCell: UICollectionViewCell {
         categoryImageVIew.image = UIImage(named: imageName)
         categoryLabel.text = label
     }
+    
+    func getTitle() -> String {
+        guard let title = categoryLabel.text else { return "" }
+        return title
+    }
 
 }

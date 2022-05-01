@@ -55,6 +55,8 @@
 		BB78C3E12819C6C8009D868B /* FavouritesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3E02819C6C8009D868B /* FavouritesEntity.swift */; };
 		BB78C3E32819C6D0009D868B /* FavouritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3E22819C6D0009D868B /* FavouritesRouter.swift */; };
 		BB78C3E52819C6DA009D868B /* FavouritesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */; };
+		BBF5CCD1281E94580010C456 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD0281E94580010C456 /* TableViewHeader.swift */; };
+		BBF5CCD5281EA7820010C456 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +72,7 @@
 		BB617FE3281AF204000320BF /* FeedConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedConfigurator.swift; sourceTree = "<group>"; };
 		BB617FE6281AFEB1000320BF /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		BB617FE7281AFEB1000320BF /* TableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
-		BB78C38428195C82009D868B /* Advisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Advisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB78C38428195C82009D868B /* Advisor_V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Advisor_V2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB78C38728195C82009D868B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB78C38928195C82009D868B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BB78C38B28195C82009D868B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,8 @@
 		BB78C3E02819C6C8009D868B /* FavouritesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesEntity.swift; sourceTree = "<group>"; };
 		BB78C3E22819C6D0009D868B /* FavouritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesRouter.swift; sourceTree = "<group>"; };
 		BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesConfigurator.swift; sourceTree = "<group>"; };
+		BBF5CCD0281E94580010C456 /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
+		BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 			children = (
 				BB617FE6281AFEB1000320BF /* TableCell.swift */,
 				BB617FE7281AFEB1000320BF /* TableCell.xib */,
+				BBF5CCD0281E94580010C456 /* TableViewHeader.swift */,
+				BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -176,7 +182,7 @@
 		BB78C38528195C82009D868B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB78C38428195C82009D868B /* Advisor.app */,
+				BB78C38428195C82009D868B /* Advisor_V2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,9 +284,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BB78C38328195C82009D868B /* Advisor */ = {
+		BB78C38328195C82009D868B /* Advisor_V2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB78C39B28195C84009D868B /* Build configuration list for PBXNativeTarget "Advisor" */;
+			buildConfigurationList = BB78C39B28195C84009D868B /* Build configuration list for PBXNativeTarget "Advisor_V2" */;
 			buildPhases = (
 				BB78C38028195C82009D868B /* Sources */,
 				BB78C38128195C82009D868B /* Frameworks */,
@@ -290,9 +296,9 @@
 			);
 			dependencies = (
 			);
-			name = Advisor;
+			name = Advisor_V2;
 			productName = Advisor;
-			productReference = BB78C38428195C82009D868B /* Advisor.app */;
+			productReference = BB78C38428195C82009D868B /* Advisor_V2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -310,7 +316,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BB78C37F28195C82009D868B /* Build configuration list for PBXProject "Advisor" */;
+			buildConfigurationList = BB78C37F28195C82009D868B /* Build configuration list for PBXProject "Advisor_V2" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -323,7 +329,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BB78C38328195C82009D868B /* Advisor */,
+				BB78C38328195C82009D868B /* Advisor_V2 */,
 			);
 		};
 /* End PBXProject section */
@@ -374,6 +380,7 @@
 				BB78C38C28195C82009D868B /* ViewController.swift in Sources */,
 				BB78C38828195C82009D868B /* AppDelegate.swift in Sources */,
 				BB617FE8281AFEB1000320BF /* TableCell.swift in Sources */,
+				BBF5CCD5281EA7820010C456 /* CollectionViewHeader.swift in Sources */,
 				BB617FE4281AF204000320BF /* FeedConfigurator.swift in Sources */,
 				BB78C3A22819635B009D868B /* TabBarView.swift in Sources */,
 				BB78C38A28195C82009D868B /* SceneDelegate.swift in Sources */,
@@ -383,6 +390,7 @@
 				BB78C3C72819A316009D868B /* BasePresenter.swift in Sources */,
 				BB130D89281AEC78001E7679 /* FeedView.swift in Sources */,
 				BB617FDC281AF1D7000320BF /* FeedPresenter.swift in Sources */,
+				BBF5CCD1281E94580010C456 /* TableViewHeader.swift in Sources */,
 				BB78C3D92819B809009D868B /* MapEntity.swift in Sources */,
 				BB78C3E52819C6DA009D868B /* FavouritesConfigurator.swift in Sources */,
 				BB78C3C32819A2F4009D868B /* BaseConfigurator.swift in Sources */,
@@ -589,7 +597,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BB78C37F28195C82009D868B /* Build configuration list for PBXProject "Advisor" */ = {
+		BB78C37F28195C82009D868B /* Build configuration list for PBXProject "Advisor_V2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB78C39928195C84009D868B /* Debug */,
@@ -598,7 +606,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB78C39B28195C84009D868B /* Build configuration list for PBXNativeTarget "Advisor" */ = {
+		BB78C39B28195C84009D868B /* Build configuration list for PBXNativeTarget "Advisor_V2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB78C39C28195C84009D868B /* Debug */,
