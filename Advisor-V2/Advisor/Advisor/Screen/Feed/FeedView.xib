@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedView" customModule="Advisor_V2" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="5Hw-yz-yc4" id="BlV-xK-lSn"/>
+                <outlet property="imageView" destination="eyC-Uj-xi8" id="DEB-ge-shN"/>
+                <outlet property="spinner" destination="unD-Kn-avh" id="SoB-6L-zNa"/>
                 <outlet property="tableView" destination="I31-8U-a35" id="FXX-QG-5jf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,6 +36,16 @@
                     <rect key="frame" x="0.0" y="176.5" width="414" height="685.5"/>
                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="unD-Kn-avh">
+                    <rect key="frame" x="182" y="423" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ZXd-9r-j0o"/>
+                        <constraint firstAttribute="width" constant="50" id="lXY-uy-1ow"/>
+                    </constraints>
+                </activityIndicatorView>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noData" translatesAutoresizingMaskIntoConstraints="NO" id="eyC-Uj-xi8">
+                    <rect key="frame" x="0.0" y="166.5" width="414" height="695.5"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -43,14 +55,21 @@
                 <constraint firstItem="5Hw-yz-yc4" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.15" id="4Bs-6S-SoG"/>
                 <constraint firstItem="I31-8U-a35" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FRG-lS-FmY"/>
                 <constraint firstItem="I31-8U-a35" firstAttribute="top" secondItem="5Hw-yz-yc4" secondAttribute="bottom" constant="10" id="Knk-GQ-d7J"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eyC-Uj-xi8" secondAttribute="trailing" id="Lii-uu-Qld"/>
                 <constraint firstItem="5Hw-yz-yc4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OT7-Pi-i68"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="I31-8U-a35" secondAttribute="trailing" id="bj3-Hw-7zi"/>
+                <constraint firstItem="eyC-Uj-xi8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="h3Y-YB-qA0"/>
+                <constraint firstItem="eyC-Uj-xi8" firstAttribute="top" secondItem="5Hw-yz-yc4" secondAttribute="bottom" id="i0e-z4-x7i"/>
+                <constraint firstItem="unD-Kn-avh" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="iM8-ij-Xyr"/>
                 <constraint firstItem="5Hw-yz-yc4" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="oIh-Xa-7ij"/>
+                <constraint firstItem="unD-Kn-avh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wU1-zW-bpM"/>
+                <constraint firstItem="eyC-Uj-xi8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zvS-cm-YmX"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
         </view>
     </objects>
     <resources>
+        <image name="noData" width="800" height="600"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -15,7 +15,8 @@ protocol FeedConfiguratorProtocol {
 class FeedConfigurator: FeedConfiguratorProtocol {
     func configure(view: FeedView) {
         let presenter = FeedPresenter(view: view)
-        let interactor = FeedInteractor(presenter: presenter)
+        let tripApi = TripApiNetwork()
+        let interactor = FeedInteractor(presenter: presenter, tripApi: tripApi)
         let router = FeedRouter(view: view)
         let entity = FeedEntity()
         
@@ -23,5 +24,6 @@ class FeedConfigurator: FeedConfiguratorProtocol {
         presenter.interactor = interactor
         presenter.router = router
         presenter.entity = entity
+        interactor.tripApi = tripApi
     }
 }

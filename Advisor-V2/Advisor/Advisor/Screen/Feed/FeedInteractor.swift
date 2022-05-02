@@ -6,30 +6,31 @@
 //
 
 import Foundation
+import Moya
 
 protocol FeedInteractorProtocol: AnyObject {
-    func fetchTableData(rate: String, kind: String, completion: @escaping (Result<[Attraction], Error>) -> Void)
+    func fetchTableData(rate: String, kind: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void)
 }
 
 class FeedInteractor: FeedInteractorProtocol {
     
     weak var presenter: FeedPresenterProtocol?
+    var tripApi: TripApiNetworkProtocol?
     
-    private var networkService = NetworkService()
-    
-    init(presenter: FeedPresenterProtocol) {
+    init(presenter: FeedPresenterProtocol, tripApi: TripApiNetworkProtocol) {
         self.presenter = presenter
+        self.tripApi = tripApi
     }
     
-    func fetchTableData(rate: String, kind: String, completion: @escaping (Result<[Attraction], Error>) -> Void) {
-        networkService.fetchData(rate: rate, kinds: kind) { result in
+    func fetchTableData(rate: String, kind: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void) {
+        tripApi?.fetchData(rate: rate, kind: kind, completion: { result in
             switch result {
             case .success(let attraction):
                 completion(.success(attraction))
             case .failure(let error):
                 completion(.failure(error))
             }
-        }
+        })
     }
 }
 

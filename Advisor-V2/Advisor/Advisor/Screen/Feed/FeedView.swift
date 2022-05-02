@@ -9,19 +9,26 @@ import UIKit
 
 protocol FeedViewProtocol: AnyObject {
     func reloadTableView()
+    func showSpinner(show: Bool)
+    func showAlertError(message: String)
+    func showImageNoData(show: Bool)
 }
 
 class FeedView: UIViewController {
     
     // MARK: Outlets 
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
+    // MARK: Private properties
+    private var flow: Flow?
+    
+    // MARK: Public properties
     var presenter: FeedPresenterProtocol?
     var configurator = FeedConfigurator()
     var indexFlow: Int?
-    
-    private var flow: Flow?
     
     // MARK: Main
     override func viewDidLoad() {
@@ -61,6 +68,24 @@ extension FeedView: FeedViewProtocol {
             self.tableView.reloadData()
         }
     }
+    
+    func showSpinner(show: Bool) {
+        DispatchQueue.main.async {
+            show ? self.spinner.startAnimating() : self.spinner.stopAnimating()
+        }
+    }
+    
+    func showAlertError(message: String) {
+        let alert = UIAlertController.init(title: "Something went wrong", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+            self.showSpinner(show: false)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showImageNoData(show: Bool) {
+        imageView.isHidden = !show
+    }
 }
 
 // MARK: Table delegate
@@ -88,14 +113,15 @@ extension FeedView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let height = tableView.visibleSize.height / 4
+        let height = tableView.visibleSize.height / 5
         return height
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
                                                                 "sectionHeader") as! TableViewHeader
-        view.title.text = "Great Spots Near You"
+        view.title.text = presenter?.getHeader()
+        
         return view
     }
 }
@@ -117,7 +143,14 @@ extension FeedView: UICollectionViewDataSource {
 
 // MARK: Collection delegate
 extension FeedView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let flow = flow else { return }
+        indexPath.row == 0 ? presenter?.setHeader(header: "Great Spots Near You") : presenter?.setHeader(header: flow.collectionViewCellNames[indexPath.row])
+        
+        presenter?.presentTableData(rate: flow.collectionViewCellRequestSubcatRates[indexPath.row], kind: flow.collectionViewCellRequestSubcatNames[indexPath.row])
+        
+        tableView.reloadData()
+    }
 }
 
 // MARK: Flow Layout

@@ -29,15 +29,17 @@ struct Point: Decodable {
     var lon: Double
 }
 
-
 protocol FeedEntityProtocol {
     func getFlow(indexPath: Int) -> Flow
     func setAttractions(attractions: [Attraction])
     func getAttractions() -> [Attraction]
+    func getHeader() -> String
+    func setHeader(header: String)
 }
 
 class FeedEntity: FeedEntityProtocol {
     
+    var tableViewHeader = "Great Spots Near You"
     var attractions: [Attraction] = []
     
     func getAttractions() -> [Attraction] {
@@ -46,6 +48,14 @@ class FeedEntity: FeedEntityProtocol {
     
     func setAttractions(attractions: [Attraction]) {
         self.attractions = attractions
+    }
+    
+    func setHeader(header: String) {
+        self.tableViewHeader = header
+    }
+    
+    func getHeader() -> String {
+        return tableViewHeader
     }
     
     func getFlow(indexPath: Int) -> Flow {
@@ -77,7 +87,7 @@ class FeedEntity: FeedEntityProtocol {
                                                                 "natural",
                                                                 "other",
                                                                 "religion"],
-                        collectionViewCellRequestSubcatRates: [ "",
+                        collectionViewCellRequestSubcatRates: [ "1h",
                                                                 "1h",
                                                                 "3",
                                                                 "3",
@@ -104,7 +114,7 @@ class FeedEntity: FeedEntityProtocol {
                                                                "foods",
                                                                "shops",
                                                                "transport"],
-                        collectionViewCellRequestSubcatRates: [     "",
+                        collectionViewCellRequestSubcatRates: [     "1",
                                                                     "1",
                                                                     "1",
                                                                     "1",
@@ -131,7 +141,7 @@ class FeedEntity: FeedEntityProtocol {
                                                                   "miniature_parks",
                                                                   "roller_coasters",
                                                                   "water_parks"],
-                        collectionViewCellRequestSubcatRates: [    "",
+                        collectionViewCellRequestSubcatRates: [    "1",
                                                                    "1",
                                                                    "0",
                                                                    "0",
@@ -159,7 +169,7 @@ class FeedEntity: FeedEntityProtocol {
                                                                  "hostels",
                                                                  "resorts",
                                                                  "villas_and_chalet"],
-                        collectionViewCellRequestSubcatRates: [ "",
+                        collectionViewCellRequestSubcatRates: [ "2",
                                                                 "1",
                                                                 "1",
                                                                 "1",
@@ -193,7 +203,7 @@ class FeedEntity: FeedEntityProtocol {
                                                                 "diving",
                                                                 "kitesurfing",
                                                                 "surfing"],
-                        collectionViewCellRequestSubcatRates: [ "",
+                        collectionViewCellRequestSubcatRates: [ "2",
                                                                 "1",
                                                                 "1",
                                                                 "0",
@@ -220,7 +230,7 @@ class FeedEntity: FeedEntityProtocol {
                                                                "casino",
                                                                "hookah",
                                                                "nightclubs"],
-                        collectionViewCellRequestSubcatRates: [  "",
+                        collectionViewCellRequestSubcatRates: [  "1",
                                                                  "1",
                                                                  "3",
                                                                  "0",
