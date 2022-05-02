@@ -451,7 +451,9 @@
 				DEVELOPMENT_TEAM = 9U2BQ8RU3L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location";
+				INFOPLIST_KEY_CFBundleDisplayName = Advisor_v1;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app needs your permission to use your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app needs your permission to use your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -483,7 +485,9 @@
 				DEVELOPMENT_TEAM = 9U2BQ8RU3L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location";
+				INFOPLIST_KEY_CFBundleDisplayName = Advisor_v1;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app needs your permission to use your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app needs your permission to use your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

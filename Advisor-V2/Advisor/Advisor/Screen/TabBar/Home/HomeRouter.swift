@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HomeRouterProtocol: AnyObject {
-    func routeToFeedView()
+    func routeToFeedView(title: String, index: Int)
 }
 
 class HomeRouter {
@@ -21,8 +21,10 @@ class HomeRouter {
 }
 
 extension HomeRouter: HomeRouterProtocol {
-    func routeToFeedView() {
+    func routeToFeedView(title: String, index: Int) {
         let feedView = FeedView(nibName: FeedView.identifier, bundle: nil)
+        feedView.title = title
+        feedView.indexFlow = index
         view?.navigationController?.pushViewController(feedView, animated: true)
     }
 }
