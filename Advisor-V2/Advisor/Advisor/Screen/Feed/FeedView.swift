@@ -90,7 +90,12 @@ extension FeedView: FeedViewProtocol {
 
 // MARK: Table delegate
 extension FeedView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let attractions = presenter?.getAttractions() else { return }
+        
+        presenter?.presentDetailView(xid: attractions[indexPath.row].xid)
+    }
 }
 
 // MARK: Table Data Source
