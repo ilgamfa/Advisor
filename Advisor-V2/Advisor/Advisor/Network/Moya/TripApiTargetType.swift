@@ -10,31 +10,36 @@ import Moya
 
 enum TripApiTargetType {
     case fetchData(rate: String, kind: String, radius: String, longitude: String, latitude: String, limit: String, apiKey: String)
+    case fetchDetailData(xid: String, apikey: String)
 }
 
 extension TripApiTargetType: TargetType {
     var baseURL: URL {
-        guard let url = URL(string: "https://api.opentripmap.com/0.1/en/places/") else { fatalError("baseURL could not be configured")}
-        return url
+        switch self {
+        case .fetchData, .fetchDetailData:
+            guard let url = URL(string: "https://api.opentripmap.com/0.1/en/places/") else { fatalError("baseURL could not be configured")}
+            return url
+        }
     }
     
     var path: String {
         switch self {
         case .fetchData:
             return "radius"
+        case .fetchDetailData(let xid, _):
+            return "xid/\(xid)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .fetchData:
+        case .fetchData, .fetchDetailData:
             return .get
         }
     }
     
     var task: Task {
         switch self {
-            
         case let .fetchData(rate, kind, radius, longitude, latitude, limit, apiKey):
             var parameters: [String: Any] = [:]
             parameters["radius"] = radius
@@ -46,6 +51,8 @@ extension TripApiTargetType: TargetType {
             parameters["limit"] = limit
             parameters["apikey"] = apiKey
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        case let .fetchDetailData(_, apikey):
+            return .requestParameters(parameters: ["apikey" : apikey], encoding: URLEncoding.queryString)
         }
     }
     

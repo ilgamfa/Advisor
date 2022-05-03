@@ -58,6 +58,11 @@
 		BB78C3E52819C6DA009D868B /* FavouritesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */; };
 		BBC6B9CB282037C100AC0B3C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6B9C9282037C100AC0B3C /* DetailView.swift */; };
 		BBC6B9CC282037C100AC0B3C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC6B9CA282037C100AC0B3C /* DetailView.xib */; };
+		BBC6B9CE2820472200AC0B3C /* DetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6B9CD2820472200AC0B3C /* DetailConfigurator.swift */; };
+		BBC6B9D02820476300AC0B3C /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6B9CF2820476300AC0B3C /* DetailInteractor.swift */; };
+		BBC6B9D22820479200AC0B3C /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6B9D12820479200AC0B3C /* DetailPresenter.swift */; };
+		BBC6B9D4282047B100AC0B3C /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6B9D3282047B100AC0B3C /* DetailRouter.swift */; };
+		BBC6B9D628204CB000AC0B3C /* DetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6B9D528204CB000AC0B3C /* DetailEntity.swift */; };
 		BBF5CCD1281E94580010C456 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD0281E94580010C456 /* TableViewHeader.swift */; };
 		BBF5CCD5281EA7820010C456 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */; };
 		BBF5CCD8281EE5360010C456 /* TripApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD7281EE5360010C456 /* TripApi.swift */; };
@@ -119,6 +124,11 @@
 		BB78C3E42819C6DA009D868B /* FavouritesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesConfigurator.swift; sourceTree = "<group>"; };
 		BBC6B9C9282037C100AC0B3C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BBC6B9CA282037C100AC0B3C /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
+		BBC6B9CD2820472200AC0B3C /* DetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConfigurator.swift; sourceTree = "<group>"; };
+		BBC6B9CF2820476300AC0B3C /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		BBC6B9D12820479200AC0B3C /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		BBC6B9D3282047B100AC0B3C /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		BBC6B9D528204CB000AC0B3C /* DetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntity.swift; sourceTree = "<group>"; };
 		BBF5CCD0281E94580010C456 /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
 		BBF5CCD7281EE5360010C456 /* TripApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripApi.swift; sourceTree = "<group>"; };
@@ -240,9 +250,9 @@
 		BB78C39F28196318009D868B /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				BBC6B9C8282037A300AC0B3C /* Detail */,
 				BB78C3A728196473009D868B /* TabBar */,
 				BB130D8C281AEC8C001E7679 /* Feed */,
+				BBC6B9C8282037A300AC0B3C /* Detail */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -318,8 +328,13 @@
 		BBC6B9C8282037A300AC0B3C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				BBC6B9CD2820472200AC0B3C /* DetailConfigurator.swift */,
 				BBC6B9C9282037C100AC0B3C /* DetailView.swift */,
 				BBC6B9CA282037C100AC0B3C /* DetailView.xib */,
+				BBC6B9CF2820476300AC0B3C /* DetailInteractor.swift */,
+				BBC6B9D12820479200AC0B3C /* DetailPresenter.swift */,
+				BBC6B9D3282047B100AC0B3C /* DetailRouter.swift */,
+				BBC6B9D528204CB000AC0B3C /* DetailEntity.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -477,13 +492,17 @@
 				BB78C3B92819A287009D868B /* HomeInteractor.swift in Sources */,
 				BB130D86281AD15E001E7679 /* ViewExtensions.swift in Sources */,
 				BB617FE2281AF1F6000320BF /* FeedEntity.swift in Sources */,
+				BBC6B9D628204CB000AC0B3C /* DetailEntity.swift in Sources */,
+				BBC6B9CE2820472200AC0B3C /* DetailConfigurator.swift in Sources */,
 				BB78C3D52819B7F8009D868B /* MapPresenter.swift in Sources */,
 				BB78C3DB2819B81E009D868B /* MapConfigurator.swift in Sources */,
 				BB78C3C52819A30D009D868B /* BaseInteractor.swift in Sources */,
 				BBF5CCDC281FDF630010C456 /* TripApiTargetType.swift in Sources */,
 				BB78C3AD28199972009D868B /* HomeView.swift in Sources */,
+				BBC6B9D4282047B100AC0B3C /* DetailRouter.swift in Sources */,
 				BB78C3DF2819C6B6009D868B /* FavouritesPresenter.swift in Sources */,
 				BBF5CCD8281EE5360010C456 /* TripApi.swift in Sources */,
+				BBC6B9D02820476300AC0B3C /* DetailInteractor.swift in Sources */,
 				BB78C38C28195C82009D868B /* ViewController.swift in Sources */,
 				BB78C38828195C82009D868B /* AppDelegate.swift in Sources */,
 				BB617FE8281AFEB1000320BF /* TableCell.swift in Sources */,
@@ -501,6 +520,7 @@
 				BBF5CCD1281E94580010C456 /* TableViewHeader.swift in Sources */,
 				BB78C3D92819B809009D868B /* MapEntity.swift in Sources */,
 				BB78C3E52819C6DA009D868B /* FavouritesConfigurator.swift in Sources */,
+				BBC6B9D22820479200AC0B3C /* DetailPresenter.swift in Sources */,
 				BB78C3C32819A2F4009D868B /* BaseConfigurator.swift in Sources */,
 				BB78C3D72819B7FE009D868B /* MapRouter.swift in Sources */,
 				BB617FE0281AF1EA000320BF /* FeedInteractor.swift in Sources */,

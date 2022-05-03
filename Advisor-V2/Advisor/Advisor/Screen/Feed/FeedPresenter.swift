@@ -13,6 +13,7 @@ protocol FeedPresenterProtocol: AnyObject {
     func getAttractions() -> [Attraction]
     func getHeader() -> String
     func setHeader(header: String)
+    func presentDetailView(xid: String)
 }
 
 class FeedPresenter {
@@ -65,6 +66,10 @@ extension FeedPresenter: FeedPresenterProtocol {
     
     func setHeader(header: String) {
         entity?.setHeader(header: header)
+    }
+    
+    func presentDetailView(xid: String) {
+        router?.routeToDetailView(xid: xid)
     }
     
 }

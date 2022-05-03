@@ -91,8 +91,10 @@ extension FeedView: FeedViewProtocol {
 // MARK: Table delegate
 extension FeedView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detail = DetailView(nibName: DetailView.identifier, bundle: nil)
-        self.navigationController?.pushViewController(detail, animated: true)
+        
+        guard let attractions = presenter?.getAttractions() else { return }
+        
+        presenter?.presentDetailView(xid: attractions[indexPath.row].xid)
     }
 }
 
