@@ -29,7 +29,6 @@ extension DetailPresenter: DetailPresenterProtocol {
         interactor?.fetchDetailData(xid: xid, completion: { result in
             switch result {
             case .success(let detail):
-                print(detail)
                 let name = detail.name ?? "No name yet"
                 let kinds = detail.kinds ?? ""
                 let description = detail.wikipedia_extracts?.text ?? kinds
