@@ -44,7 +44,5 @@ class LocationService {
         let latitude = String(format: "%.4f", currentLocation.coordinate.latitude)
         let longitude = String(format: "%.4f", currentLocation.coordinate.longitude)
         completion(latitude, longitude)
-        
-        
     }
 }
