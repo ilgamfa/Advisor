@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 protocol HomeViewProtocol: AnyObject {
     
@@ -14,6 +15,7 @@ protocol HomeViewProtocol: AnyObject {
 class HomeView: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet weak var lottieAnimationView: AnimationView!
     
     var presenter: HomePresenterProtocol?
     var configurator = HomeConfigurator()
@@ -23,6 +25,7 @@ class HomeView: UIViewController {
         super.viewDidLoad()
 
         configurator.configure(view: self)
+        setupLottieAnimation()
         setupCollectionView()
         setupNavigationBar()
     }
@@ -36,6 +39,17 @@ class HomeView: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    private func setupLottieAnimation() {
+        lottieAnimationView.contentMode = .scaleAspectFit
+        lottieAnimationView.animationSpeed = 0.5
+        lottieAnimationView.loopMode = .playOnce
+        tabBarController?.tabBar.isHidden = true
+        lottieAnimationView.play { finished in
+            self.lottieAnimationView.isHidden = finished
+            self.tabBarController?.tabBar.isHidden = !finished
+        }
     }
 }
 
