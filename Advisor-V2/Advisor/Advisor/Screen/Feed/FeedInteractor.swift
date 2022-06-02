@@ -7,7 +7,6 @@
 
 import Foundation
 import Moya
-import CoreLocation
 
 protocol FeedInteractorProtocol: AnyObject {
     func fetchTableData(rate: String, kind: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void)
@@ -17,20 +16,17 @@ class FeedInteractor: FeedInteractorProtocol {
     
     weak var presenter: FeedPresenterProtocol?
     var tripApi: TripApiNetworkProtocol?
-    let locationManager = CLLocationManager()
+    var locationService: LocationService?
     var latitude = ""
     var longitude = ""
     
-    init(presenter: FeedPresenterProtocol, tripApi: TripApiNetworkProtocol) {
+    init(presenter: FeedPresenterProtocol, tripApi: TripApiNetworkProtocol, locationService: LocationService) {
         self.presenter = presenter
         self.tripApi = tripApi
-        getCurrentLocation()
-    }
-    
-    private func getCurrentLocation() {
-        guard let currentLocation = locationManager.location else { return }
-        latitude = String(format: "%.4f", currentLocation.coordinate.latitude)
-        longitude = String(format: "%.4f", currentLocation.coordinate.longitude)
+        self.locationService = locationService  
+
+        latitude = locationService.getCurrentLocation().latitude
+        longitude = locationService.getCurrentLocation().longitude
     }
     
     func fetchTableData(rate: String, kind: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void) {

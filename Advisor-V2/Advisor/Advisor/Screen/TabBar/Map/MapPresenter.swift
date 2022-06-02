@@ -25,10 +25,6 @@ class MapPresenter: MapPresenterProtocol {
         self.view = view
     }
     
-    func presentMap() {
-        checkLocationEnabled()
-    }
-    
     private func checkLocationEnabled() {
         let status = locationManager.authorizationStatus
         
@@ -40,9 +36,27 @@ class MapPresenter: MapPresenterProtocol {
         }
         else {
             setupManager()
+            presentAnnotations()
         }
     }
+    
     private func setupManager() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
+    
+    func presentMap() {
+        checkLocationEnabled()
+    }
+    
+    func presentAnnotations() {
+        interactor?.fetchMapObjects(rate: "1h", kind: "interesting_places", completion: { result in
+            switch result {
+            case .success(let attraction):
+                print(attraction.last?.point)
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            }
+        })
+    }
+  
 }

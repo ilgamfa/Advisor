@@ -25,9 +25,10 @@ class HomeView: UIViewController {
         super.viewDidLoad()
 
         configurator.configure(view: self)
-        setupLottieAnimation()
         setupCollectionView()
         setupNavigationBar()
+        setupLottieAnimation()
+        
     }
     
     // MARK: Private functions
@@ -43,11 +44,13 @@ class HomeView: UIViewController {
     
     private func setupLottieAnimation() {
         lottieAnimationView.contentMode = .scaleAspectFit
-        lottieAnimationView.animationSpeed = 0.5
+        lottieAnimationView.animationSpeed = 0.75
         lottieAnimationView.loopMode = .playOnce
+        navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = true
         lottieAnimationView.play { finished in
             self.lottieAnimationView.isHidden = finished
+            self.navigationController?.isNavigationBarHidden = !finished
             self.tabBarController?.tabBar.isHidden = !finished
         }
     }
