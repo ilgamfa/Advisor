@@ -17,7 +17,7 @@ extension TripApiTargetType: TargetType {
     var baseURL: URL {
         switch self {
         case .fetchData, .fetchDetailData:
-            guard let url = URL(string: "https://api.opentripmap.com/0.1/en/places/") else { fatalError("baseURL could not be configured")}
+            guard let url = URL(string: "https://api.opentripmap.com/0.1/ru/places/") else { fatalError("baseURL could not be configured")}
             return url
         }
     }

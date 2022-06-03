@@ -11,6 +11,7 @@ import CoreLocation
 
 protocol MapPresenterProtocol: AnyObject {
     func presentMap()
+    func presentMapWith(rate: String, kind: String)
 }
 
 class MapPresenter: MapPresenterProtocol {
@@ -25,7 +26,7 @@ class MapPresenter: MapPresenterProtocol {
         self.view = view
     }
     
-    private func checkLocationEnabled() {
+    private func checkLocationEnabled(rate: String, kind: String) {
         let status = locationManager.authorizationStatus
         
         if !CLLocationManager.locationServicesEnabled() {
@@ -36,7 +37,7 @@ class MapPresenter: MapPresenterProtocol {
         }
         else {
             setupManager()
-            presentAnnotations()
+            presentAnnotations(rate: rate, kind: kind)
         }
     }
     
@@ -44,19 +45,29 @@ class MapPresenter: MapPresenterProtocol {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    func presentMap() {
-        checkLocationEnabled()
-    }
-    
-    func presentAnnotations() {
-        interactor?.fetchMapObjects(rate: "1h", kind: "interesting_places", completion: { result in
+    private func presentAnnotations(rate: String, kind: String) {
+        interactor?.fetchMapObjects(rate: rate, kind: kind, completion: { result in
+            var pins = [Annotation]()
             switch result {
             case .success(let attraction):
-                print(attraction.last?.point)
+                attraction.forEach { attraction in
+                    pins.append(Annotation(title: attraction.name,
+                                           locationName: attraction.name,
+                                           discipline: attraction.kinds,
+                                           coordinate: CLLocationCoordinate2D(latitude: attraction.point.lat,
+                                                                              longitude: attraction.point.lon)))
+                }
+                self.view?.pinAnnotation(annotations: pins)
             case .failure(let error):
                 fatalError(error.localizedDescription)
             }
         })
     }
-  
+    
+    func presentMap() {
+        checkLocationEnabled(rate: "3", kind: "interesting_places")
+    }
+    func presentMapWith(rate: String, kind: String) {
+        checkLocationEnabled(rate: rate, kind: kind)
+    }
 }

@@ -8,9 +8,10 @@
 import UIKit
 import MapKit
 
-protocol MapViewProtocol: CLLocationManagerDelegate, MKMapViewDelegate {
+protocol MapViewProtocol: AnyObject {
     func showUserLocation()
     func showAlertError(message: String, title: String?, url:String?)
+    func pinAnnotation(annotations: [Annotation])
 }
 
 class MapView: UIViewController {
@@ -20,26 +21,32 @@ class MapView: UIViewController {
     var presenter: MapPresenterProtocol?
     var configurator = MapConfigurator()
     var locationManager = CLLocationManager()
+    var rate: String?
+    var kind: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mapView.delegate = self
+        mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         configurator.configure(view: self)
-        setupNavigationBar()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupMap()
     }
+    public func setupMapWith(rate: String, kind: String) {
+        presenter?.presentMapWith(rate: rate, kind: kind)
+    }
     
     private func setupMap() {
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
-        presenter?.presentMap()
-    }
-    
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.isHidden = true
+        if let rate = rate, let kind = kind {
+            presenter?.presentMapWith(rate: rate, kind: kind)
+        } else {
+            presenter?.presentMap()
+        }
     }
 }
 
@@ -62,6 +69,10 @@ extension MapView: MapViewProtocol {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
+    func pinAnnotation(annotations: [Annotation]) {
+        mapView.addAnnotations(annotations)
+    }
 }
 
 extension MapView: CLLocationManagerDelegate {
@@ -75,4 +86,7 @@ extension MapView: CLLocationManagerDelegate {
         mapView.showsUserLocation = true
         locationManager.stopUpdatingLocation()        
     }
+}
+
+extension MapView: MKMapViewDelegate {
 }

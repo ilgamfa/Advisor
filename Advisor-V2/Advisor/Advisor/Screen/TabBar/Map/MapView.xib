@@ -20,16 +20,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GpF-fF-G6c">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </mapView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GpF-fF-G6c" secondAttribute="trailing" id="faa-rj-q5S"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GpF-fF-G6c" secondAttribute="bottom" id="uZB-dm-Qdp"/>
+                <constraint firstAttribute="trailing" secondItem="GpF-fF-G6c" secondAttribute="trailing" id="faa-rj-q5S"/>
+                <constraint firstAttribute="bottom" secondItem="GpF-fF-G6c" secondAttribute="bottom" id="uZB-dm-Qdp"/>
                 <constraint firstItem="GpF-fF-G6c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vub-TU-acb"/>
-                <constraint firstItem="GpF-fF-G6c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wZT-gy-WaL"/>
+                <constraint firstItem="GpF-fF-G6c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wZT-gy-WaL"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
         </view>

@@ -28,8 +28,19 @@ class HomeView: UIViewController {
         setupCollectionView()
         setupNavigationBar()
         setupLottieAnimation()
-        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if navigationController?.viewControllers.last?.nibName == "MapView" {
+            tabBarController?.tabBar.isHidden = false
+        }
+    }
+    
     
     // MARK: Private functions
     private func setupCollectionView() {
@@ -79,8 +90,6 @@ extension HomeView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell,
               let models = presenter?.getCategoryModels() else { return UICollectionViewCell()}
-        
-        
         cell.configureCell(imageName: models[indexPath.row].categoryImageName, label: models[indexPath.row].categoryLabel)
         return cell
     }

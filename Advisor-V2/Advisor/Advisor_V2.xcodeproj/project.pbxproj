@@ -69,6 +69,7 @@
 		BBF5CCDC281FDF630010C456 /* TripApiTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCDB281FDF630010C456 /* TripApiTargetType.swift */; };
 		D693E0272848D1FA0083999C /* travelLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = D693E0262848D1FA0083999C /* travelLottie.json */; };
 		D693E02A2848E0A80083999C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E0292848E0A80083999C /* LocationService.swift */; };
+		D693E02C284913460083999C /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E02B284913460083999C /* Annotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,7 @@
 		BBF5CCDB281FDF630010C456 /* TripApiTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripApiTargetType.swift; sourceTree = "<group>"; };
 		D693E0262848D1FA0083999C /* travelLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelLottie.json; sourceTree = "<group>"; };
 		D693E0292848E0A80083999C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		D693E02B284913460083999C /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		E0D75B9A3424115F84FD6D33 /* Pods-Advisor_V2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advisor_V2.debug.xcconfig"; path = "Target Support Files/Pods-Advisor_V2/Pods-Advisor_V2.debug.xcconfig"; sourceTree = "<group>"; };
 		FB5F769E7B7435C804D2B68C /* Pods-Advisor_V2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advisor_V2.release.xcconfig"; path = "Target Support Files/Pods-Advisor_V2/Pods-Advisor_V2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -313,6 +315,7 @@
 				BB78C3D62819B7FE009D868B /* MapRouter.swift */,
 				BB78C3D82819B809009D868B /* MapEntity.swift */,
 				BB78C3DA2819B81E009D868B /* MapConfigurator.swift */,
+				D693E02B284913460083999C /* Annotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				BBF5CCD8281EE5360010C456 /* TripApi.swift in Sources */,
 				BBC6B9D02820476300AC0B3C /* DetailInteractor.swift in Sources */,
 				BB78C38C28195C82009D868B /* ViewController.swift in Sources */,
+				D693E02C284913460083999C /* Annotation.swift in Sources */,
 				BB78C38828195C82009D868B /* AppDelegate.swift in Sources */,
 				BB617FE8281AFEB1000320BF /* TableCell.swift in Sources */,
 				BBF5CCD5281EA7820010C456 /* CollectionViewHeader.swift in Sources */,
@@ -700,6 +704,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -733,6 +738,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

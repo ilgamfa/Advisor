@@ -48,7 +48,7 @@ class TabBarView: UITabBarController {
     func setupViews() {
         viewControllers = [
             createNavController(for: HomeView(), title: "Home", image: UIImage(systemName: "house")!),
-            createNavController(for: MapView(), title: "Map", image: UIImage(systemName: "map")!),
+            createNavController(for: MapView(), title: "", image: UIImage(systemName: "map")!),
             createNavController(for: FavouritesView() , title: "Saved", image: UIImage(systemName: "heart")!)
         ]
     }

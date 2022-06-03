@@ -26,7 +26,6 @@ class DetailView: UIViewController {
         super.viewDidLoad()
         
         configurator.configure(view: self)
-
         setupDetailFlow()
         
     }

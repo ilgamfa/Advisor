@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTI-JO-dhe">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVG-ey-mVV">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
@@ -71,7 +71,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="sTI-JO-dhe" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="QB2-Eq-TO5"/>
-                <constraint firstItem="sTI-JO-dhe" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="ktk-9M-CeM"/>
+                <constraint firstItem="sTI-JO-dhe" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="ktk-9M-CeM"/>
                 <constraint firstItem="sTI-JO-dhe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xiM-Ak-XZX"/>
                 <constraint firstItem="sTI-JO-dhe" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="yjj-fY-k40"/>
             </constraints>

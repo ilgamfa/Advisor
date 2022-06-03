@@ -9,6 +9,7 @@ import Foundation
 
 protocol FeedRouterProtocol: AnyObject {
     func routeToDetailView(xid: String)
+    func routeToMapView(rate: String, kind: String)
 }
 
 class FeedRouter {
@@ -25,5 +26,12 @@ extension FeedRouter: FeedRouterProtocol {
         let detail = DetailView(nibName: DetailView.identifier, bundle: nil)
         detail.xid = xid
         view?.navigationController?.pushViewController(detail, animated: true)
+    }
+    
+    func routeToMapView(rate: String, kind: String) {
+        let mapView = MapView(nibName: MapView.identifier, bundle: nil)
+        mapView.rate = rate
+        mapView.kind = kind
+        view?.navigationController?.pushViewController(mapView, animated: true)
     }
 }

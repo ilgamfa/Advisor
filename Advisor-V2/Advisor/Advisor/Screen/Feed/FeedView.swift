@@ -12,6 +12,7 @@ protocol FeedViewProtocol: AnyObject {
     func showSpinner(show: Bool)
     func showAlertError(message: String)
     func showImageNoData(show: Bool)
+    func showOnMapDidTap()
 }
 
 class FeedView: UIViewController {
@@ -29,15 +30,29 @@ class FeedView: UIViewController {
     var presenter: FeedPresenterProtocol?
     var configurator = FeedConfigurator()
     var indexFlow: Int?
+    var rate: String?
+    var kind: String?
     
     // MARK: Main
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configurator.configure(view: self)
+        setupNavigationBar()
         setupCollectionView()
         setupTableView()
         setupFlow()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if navigationController?.viewControllers.last?.nibName == "HomeView" {
+            tabBarController?.tabBar.isHidden = false
+        }
     }
     
     // MARK: Private Functions
@@ -58,6 +73,14 @@ class FeedView: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: CategoryCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryCell.identifier)
+    }
+    
+    private func setupNavigationBar() {
+        let button = UIButton(type: .system)
+        button.configuration = .filled()
+        button.tintColor = .orange
+        button.setImage(UIImage(systemName: "bolt.heart.fill"), for: .normal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
 }
 
@@ -85,6 +108,11 @@ extension FeedView: FeedViewProtocol {
     
     func showImageNoData(show: Bool) {
         imageView.isHidden = !show
+    }
+    
+    func showOnMapDidTap() {
+        guard let indexFlow = indexFlow else { return }
+        presenter?.presentMapViewWith(rate: rate, kind: kind, indexFlow: indexFlow)
     }
 }
 
@@ -123,11 +151,14 @@ extension FeedView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                                                                "sectionHeader") as! TableViewHeader
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader") as! TableViewHeader
         view.title.text = presenter?.getHeader()
-        
+        view.delegate = self
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 }
 
@@ -151,7 +182,8 @@ extension FeedView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let flow = flow else { return }
         indexPath.row == 0 ? presenter?.setHeader(header: "Great Spots Near You") : presenter?.setHeader(header: flow.collectionViewCellNames[indexPath.row])
-        
+        self.rate = flow.collectionViewCellRequestSubcatRates[indexPath.row]
+        self.kind = flow.collectionViewCellRequestSubcatNames[indexPath.row]
         presenter?.presentTableData(rate: flow.collectionViewCellRequestSubcatRates[indexPath.row], kind: flow.collectionViewCellRequestSubcatNames[indexPath.row])
         
         tableView.reloadData()
