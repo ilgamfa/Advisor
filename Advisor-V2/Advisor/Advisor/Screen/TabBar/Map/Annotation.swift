@@ -13,19 +13,21 @@ class Annotation: NSObject, MKAnnotation {
     let locationName: String?
     let discipline: String?
     let coordinate: CLLocationCoordinate2D
+    let xid: String
     
     init(
       title: String?,
       locationName: String?,
       discipline: String?,
-      coordinate: CLLocationCoordinate2D
+      coordinate: CLLocationCoordinate2D,
+      xid: String
     ) {
-      self.title = title
-      self.locationName = locationName
-      self.discipline = discipline
-      self.coordinate = coordinate
-
-      super.init()
+        self.title = title
+        self.locationName = locationName
+        self.discipline = discipline
+        self.coordinate = coordinate
+        self.xid = xid
+        super.init()
     }
     
     var subtitle: String? {

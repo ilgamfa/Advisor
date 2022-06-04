@@ -12,6 +12,7 @@ import CoreLocation
 protocol MapPresenterProtocol: AnyObject {
     func presentMap()
     func presentMapWith(rate: String, kind: String)
+    func presentDetailView(xid: String)
 }
 
 class MapPresenter: MapPresenterProtocol {
@@ -52,10 +53,11 @@ class MapPresenter: MapPresenterProtocol {
             case .success(let attraction):
                 attraction.forEach { attraction in
                     pins.append(Annotation(title: attraction.name,
-                                           locationName: attraction.name,
+                                           locationName: attraction.kinds.split(separator: ",").first?.description,
                                            discipline: attraction.kinds,
                                            coordinate: CLLocationCoordinate2D(latitude: attraction.point.lat,
-                                                                              longitude: attraction.point.lon)))
+                                                                              longitude: attraction.point.lon),
+                                           xid: attraction.xid))
                 }
                 self.view?.pinAnnotation(annotations: pins)
             case .failure(let error):
@@ -69,5 +71,8 @@ class MapPresenter: MapPresenterProtocol {
     }
     func presentMapWith(rate: String, kind: String) {
         checkLocationEnabled(rate: rate, kind: kind)
+    }
+    func presentDetailView(xid: String) {
+        router?.routeToDetailView(xid: xid)
     }
 }

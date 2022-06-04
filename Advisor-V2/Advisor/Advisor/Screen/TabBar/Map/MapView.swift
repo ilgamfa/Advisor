@@ -31,10 +31,17 @@ class MapView: UIViewController {
         configurator.configure(view: self)
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if navigationController?.viewControllers.last?.nibName == "DetailView" {
+            tabBarController?.tabBar.isHidden = true
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         setupMap()
     }
+    
     public func setupMapWith(rate: String, kind: String) {
         presenter?.presentMapWith(rate: rate, kind: kind)
     }
@@ -89,4 +96,8 @@ extension MapView: CLLocationManagerDelegate {
 }
 
 extension MapView: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let annotation = view.annotation as? Annotation else { return }
+        presenter?.presentDetailView(xid: annotation.xid)
+    }
 }

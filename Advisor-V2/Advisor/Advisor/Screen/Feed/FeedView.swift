@@ -52,6 +52,8 @@ class FeedView: UIViewController {
         super.viewWillDisappear(animated)
         if navigationController?.viewControllers.last?.nibName == "HomeView" {
             tabBarController?.tabBar.isHidden = false
+        } else if navigationController?.viewControllers.last?.nibName == "MapView" {
+            tabBarController?.tabBar.isHidden = true
         }
     }
     

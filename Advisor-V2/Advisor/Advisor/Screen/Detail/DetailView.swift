@@ -27,9 +27,13 @@ class DetailView: UIViewController {
         
         configurator.configure(view: self)
         setupDetailFlow()
-        
     }
-    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if navigationController?.viewControllers.count == 1 && navigationController?.viewControllers.last?.nibName == "MapView" {
+            tabBarController?.tabBar.isHidden = false
+        }
+    }
     private func setupDetailFlow() {
         guard let xid = xid else { return }
         presenter?.presentFlow(xid: xid)
