@@ -14,6 +14,7 @@ protocol FeedPresenterProtocol: AnyObject {
     func getHeader() -> String
     func setHeader(header: String)
     func presentDetailView(xid: String)
+    func presentMapViewWith(rate: String?, kind: String?, indexFlow: Int)
 }
 
 class FeedPresenter {
@@ -72,4 +73,13 @@ extension FeedPresenter: FeedPresenterProtocol {
         router?.routeToDetailView(xid: xid)
     }
     
+    func presentMapViewWith(rate: String?, kind: String?, indexFlow: Int) {
+        if let rate = rate, let kind = kind {
+            router?.routeToMapView(rate: rate, kind: kind)
+        } else {
+            if let flow = entity?.getFlow(indexPath: indexFlow) {
+                router?.routeToMapView(rate: flow.rate, kind: flow.collectionItemName)
+            }
+        }
+    }
 }

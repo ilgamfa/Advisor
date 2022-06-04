@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 protocol HomeViewProtocol: AnyObject {
     
@@ -14,6 +15,7 @@ protocol HomeViewProtocol: AnyObject {
 class HomeView: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet weak var lottieAnimationView: AnimationView!
     
     var presenter: HomePresenterProtocol?
     var configurator = HomeConfigurator()
@@ -25,7 +27,20 @@ class HomeView: UIViewController {
         configurator.configure(view: self)
         setupCollectionView()
         setupNavigationBar()
+        setupLottieAnimation()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if navigationController?.viewControllers.last?.nibName == "MapView" {
+            tabBarController?.tabBar.isHidden = false
+        }
+    }
+    
     
     // MARK: Private functions
     private func setupCollectionView() {
@@ -36,6 +51,19 @@ class HomeView: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    private func setupLottieAnimation() {
+        lottieAnimationView.contentMode = .scaleAspectFit
+        lottieAnimationView.animationSpeed = 0.75
+        lottieAnimationView.loopMode = .playOnce
+        navigationController?.isNavigationBarHidden = true
+        tabBarController?.tabBar.isHidden = true
+        lottieAnimationView.play { finished in
+            self.lottieAnimationView.isHidden = finished
+            self.navigationController?.isNavigationBarHidden = !finished
+            self.tabBarController?.tabBar.isHidden = !finished
+        }
     }
 }
 
@@ -62,8 +90,6 @@ extension HomeView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell,
               let models = presenter?.getCategoryModels() else { return UICollectionViewCell()}
-        
-        
         cell.configureCell(imageName: models[indexPath.row].categoryImageName, label: models[indexPath.row].categoryLabel)
         return cell
     }

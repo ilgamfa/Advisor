@@ -67,6 +67,9 @@
 		BBF5CCD5281EA7820010C456 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */; };
 		BBF5CCD8281EE5360010C456 /* TripApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD7281EE5360010C456 /* TripApi.swift */; };
 		BBF5CCDC281FDF630010C456 /* TripApiTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCDB281FDF630010C456 /* TripApiTargetType.swift */; };
+		D693E0272848D1FA0083999C /* travelLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = D693E0262848D1FA0083999C /* travelLottie.json */; };
+		D693E02A2848E0A80083999C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E0292848E0A80083999C /* LocationService.swift */; };
+		D693E02C284913460083999C /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E02B284913460083999C /* Annotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +136,9 @@
 		BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
 		BBF5CCD7281EE5360010C456 /* TripApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripApi.swift; sourceTree = "<group>"; };
 		BBF5CCDB281FDF630010C456 /* TripApiTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripApiTargetType.swift; sourceTree = "<group>"; };
+		D693E0262848D1FA0083999C /* travelLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelLottie.json; sourceTree = "<group>"; };
+		D693E0292848E0A80083999C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		D693E02B284913460083999C /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		E0D75B9A3424115F84FD6D33 /* Pods-Advisor_V2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advisor_V2.debug.xcconfig"; path = "Target Support Files/Pods-Advisor_V2/Pods-Advisor_V2.debug.xcconfig"; sourceTree = "<group>"; };
 		FB5F769E7B7435C804D2B68C /* Pods-Advisor_V2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advisor_V2.release.xcconfig"; path = "Target Support Files/Pods-Advisor_V2/Pods-Advisor_V2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,6 +238,7 @@
 		BB78C38628195C82009D868B /* Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				D693E0282848E09A0083999C /* LocationService */,
 				BBF5CCD6281EE5160010C456 /* Network */,
 				BB78C3A428196399009D868B /* Base */,
 				BB78C39F28196318009D868B /* Screen */,
@@ -239,6 +246,7 @@
 				BB78C38928195C82009D868B /* SceneDelegate.swift */,
 				BB78C38B28195C82009D868B /* ViewController.swift */,
 				BB78C38D28195C82009D868B /* Main.storyboard */,
+				D693E0262848D1FA0083999C /* travelLottie.json */,
 				BB78C39328195C84009D868B /* Assets.xcassets */,
 				BB78C39528195C84009D868B /* LaunchScreen.storyboard */,
 				BB78C39828195C84009D868B /* Info.plist */,
@@ -307,6 +315,7 @@
 				BB78C3D62819B7FE009D868B /* MapRouter.swift */,
 				BB78C3D82819B809009D868B /* MapEntity.swift */,
 				BB78C3DA2819B81E009D868B /* MapConfigurator.swift */,
+				D693E02B284913460083999C /* Annotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -354,6 +363,14 @@
 				BBF5CCDB281FDF630010C456 /* TripApiTargetType.swift */,
 			);
 			path = Moya;
+			sourceTree = "<group>";
+		};
+		D693E0282848E09A0083999C /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+				D693E0292848E0A80083999C /* LocationService.swift */,
+			);
+			path = LocationService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D693E0272848D1FA0083999C /* travelLottie.json in Resources */,
 				BB78C39728195C84009D868B /* LaunchScreen.storyboard in Resources */,
 				BB78C39428195C84009D868B /* Assets.xcassets in Resources */,
 				BB78C3A32819635B009D868B /* TabBarView.xib in Resources */,
@@ -493,6 +511,7 @@
 				BB130D86281AD15E001E7679 /* ViewExtensions.swift in Sources */,
 				BB617FE2281AF1F6000320BF /* FeedEntity.swift in Sources */,
 				BBC6B9D628204CB000AC0B3C /* DetailEntity.swift in Sources */,
+				D693E02A2848E0A80083999C /* LocationService.swift in Sources */,
 				BBC6B9CE2820472200AC0B3C /* DetailConfigurator.swift in Sources */,
 				BB78C3D52819B7F8009D868B /* MapPresenter.swift in Sources */,
 				BB78C3DB2819B81E009D868B /* MapConfigurator.swift in Sources */,
@@ -504,6 +523,7 @@
 				BBF5CCD8281EE5360010C456 /* TripApi.swift in Sources */,
 				BBC6B9D02820476300AC0B3C /* DetailInteractor.swift in Sources */,
 				BB78C38C28195C82009D868B /* ViewController.swift in Sources */,
+				D693E02C284913460083999C /* Annotation.swift in Sources */,
 				BB78C38828195C82009D868B /* AppDelegate.swift in Sources */,
 				BB617FE8281AFEB1000320BF /* TableCell.swift in Sources */,
 				BBF5CCD5281EA7820010C456 /* CollectionViewHeader.swift in Sources */,
@@ -672,23 +692,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9U2BQ8RU3L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need for checking your location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.Advisor;
+				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.AdvisorV2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -701,23 +726,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9U2BQ8RU3L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need for checking your location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.Advisor;
+				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.AdvisorV2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -33,7 +33,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="I31-8U-a35">
-                    <rect key="frame" x="0.0" y="176.5" width="414" height="685.5"/>
+                    <rect key="frame" x="0.0" y="176.5" width="414" height="719.5"/>
                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                 </tableView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="unD-Kn-avh">
@@ -51,7 +51,7 @@
             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="5Hw-yz-yc4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="0U9-ZU-Yoe"/>
-                <constraint firstItem="I31-8U-a35" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="3W1-mI-FbQ"/>
+                <constraint firstItem="I31-8U-a35" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="3W1-mI-FbQ"/>
                 <constraint firstItem="5Hw-yz-yc4" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.15" id="4Bs-6S-SoG"/>
                 <constraint firstItem="I31-8U-a35" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FRG-lS-FmY"/>
                 <constraint firstItem="I31-8U-a35" firstAttribute="top" secondItem="5Hw-yz-yc4" secondAttribute="bottom" constant="10" id="Knk-GQ-d7J"/>

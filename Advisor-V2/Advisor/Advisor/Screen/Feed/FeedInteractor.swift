@@ -16,14 +16,21 @@ class FeedInteractor: FeedInteractorProtocol {
     
     weak var presenter: FeedPresenterProtocol?
     var tripApi: TripApiNetworkProtocol?
+    var locationService: LocationService?
+    var latitude = ""
+    var longitude = ""
     
-    init(presenter: FeedPresenterProtocol, tripApi: TripApiNetworkProtocol) {
+    init(presenter: FeedPresenterProtocol, tripApi: TripApiNetworkProtocol, locationService: LocationService) {
         self.presenter = presenter
         self.tripApi = tripApi
+        self.locationService = locationService  
+
+        latitude = locationService.getCurrentLocation().latitude
+        longitude = locationService.getCurrentLocation().longitude
     }
     
     func fetchTableData(rate: String, kind: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void) {
-        tripApi?.fetchData(rate: rate, kind: kind, completion: { result in
+        tripApi?.fetchData(rate: rate, kind: kind, lat: latitude, lon: longitude, completion: { result in
             switch result {
             case .success(let attraction):
                 completion(.success(attraction))

@@ -12,7 +12,7 @@ import AlamofireImage
 import UIKit
 
 protocol TripApiNetworkProtocol {
-    func fetchData(rate: String, kind: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void)
+    func fetchData(rate: String, kind: String, lat: String, lon: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void)
     func fetchDetailData(xid: String, completion: @escaping (Result<AttractionDetail, MoyaError>) -> Void)
     func fetchImage(source: String, completion: @escaping (Result<UIImage, AFError>) -> Void)
 }
@@ -20,23 +20,15 @@ protocol TripApiNetworkProtocol {
 class TripApiNetwork {
     
     private let provider = MoyaProvider<TripApiTargetType>()
-    
-    //    private let locationService = LocationService()
-        private let baseUrl = "https://api.opentripmap.com/0.1/en/places/"
-        private var firstPartUrl = ""
-        private var secondPartUrl = ""
-        private var finalUrl = ""
-        private let apiKey = "5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
-        private var radius = "100000"
-        private var limit = "1000"
-        private var latitude = "44.811871605508614"
-        private var longitude = "20.387621036232584"
-    
+
+    private let apiKey = "5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
+    private var radius = "100000"
+    private var limit = "10000"
 }
 
 extension TripApiNetwork: TripApiNetworkProtocol {
-    func fetchData(rate: String, kind: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void) {
-        let target = TripApiTargetType.fetchData(rate: rate, kind: kind, radius: radius, longitude: longitude, latitude: latitude, limit: limit, apiKey: apiKey)
+    func fetchData(rate: String, kind: String, lat: String, lon: String, completion: @escaping (Result<[Attraction], MoyaError>) -> Void) {
+        let target = TripApiTargetType.fetchData(rate: rate, kind: kind, radius: radius, longitude: lon, latitude: lat, limit: limit, apiKey: apiKey)
         provider.request(target) { result in
             switch result {
                 
@@ -56,7 +48,6 @@ extension TripApiNetwork: TripApiNetworkProtocol {
     }
     
     func fetchDetailData(xid: String, completion: @escaping (Result<AttractionDetail, MoyaError>) -> Void) {
-        finalUrl = baseUrl + "xid/" + xid + "?apikey=" + apiKey
         let target = TripApiTargetType.fetchDetailData(xid: xid, apikey: apiKey)
         provider.request(target) { result in
             switch result {

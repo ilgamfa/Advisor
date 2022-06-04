@@ -6,6 +6,7 @@ target 'Advisor_V2' do
   use_frameworks!
   pod 'Moya'
   pod 'AlamofireImage'
+  pod 'lottie-ios'
   # Pods for Advisor_V2
 
 end

@@ -18,9 +18,6 @@ struct AttractionDetail: Decodable {
 
 enum CodingKeys: String, CodingKey {
     case xid, name, kinds, preview
-//    Не работает вот так
-//    case wikipediaExtracts = "wikipedia_extracts"
-//    Так работает
     case wikipedia_extracts
     case point
 }
