@@ -80,7 +80,7 @@ class FeedView: UIViewController {
     private func setupNavigationBar() {
         let button = UIButton(type: .system)
         button.configuration = .filled()
-        button.tintColor = .orange
+        button.tintColor = .purple
         button.setImage(UIImage(systemName: "bolt.heart.fill"), for: .normal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
