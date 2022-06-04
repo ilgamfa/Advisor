@@ -11,6 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapView" customModule="Advisor_V2" customModuleProvider="target">
             <connections>
                 <outlet property="mapView" destination="GpF-fF-G6c" id="ZJm-QY-cu7"/>
+                <outlet property="minusButton" destination="hpQ-mW-IDL" id="jF5-g6-aed"/>
+                <outlet property="plusButton" destination="7di-8a-Dob" id="Fak-2p-XgB"/>
+                <outlet property="settingsButton" destination="jmv-7b-dEd" id="rXc-0p-Wh0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,19 +25,73 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GpF-fF-G6c">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </mapView>
+                <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpQ-mW-IDL">
+                    <rect key="frame" x="364" y="450.5" width="45" height="45"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="QhZ-xt-0PX"/>
+                        <constraint firstAttribute="width" constant="45" id="fZo-eX-vBn"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="settings"/>
+                    <buttonConfiguration key="configuration" style="plain" image="minus"/>
+                    <connections>
+                        <action selector="minusButtonDidTap:" destination="-1" eventType="touchUpInside" id="roh-PQ-10f"/>
+                    </connections>
+                </button>
+                <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7di-8a-Dob">
+                    <rect key="frame" x="364" y="400.5" width="45" height="45"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="DyC-3F-yvu"/>
+                        <constraint firstAttribute="height" constant="45" id="MWK-uv-isA"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="settings"/>
+                    <buttonConfiguration key="configuration" style="plain" image="plus"/>
+                    <connections>
+                        <action selector="plusButtonDidTap:" destination="-1" eventType="touchUpInside" id="o1Z-nX-UBp"/>
+                    </connections>
+                </button>
+                <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmv-7b-dEd">
+                    <rect key="frame" x="364" y="335.5" width="45" height="45"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="UPt-6w-ArH"/>
+                        <constraint firstAttribute="height" constant="45" id="hI5-fC-Tfw"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="settings"/>
+                    <buttonConfiguration key="configuration" style="plain" image="settings"/>
+                    <connections>
+                        <action selector="settingsButtonDidTap:" destination="-1" eventType="touchUpInside" id="ERX-Er-jfc"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hpQ-mW-IDL" secondAttribute="trailing" constant="5" id="3Y8-P6-e8C"/>
+                <constraint firstItem="7di-8a-Dob" firstAttribute="top" secondItem="jmv-7b-dEd" secondAttribute="bottom" constant="20" id="Gox-25-XXq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jmv-7b-dEd" secondAttribute="trailing" constant="5" id="Ncj-HX-2k1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7di-8a-Dob" secondAttribute="trailing" constant="5" id="Yyz-bB-SyR"/>
                 <constraint firstAttribute="trailing" secondItem="GpF-fF-G6c" secondAttribute="trailing" id="faa-rj-q5S"/>
                 <constraint firstAttribute="bottom" secondItem="GpF-fF-G6c" secondAttribute="bottom" id="uZB-dm-Qdp"/>
+                <constraint firstItem="7di-8a-Dob" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-25" id="ukb-b0-yXB"/>
                 <constraint firstItem="GpF-fF-G6c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vub-TU-acb"/>
                 <constraint firstItem="GpF-fF-G6c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wZT-gy-WaL"/>
+                <constraint firstItem="hpQ-mW-IDL" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="25" id="wyb-AO-eBb"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
         </view>
     </objects>
     <resources>
+        <image name="minus" width="32" height="32"/>
+        <image name="plus" width="32" height="32"/>
+        <image name="settings" width="32" height="32"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
