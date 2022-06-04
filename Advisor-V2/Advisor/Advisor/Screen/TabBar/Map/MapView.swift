@@ -17,20 +17,25 @@ protocol MapViewProtocol: AnyObject {
 class MapView: UIViewController {
     
     @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var settingsButton: UIButton!
+    @IBOutlet private weak var plusButton: UIButton!
+    @IBOutlet private weak var minusButton: UIButton!
     
     var presenter: MapPresenterProtocol?
     var configurator = MapConfigurator()
     var locationManager = CLLocationManager()
     var rate: String?
     var kind: String?
+    var span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         configurator.configure(view: self)
-        
+        configureButtons()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if navigationController?.viewControllers.last?.nibName == "DetailView" {
@@ -54,6 +59,43 @@ class MapView: UIViewController {
         } else {
             presenter?.presentMap()
         }
+    }
+    
+    private func configureButtons() {
+        [settingsButton, minusButton, plusButton].forEach { buttons in
+            buttons?.layer.cornerRadius = 6
+        }
+    }
+    private func zoomMap(isZoomOut: Bool) {
+        var region: MKCoordinateRegion = mapView.region
+        if isZoomOut {
+            region.span.latitudeDelta *= 2.0
+            region.span.longitudeDelta *= 2.0
+        } else {
+            region.span.latitudeDelta /= 2.0
+            region.span.longitudeDelta /= 2.0
+        }
+        mapView.setRegion(region, animated: true)
+    }
+    
+    @IBAction func settingsButtonDidTap(_ sender: Any) {
+        let settings = SettingsView(nibName: SettingsView.identifier, bundle: nil)
+        if #available(iOS 15.0, *) {
+            if let presentationController = settings.presentationController as? UISheetPresentationController {
+                presentationController.detents = [.medium()]
+            }
+        } else {
+            settings.modalPresentationStyle = .formSheet
+        }
+        present(settings, animated: true)
+    }
+    
+    @IBAction func plusButtonDidTap(_ sender: Any) {
+        zoomMap(isZoomOut: false)
+    }
+    
+    @IBAction func minusButtonDidTap(_ sender: Any) {
+        zoomMap(isZoomOut: true)
     }
 }
 
@@ -85,10 +127,8 @@ extension MapView: MapViewProtocol {
 extension MapView: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: span)
-        
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.showsUserLocation = true
         locationManager.stopUpdatingLocation()        
