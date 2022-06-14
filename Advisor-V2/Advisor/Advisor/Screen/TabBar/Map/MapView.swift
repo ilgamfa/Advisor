@@ -20,6 +20,7 @@ class MapView: UIViewController {
     @IBOutlet private weak var settingsButton: UIButton!
     @IBOutlet private weak var plusButton: UIButton!
     @IBOutlet private weak var minusButton: UIButton!
+    @IBOutlet private weak var locationButton: UIButton!
     
     var presenter: MapPresenterProtocol?
     var configurator = MapConfigurator()
@@ -62,7 +63,7 @@ class MapView: UIViewController {
     }
     
     private func configureButtons() {
-        [settingsButton, minusButton, plusButton].forEach { buttons in
+        [settingsButton, minusButton, plusButton, locationButton].forEach { buttons in
             buttons?.layer.cornerRadius = 6
         }
     }
@@ -96,6 +97,9 @@ class MapView: UIViewController {
     
     @IBAction func minusButtonDidTap(_ sender: Any) {
         zoomMap(isZoomOut: true)
+    }
+    @IBAction func locationButtonDidTap(_ sender: Any) {
+        locationManager.startUpdatingLocation()
     }
 }
 
