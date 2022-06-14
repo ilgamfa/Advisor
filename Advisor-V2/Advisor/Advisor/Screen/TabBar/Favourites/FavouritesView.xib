@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouritesView" customModule="Advisor_V2" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="apB-VN-cZ5" id="u5U-Wj-QhK"/>
+                <outlet property="labelTopConstraint" destination="wtc-10-vyW" id="gIT-iB-zVQ"/>
+                <outlet property="notObjectsLabel" destination="LnZ-JB-0Wc" id="76g-h5-J14"/>
                 <outlet property="tableView" destination="sEt-Qk-kL7" id="SOP-Oy-DRe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -42,16 +44,25 @@
                         <action selector="backButtonDidTap:" destination="-1" eventType="touchUpInside" id="sib-Ju-RBl"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы еще не добавили ни одного места." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-JB-0Wc">
+                    <rect key="frame" x="16" y="54" width="382" height="60"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="apB-VN-cZ5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="CZl-IA-Xck"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LnZ-JB-0Wc" secondAttribute="trailing" constant="16" id="DLn-LU-lAB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sEt-Qk-kL7" secondAttribute="trailing" id="E3j-Vy-v7A"/>
                 <constraint firstItem="sEt-Qk-kL7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cOd-hR-83q"/>
+                <constraint firstItem="LnZ-JB-0Wc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="cdr-Xc-8x1"/>
                 <constraint firstAttribute="bottom" secondItem="sEt-Qk-kL7" secondAttribute="bottom" id="fIH-18-hBF"/>
                 <constraint firstItem="sEt-Qk-kL7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lm5-C4-hQf"/>
                 <constraint firstItem="apB-VN-cZ5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="56" id="n9S-ju-qO7"/>
+                <constraint firstItem="LnZ-JB-0Wc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="wtc-10-vyW"/>
             </constraints>
             <point key="canvasLocation" x="133" y="96"/>
         </view>

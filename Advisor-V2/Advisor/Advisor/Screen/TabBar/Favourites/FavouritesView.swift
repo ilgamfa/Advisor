@@ -15,9 +15,13 @@ class FavouritesView: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var notObjectsLabel: UILabel!
+    @IBOutlet private weak var labelTopConstraint: NSLayoutConstraint!
     
     var presenter: FavouritesPresenterProtocol?
     var configurator = FavouritesConfigurator()
+    
+    var objects = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,7 @@ class FavouritesView: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        notObjectsLabel.isHidden = objects != 0
         if navigationController?.viewControllers.count == 1 {
             backButton.isHidden = true
         }
@@ -41,6 +46,7 @@ class FavouritesView: UIViewController {
     
     private func setupTableView() {
         let height = tableView.visibleSize.height / 5
+        labelTopConstraint.constant += height
         let headerView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: height))
         self.tableView.tableHeaderView = headerView
         headerView.imageView.image = UIImage(named: "kazan")
@@ -74,7 +80,7 @@ extension FavouritesView: UITableViewDelegate {
 
 extension FavouritesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 25
+        return objects
         
     }
     
