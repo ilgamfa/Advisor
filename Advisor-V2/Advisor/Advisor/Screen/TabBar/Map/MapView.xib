@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapView" customModule="Advisor_V2" customModuleProvider="target">
             <connections>
+                <outlet property="locationButton" destination="yIl-EL-1w0" id="sbl-kn-8Y7"/>
                 <outlet property="mapView" destination="GpF-fF-G6c" id="ZJm-QY-cu7"/>
                 <outlet property="minusButton" destination="hpQ-mW-IDL" id="jF5-g6-aed"/>
                 <outlet property="plusButton" destination="7di-8a-Dob" id="Fak-2p-XgB"/>
@@ -67,6 +68,22 @@
                         <action selector="settingsButtonDidTap:" destination="-1" eventType="touchUpInside" id="ERX-Er-jfc"/>
                     </connections>
                 </button>
+                <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIl-EL-1w0">
+                    <rect key="frame" x="364" y="515.5" width="45" height="45"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="4c5-F0-T58"/>
+                        <constraint firstAttribute="width" constant="45" id="PHw-4d-UF3"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="settings"/>
+                    <buttonConfiguration key="configuration" style="plain" image="location">
+                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="1" scale="small" weight="thin"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="locationButtonDidTap:" destination="-1" eventType="touchUpInside" id="Rm0-zY-Pb4"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -76,16 +93,19 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jmv-7b-dEd" secondAttribute="trailing" constant="5" id="Ncj-HX-2k1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7di-8a-Dob" secondAttribute="trailing" constant="5" id="Yyz-bB-SyR"/>
                 <constraint firstAttribute="trailing" secondItem="GpF-fF-G6c" secondAttribute="trailing" id="faa-rj-q5S"/>
+                <constraint firstItem="yIl-EL-1w0" firstAttribute="top" secondItem="hpQ-mW-IDL" secondAttribute="bottom" constant="20" id="nGw-cP-khH"/>
                 <constraint firstAttribute="bottom" secondItem="GpF-fF-G6c" secondAttribute="bottom" id="uZB-dm-Qdp"/>
                 <constraint firstItem="7di-8a-Dob" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-25" id="ukb-b0-yXB"/>
                 <constraint firstItem="GpF-fF-G6c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vub-TU-acb"/>
                 <constraint firstItem="GpF-fF-G6c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wZT-gy-WaL"/>
                 <constraint firstItem="hpQ-mW-IDL" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="25" id="wyb-AO-eBb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yIl-EL-1w0" secondAttribute="trailing" constant="5" id="xqk-2o-1L7"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
         </view>
     </objects>
     <resources>
+        <image name="location" width="32" height="32"/>
         <image name="minus" width="32" height="32"/>
         <image name="plus" width="32" height="32"/>
         <image name="settings" width="32" height="32"/>

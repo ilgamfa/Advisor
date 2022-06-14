@@ -15,6 +15,8 @@ class TabBarView: UITabBarController {
         setupTabBarAppearance()
         setupViews()
     }
+
+    let tabBarTintColor = UIColor(named: "tabBarTint")
     
     func setupTabBarAppearance() {
         if #available(iOS 15, *) {
@@ -23,33 +25,25 @@ class TabBarView: UITabBarController {
 
             UITabBar.appearance().scrollEdgeAppearance = appearance
             appearance.backgroundColor = .secondarySystemBackground
-            appearance.stackedLayoutAppearance.selected.iconColor = .black
+            appearance.stackedLayoutAppearance.selected.iconColor = tabBarTintColor
         }
-//
-//        if #available(iOS 15, *) {
-//            let appearance = UINavigationBarAppearance()
-//            appearance.configureWithOpaqueBackground()
-//            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-//            appearance.backgroundColor = .white
-//
-//            UINavigationBar.appearance().standardAppearance = appearance
-//            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-//        }
     }
     
     func createNavController(for rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.image = image
+        navController.tabBarItem.title = title
         rootViewController.navigationItem.title = title
         navController.navigationBar.tintColor = .black
+        tabBar.tintColor = tabBarTintColor
         return navController
     }
     
     func setupViews() {
         viewControllers = [
-            createNavController(for: HomeView(), title: "Home", image: UIImage(systemName: "house")!),
-            createNavController(for: MapView(), title: "", image: UIImage(systemName: "map")!),
-            createNavController(for: FavouritesView() , title: "Saved", image: UIImage(systemName: "heart")!)
+            createNavController(for: HomeView(), title: "Home", image: UIImage(systemName: "house.fill")!),
+            createNavController(for: MapView(), title: "Map", image: UIImage(systemName: "globe.europe.africa.fill")!),
+            createNavController(for: FavouritesView() , title: "Saved", image: UIImage(systemName: "bolt.heart.fill")!)
         ]
     }
 }
