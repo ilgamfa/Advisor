@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FavouritesPresenterProtocol: AnyObject {
-    
+    func dismissScreen()
 }
 
 class FavouritesPresenter: FavouritesPresenterProtocol {
@@ -19,5 +19,9 @@ class FavouritesPresenter: FavouritesPresenterProtocol {
     
     init(view: FavouritesViewProtocol) {
         self.view = view
+    }
+    
+    func dismissScreen() {
+        router?.dismissScreen()
     }
 }

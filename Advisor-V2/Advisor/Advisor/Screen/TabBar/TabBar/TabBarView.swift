@@ -33,7 +33,6 @@ class TabBarView: UITabBarController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.image = image
         navController.tabBarItem.title = title
-        rootViewController.navigationItem.title = title
         navController.navigationBar.tintColor = .black
         tabBar.tintColor = tabBarTintColor
         return navController
@@ -41,9 +40,9 @@ class TabBarView: UITabBarController {
     
     func setupViews() {
         viewControllers = [
-            createNavController(for: HomeView(), title: "Home", image: UIImage(systemName: "house.fill")!),
-            createNavController(for: MapView(), title: "Map", image: UIImage(systemName: "globe.europe.africa.fill")!),
-            createNavController(for: FavouritesView() , title: "Saved", image: UIImage(systemName: "bolt.heart.fill")!)
+            createNavController(for: HomeView(), title: "Главная", image: UIImage(systemName: "house.fill")!),
+            createNavController(for: MapView(), title: "Карта", image: UIImage(systemName: "globe.europe.africa.fill")!),
+            createNavController(for: FavouritesView() , title: "Избранное", image: UIImage(systemName: "bolt.heart.fill")!)
         ]
     }
 }

@@ -27,8 +27,7 @@ class TableViewHeader: UITableViewHeaderFooterView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = .filled()
         button.tintColor = UIColor(named: "tabBarTint")
-        button.setImage(UIImage(systemName: "map"), for: .normal)
-        button.setTitle("Show on Map", for: .normal)
+        button.setTitle("Показать на карте", for: .normal)
         button.addTarget(self, action: #selector(showOnMap), for: .touchUpInside)
         
         contentView.addSubview(title)

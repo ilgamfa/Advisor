@@ -8,7 +8,8 @@
 import Foundation
 
 protocol DetailRouterProtocol {
-    
+    func routeToFavourites()
+    func routeToMap(model: AttractionDetail)
 }
 
 class DetailRouter: DetailRouterProtocol {
@@ -16,5 +17,17 @@ class DetailRouter: DetailRouterProtocol {
     
     init(view: DetailView) {
         self.view = view
+    }
+    
+    func routeToFavourites() {
+        let favourites = FavouritesView(nibName: FavouritesView.identifier, bundle: nil)
+        view?.navigationController?.pushViewController(favourites, animated: true)
+    }
+    
+    func routeToMap(model: AttractionDetail) {
+        let map = MapView(nibName: MapView.identifier, bundle: nil)
+        map.mapFlow = .oneObject
+        map.model = model
+        view?.navigationController?.pushViewController(map, animated: true)
     }
 }

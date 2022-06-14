@@ -13,6 +13,8 @@ protocol MapPresenterProtocol: AnyObject {
     func presentMap()
     func presentMapWith(rate: String, kind: String)
     func presentDetailView(xid: String)
+    func presentOneObject(model: AttractionDetail)
+    func dismissScreen()
 }
 
 class MapPresenter: MapPresenterProtocol {
@@ -69,10 +71,26 @@ class MapPresenter: MapPresenterProtocol {
     func presentMap() {
         checkLocationEnabled(rate: "3", kind: "interesting_places")
     }
+    
     func presentMapWith(rate: String, kind: String) {
         checkLocationEnabled(rate: rate, kind: kind)
     }
+    
+    func presentOneObject(model: AttractionDetail) {
+        let pin = Annotation(title: model.name,
+                             locationName: model.kinds?.split(separator: ",").first?.description,
+                             discipline: model.kinds,
+                             coordinate: CLLocationCoordinate2D(latitude: model.point!.lat,
+                                                                longitude: model.point!.lon),
+                             xid: model.xid!)
+        self.view?.pinAnnotation(annotations: [pin])
+    }
+    
     func presentDetailView(xid: String) {
         router?.routeToDetailView(xid: xid)
+    }
+    
+    func dismissScreen() {
+        router?.dismissScreen()
     }
 }

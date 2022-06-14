@@ -8,13 +8,17 @@
 import Foundation
 
 protocol FavouritesRouterProtocol: AnyObject {
-    
+    func dismissScreen()
 }
 
 class FavouritesRouter: FavouritesRouterProtocol {
-    weak var view: FavouritesViewProtocol?
+    weak var view: FavouritesView?
     
-    init(view: FavouritesViewProtocol) {
+    init(view: FavouritesView) {
         self.view = view
+    }
+    
+    func dismissScreen() {
+        view?.navigationController?.popViewController(animated: true)
     }
 }

@@ -12,6 +12,8 @@ import Alamofire
 
 protocol DetailPresenterProtocol: AnyObject {
     func presentFlow(xid: String)
+    func presentFavourites()
+    func presentMap(model: AttractionDetail)
 }
 
 class DetailPresenter {
@@ -29,21 +31,18 @@ extension DetailPresenter: DetailPresenterProtocol {
         interactor?.fetchDetailData(xid: xid, completion: { result in
             switch result {
             case .success(let detail):
-                let name = detail.name ?? "No name yet"
-                let kinds = detail.kinds ?? ""
-                let description = detail.wikipedia_extracts?.text ?? kinds
                 if let imageSource = detail.preview?.source {
                     self.downloadImage(source: imageSource) { result in
                         switch result {
                         case .success(let image):
-                            self.view?.configureDetailFlow(image: image, title: name, description: description)
+                            self.view?.configureDetailFlow(model: AttractionDetailModel(objectImage: image, attractionDetail: detail))
                         case .failure(let error):
-                            self.view?.configureDetailFlow(image: nil, title: name, description: description)
+                            self.view?.configureDetailFlow(model: AttractionDetailModel(objectImage: nil, attractionDetail: detail))
                             debugPrint(error)
                         }
                     }
                 } else {
-                    self.view?.configureDetailFlow(image: nil, title: name, description: description)
+                    self.view?.configureDetailFlow(model: AttractionDetailModel(objectImage: nil, attractionDetail: detail))
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -60,5 +59,13 @@ extension DetailPresenter: DetailPresenterProtocol {
                 completion(.failure(error))
             }
         })
+    }
+    
+    func presentFavourites() {
+        router?.routeToFavourites()
+    }
+    
+    func presentMap(model: AttractionDetail) {
+        router?.routeToMap(model: model)
     }
 }

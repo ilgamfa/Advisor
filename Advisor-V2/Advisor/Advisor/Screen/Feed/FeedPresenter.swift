@@ -15,6 +15,7 @@ protocol FeedPresenterProtocol: AnyObject {
     func setHeader(header: String)
     func presentDetailView(xid: String)
     func presentMapViewWith(rate: String?, kind: String?, indexFlow: Int)
+    func presentFavourites()
 }
 
 class FeedPresenter {
@@ -81,5 +82,9 @@ extension FeedPresenter: FeedPresenterProtocol {
                 router?.routeToMapView(rate: flow.rate, kind: flow.collectionItemName)
             }
         }
+    }
+    
+    func presentFavourites() {
+        router?.routeToFavourites()
     }
 }

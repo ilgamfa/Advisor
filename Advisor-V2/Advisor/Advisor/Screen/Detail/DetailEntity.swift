@@ -6,8 +6,15 @@
 //
 
 import Foundation
+import UIKit
+
+struct AttractionDetailModel {
+    var objectImage: UIImage?
+    var attractionDetail: AttractionDetail
+}
 
 struct AttractionDetail: Decodable {
+    var xid: String?
     var name: String?
     var address: Address?
     var kinds: String?

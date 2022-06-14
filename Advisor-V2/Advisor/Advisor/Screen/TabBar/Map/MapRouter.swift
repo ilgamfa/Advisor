@@ -9,6 +9,7 @@ import Foundation
 
 protocol MapRouterProtocol: AnyObject {
     func routeToDetailView(xid: String)
+    func dismissScreen()
 }
 
 class MapRouter: MapRouterProtocol {
@@ -23,5 +24,8 @@ class MapRouter: MapRouterProtocol {
         let detail = DetailView(nibName: DetailView.identifier, bundle: nil)
         detail.xid = xid
         view?.navigationController?.pushViewController(detail, animated: true)
+    }
+    func dismissScreen() {
+        view?.navigationController?.popViewController(animated: true)
     }
 }
