@@ -19,12 +19,12 @@ protocol HomeEntityProtocol {
 
 class HomeEntity: HomeEntityProtocol {
     let categoryModels: [CategoryModel] = [
-        CategoryModel(categoryImageName: "interestingPlaces", categoryLabel: "Interesting places"),
-        CategoryModel(categoryImageName: "touristFacilities", categoryLabel: "Tourist facilities"),
-        CategoryModel(categoryImageName: "amusements", categoryLabel: "Amusements"),
-        CategoryModel(categoryImageName: "accommodations", categoryLabel: "Accommodations"),
-        CategoryModel(categoryImageName: "sport", categoryLabel: "Sport"),
-        CategoryModel(categoryImageName: "adult", categoryLabel: "Adult"),
+        CategoryModel(categoryImageName: "interestingPlaces", categoryLabel: "Что-то интересное"),
+        CategoryModel(categoryImageName: "touristFacilities", categoryLabel: "Для туристов"),
+        CategoryModel(categoryImageName: "amusements", categoryLabel: "Развлечения"),
+        CategoryModel(categoryImageName: "accommodations", categoryLabel: "Жилье"),
+        CategoryModel(categoryImageName: "sport", categoryLabel: "Спорт"),
+        CategoryModel(categoryImageName: "adult", categoryLabel: "Для взрослых"),
     ]
     
     func getCategoryModels() -> [CategoryModel] {

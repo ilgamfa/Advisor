@@ -34,8 +34,8 @@
 		BB78C3AE28199972009D868B /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78C3AC28199972009D868B /* HomeView.xib */; };
 		BB78C3B12819999B009D868B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3AF2819999B009D868B /* MapView.swift */; };
 		BB78C3B22819999B009D868B /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78C3B02819999B009D868B /* MapView.xib */; };
-		BB78C3B528199A87009D868B /* FafouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3B328199A87009D868B /* FafouritesView.swift */; };
-		BB78C3B628199A87009D868B /* FafouritesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78C3B428199A87009D868B /* FafouritesView.xib */; };
+		BB78C3B528199A87009D868B /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3B328199A87009D868B /* FavouritesView.swift */; };
+		BB78C3B628199A87009D868B /* FavouritesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78C3B428199A87009D868B /* FavouritesView.xib */; };
 		BB78C3B92819A287009D868B /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3B82819A287009D868B /* HomeInteractor.swift */; };
 		BB78C3BB2819A296009D868B /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3BA2819A296009D868B /* HomePresenter.swift */; };
 		BB78C3BD2819A2A5009D868B /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB78C3BC2819A2A5009D868B /* HomeRouter.swift */; };
@@ -72,6 +72,7 @@
 		D693E0272848D1FA0083999C /* travelLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = D693E0262848D1FA0083999C /* travelLottie.json */; };
 		D693E02A2848E0A80083999C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E0292848E0A80083999C /* LocationService.swift */; };
 		D693E02C284913460083999C /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E02B284913460083999C /* Annotation.swift */; };
+		D6B656A82858E4CE000D4DF7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B656A62858E4CE000D4DF7 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,8 +106,8 @@
 		BB78C3AC28199972009D868B /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
 		BB78C3AF2819999B009D868B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BB78C3B02819999B009D868B /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
-		BB78C3B328199A87009D868B /* FafouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FafouritesView.swift; sourceTree = "<group>"; };
-		BB78C3B428199A87009D868B /* FafouritesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FafouritesView.xib; sourceTree = "<group>"; };
+		BB78C3B328199A87009D868B /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		BB78C3B428199A87009D868B /* FavouritesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesView.xib; sourceTree = "<group>"; };
 		BB78C3B82819A287009D868B /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		BB78C3BA2819A296009D868B /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		BB78C3BC2819A2A5009D868B /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		D693E0262848D1FA0083999C /* travelLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelLottie.json; sourceTree = "<group>"; };
 		D693E0292848E0A80083999C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D693E02B284913460083999C /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		D6B656A62858E4CE000D4DF7 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E0D75B9A3424115F84FD6D33 /* Pods-Advisor_V2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advisor_V2.debug.xcconfig"; path = "Target Support Files/Pods-Advisor_V2/Pods-Advisor_V2.debug.xcconfig"; sourceTree = "<group>"; };
 		FB5F769E7B7435C804D2B68C /* Pods-Advisor_V2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advisor_V2.release.xcconfig"; path = "Target Support Files/Pods-Advisor_V2/Pods-Advisor_V2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -328,8 +330,9 @@
 		BB78C3AA281964A0009D868B /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
-				BB78C3B328199A87009D868B /* FafouritesView.swift */,
-				BB78C3B428199A87009D868B /* FafouritesView.xib */,
+				D6B656A62858E4CE000D4DF7 /* HeaderView.swift */,
+				BB78C3B328199A87009D868B /* FavouritesView.swift */,
+				BB78C3B428199A87009D868B /* FavouritesView.xib */,
 				BB78C3DC2819C6AA009D868B /* FavouritesInteractor.swift */,
 				BB78C3DE2819C6B6009D868B /* FavouritesPresenter.swift */,
 				BB78C3E02819C6C8009D868B /* FavouritesEntity.swift */,
@@ -455,7 +458,7 @@
 				BB78C3B22819999B009D868B /* MapView.xib in Resources */,
 				BB617FE9281AFEB1000320BF /* TableCell.xib in Resources */,
 				BB78C38F28195C82009D868B /* Main.storyboard in Resources */,
-				BB78C3B628199A87009D868B /* FafouritesView.xib in Resources */,
+				BB78C3B628199A87009D868B /* FavouritesView.xib in Resources */,
 				BB78C3AE28199972009D868B /* HomeView.xib in Resources */,
 				BB130D84281ACE2C001E7679 /* CategoryCell.xib in Resources */,
 				BB130D8A281AEC78001E7679 /* FeedView.xib in Resources */,
@@ -512,7 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB78C3B528199A87009D868B /* FafouritesView.swift in Sources */,
+				BB78C3B528199A87009D868B /* FavouritesView.swift in Sources */,
 				BB78C3C92819A31F009D868B /* BaseRouter.swift in Sources */,
 				BB78C3E12819C6C8009D868B /* FavouritesEntity.swift in Sources */,
 				BB78C3BD2819A2A5009D868B /* HomeRouter.swift in Sources */,
@@ -563,6 +566,7 @@
 				BB78C3A6281963AB009D868B /* NavigationConstants.swift in Sources */,
 				BB78C3BB2819A296009D868B /* HomePresenter.swift in Sources */,
 				BB130D83281ACE2C001E7679 /* CategoryCell.swift in Sources */,
+				D6B656A82858E4CE000D4DF7 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

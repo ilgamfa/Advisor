@@ -7,6 +7,11 @@
 
 import UIKit
 import MapKit
+enum MapFlow {
+    case all
+    case category
+    case oneObject
+}
 
 protocol MapViewProtocol: AnyObject {
     func showUserLocation()
@@ -27,6 +32,9 @@ class MapView: UIViewController {
     var locationManager = CLLocationManager()
     var rate: String?
     var kind: String?
+    var model: AttractionDetail?
+    var mapFlow = MapFlow.all
+    
     var span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 
     override func viewDidLoad() {
@@ -55,10 +63,17 @@ class MapView: UIViewController {
     private func setupMap() {
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
-        if let rate = rate, let kind = kind {
-            presenter?.presentMapWith(rate: rate, kind: kind)
-        } else {
+        switch mapFlow {
+        case .all:
             presenter?.presentMap()
+        case .category:
+            if let rate = rate, let kind = kind {
+                presenter?.presentMapWith(rate: rate, kind: kind)
+            }
+        case .oneObject:
+            if let model = model {
+                presenter?.presentOneObject(model: model)
+            }
         }
     }
     
@@ -131,8 +146,11 @@ extension MapView: MapViewProtocol {
 extension MapView: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: span)
+        
+        var coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: span)
+        if let model = model, mapFlow == .oneObject {
+            coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: model.point!.lat, longitude: model.point!.lon), span: span)
+        }
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.showsUserLocation = true
         locationManager.stopUpdatingLocation()        
@@ -142,6 +160,6 @@ extension MapView: CLLocationManagerDelegate {
 extension MapView: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let annotation = view.annotation as? Annotation else { return }
-        presenter?.presentDetailView(xid: annotation.xid)
+        mapFlow == .oneObject ? presenter?.dismissScreen() : presenter?.presentDetailView(xid: annotation.xid)
     }
 }

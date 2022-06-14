@@ -82,7 +82,12 @@ class FeedView: UIViewController {
         button.configuration = .filled()
         button.tintColor = UIColor(named: "tabBarTint")
         button.setImage(UIImage(systemName: "bolt.heart.fill"), for: .normal)
+        button.addTarget(self, action: #selector(presentFavourites), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
+    @objc func presentFavourites() {
+        presenter?.presentFavourites()
     }
 }
 
@@ -101,7 +106,7 @@ extension FeedView: FeedViewProtocol {
     }
     
     func showAlertError(message: String) {
-        let alert = UIAlertController.init(title: "Something went wrong", message: message, preferredStyle: .alert)
+        let alert = UIAlertController.init(title: "Что-то пошло не так", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
             self.showSpinner(show: false)
         }))
@@ -183,7 +188,7 @@ extension FeedView: UICollectionViewDataSource {
 extension FeedView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let flow = flow else { return }
-        indexPath.row == 0 ? presenter?.setHeader(header: "Great Spots Near You") : presenter?.setHeader(header: flow.collectionViewCellNames[indexPath.row])
+        indexPath.row == 0 ? presenter?.setHeader(header: "Рядом со мной") : presenter?.setHeader(header: flow.collectionViewCellNames[indexPath.row])
         self.rate = flow.collectionViewCellRequestSubcatRates[indexPath.row]
         self.kind = flow.collectionViewCellRequestSubcatNames[indexPath.row]
         presenter?.presentTableData(rate: flow.collectionViewCellRequestSubcatRates[indexPath.row], kind: flow.collectionViewCellRequestSubcatNames[indexPath.row])

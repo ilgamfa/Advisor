@@ -10,6 +10,7 @@ import Foundation
 protocol FeedRouterProtocol: AnyObject {
     func routeToDetailView(xid: String)
     func routeToMapView(rate: String, kind: String)
+    func routeToFavourites()
 }
 
 class FeedRouter {
@@ -32,6 +33,12 @@ extension FeedRouter: FeedRouterProtocol {
         let mapView = MapView(nibName: MapView.identifier, bundle: nil)
         mapView.rate = rate
         mapView.kind = kind
+        mapView.mapFlow = .category
         view?.navigationController?.pushViewController(mapView, animated: true)
+    }
+    
+    func routeToFavourites() {
+        let favourites = FavouritesView(nibName: FavouritesView.identifier, bundle: nil)
+        view?.navigationController?.pushViewController(favourites, animated: true)
     }
 }
