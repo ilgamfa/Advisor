@@ -15,12 +15,17 @@ class TabBarView: UITabBarController {
         setupTabBarAppearance()
         setupViews()
     }
+
+    let tabBarTintColor = UIColor(named: "tabBarTint")
     
     func setupTabBarAppearance() {
         if #available(iOS 15, *) {
             let appearance = UITabBarAppearance()
                 appearance.configureWithOpaqueBackground()
+
+            UITabBar.appearance().scrollEdgeAppearance = appearance
             appearance.backgroundColor = .secondarySystemBackground
+            appearance.stackedLayoutAppearance.selected.iconColor = tabBarTintColor
         }
     }
     
@@ -30,7 +35,7 @@ class TabBarView: UITabBarController {
         navController.tabBarItem.title = title
         rootViewController.navigationItem.title = title
         navController.navigationBar.tintColor = .black
-        tabBar.tintColor = .purple
+        tabBar.tintColor = tabBarTintColor
         return navController
     }
     
