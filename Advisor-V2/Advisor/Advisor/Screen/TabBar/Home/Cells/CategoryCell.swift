@@ -20,15 +20,20 @@ class CategoryCell: UICollectionViewCell {
     
     private func setupLayout() {
         self.layer.cornerRadius = 8
-        
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(width: 2, height: 3)
         self.layer.shadowRadius = 3
-        
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
+    }
+    
+    func setSelectedLayer(selected: Bool) {
+        self.layer.borderWidth  = selected ? 3 : 1
+        self.layer.borderColor = selected ? UIColor(named: "tabBarTint")?.cgColor : UIColor.lightGray.cgColor
+        self.layer.shadowColor = selected ? UIColor(named: "tabBarTint")?.cgColor : UIColor.black.cgColor
+        self.layer.shadowOpacity = selected ? 1 : 0.5
     }
     
     func configureCell(imageName: String, label: String) {

@@ -54,7 +54,7 @@
                         <action selector="plusButtonDidTap:" destination="-1" eventType="touchUpInside" id="o1Z-nX-UBp"/>
                     </connections>
                 </button>
-                <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmv-7b-dEd">
+                <button hidden="YES" opaque="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmv-7b-dEd">
                     <rect key="frame" x="364" y="335.5" width="45" height="45"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                     <constraints>
