@@ -62,7 +62,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="0wh-jP-ebI">
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0wh-jP-ebI">
                     <rect key="frame" x="16" y="384" width="382" height="32"/>
                     <segments>
                         <segment title="1"/>
@@ -81,6 +81,9 @@
                     <buttonConfiguration key="configuration" style="filled" title="Показать">
                         <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="ShowButtonDidTap:" destination="-1" eventType="touchUpInside" id="Qf0-nM-TxY"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -7,16 +7,22 @@
 
 import UIKit
 
+protocol SettingsViewProtocol: AnyObject {
+    
+}
+
 class SettingsView: UIViewController {
     
     @IBOutlet weak var segmentedControlMapType: UISegmentedControl!
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var segmentedControlRate: UISegmentedControl!
     
     weak var delegate: MapViewProtocol?
-    var selectedIndex = 0
+    var configurator = SettingsConfigurator()
+    var presenter: SettingsPresenterProtocol?
+    var selectedIndexMapType = 0
+    var selectedCollectionType = 0
+    
     let categoryModels: [CategoryModel] = [
         CategoryModel(categoryImageName: "interestingPlaces", categoryLabel: "Что-то интересное"),
         CategoryModel(categoryImageName: "touristFacilities", categoryLabel: "Для туристов"),
@@ -25,11 +31,20 @@ class SettingsView: UIViewController {
         CategoryModel(categoryImageName: "sport", categoryLabel: "Спорт"),
         CategoryModel(categoryImageName: "adult", categoryLabel: "Для взрослых"),
     ]
+    let rateModels: [String] = [
+        "1",
+        "2",
+        "3",
+        "1h",
+        "2h",
+        "3h"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configurator.configure(view: self)
         setupCollectionView()
-        segmentedControlMapType.selectedSegmentIndex = selectedIndex
+        segmentedControlMapType.selectedSegmentIndex = selectedIndexMapType
     }
     
     private func setupCollectionView() {
@@ -37,10 +52,15 @@ class SettingsView: UIViewController {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: CategoryCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryCell.identifier)
     }
-    
-    @IBAction func changeSegmentControlValue(_ sender: Any) {
-        delegate?.changeMapType(index: segmentedControlMapType.selectedSegmentIndex)
+    @IBAction func ShowButtonDidTap(_ sender: Any) {
+        delegate?.configureSettingsWith(indexMapType: segmentedControlMapType.selectedSegmentIndex,
+                                        indexCollectionType: selectedCollectionType,
+                                        indexRateType: rateModels[segmentedControlRate.selectedSegmentIndex])
     }
+}
+
+extension SettingsView: SettingsViewProtocol {
+    
 }
 
 
@@ -49,6 +69,7 @@ extension SettingsView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell {
             cell.setSelectedLayer(selected: true)
+            self.selectedCollectionType = indexPath.row
         }
     }
     

@@ -18,7 +18,7 @@ protocol MapViewProtocol: AnyObject {
     func showUserLocation()
     func showAlertError(message: String, title: String?, url:String?)
     func pinAnnotation(annotations: [Annotation])
-    func changeMapType(index: Int)
+    func configureSettingsWith(indexMapType: Int, indexCollectionType: Int, indexRateType: String)
 }
 
 class MapView: UIViewController {
@@ -64,9 +64,9 @@ class MapView: UIViewController {
     }
     
     private func setupMap() {
-        let index = UserDefaults.standard.integer(forKey: "MapViewTypeIndex")
-        settings.selectedIndex = index
-        changeMapType(index: index)
+        let indexMapType = UserDefaults.standard.integer(forKey: "MapViewTypeIndex")
+        settings.selectedIndexMapType = indexMapType
+        configureMapTypeWith(indexMapType: indexMapType)
         
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
@@ -152,12 +152,14 @@ extension MapView: MapViewProtocol {
     }
     
     func pinAnnotation(annotations: [Annotation]) {
+        if !mapView.annotations.isEmpty {
+            mapView.removeAnnotations(mapView.annotations)
+        }
         mapView.addAnnotations(annotations)
     }
     
-    func changeMapType(index: Int) {
-        UserDefaults.standard.set(index, forKey: "MapViewTypeIndex")
-        switch index {
+    func configureMapTypeWith(indexMapType: Int) {
+        switch indexMapType {
         case 0:
             mapView.mapType = .standard
         case 1:
@@ -167,6 +169,12 @@ extension MapView: MapViewProtocol {
         default:
             mapView.mapType = .standard
         }
+    }
+    
+    func configureSettingsWith(indexMapType: Int, indexCollectionType: Int, indexRateType: String) {
+        UserDefaults.standard.set(indexMapType, forKey: "MapViewTypeIndex")
+        configureMapTypeWith(indexMapType: indexMapType)
+        presenter?.presentMapWith(rate: indexRateType, kind: collectionTypes[indexCollectionType])
     }
 }
 

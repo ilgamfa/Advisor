@@ -67,6 +67,11 @@
 		BBF5CCD5281EA7820010C456 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */; };
 		BBF5CCD8281EE5360010C456 /* TripApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCD7281EE5360010C456 /* TripApi.swift */; };
 		BBF5CCDC281FDF630010C456 /* TripApiTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5CCDB281FDF630010C456 /* TripApiTargetType.swift */; };
+		D630A30B285E79B100BF5FE5 /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D630A30A285E79B100BF5FE5 /* SettingsConfigurator.swift */; };
+		D630A30F285E79CA00BF5FE5 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D630A30E285E79CA00BF5FE5 /* SettingsPresenter.swift */; };
+		D630A311285E79D500BF5FE5 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D630A310285E79D500BF5FE5 /* SettingsInteractor.swift */; };
+		D630A313285E79E400BF5FE5 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D630A312285E79E400BF5FE5 /* SettingsRouter.swift */; };
+		D630A315285E79EE00BF5FE5 /* SettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D630A314285E79EE00BF5FE5 /* SettingsEntity.swift */; };
 		D6329FDD284BC7DE00B35AC0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6329FDB284BC7DE00B35AC0 /* SettingsView.swift */; };
 		D6329FDE284BC7DE00B35AC0 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6329FDC284BC7DE00B35AC0 /* SettingsView.xib */; };
 		D693E0272848D1FA0083999C /* travelLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = D693E0262848D1FA0083999C /* travelLottie.json */; };
@@ -139,6 +144,11 @@
 		BBF5CCD4281EA7820010C456 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
 		BBF5CCD7281EE5360010C456 /* TripApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripApi.swift; sourceTree = "<group>"; };
 		BBF5CCDB281FDF630010C456 /* TripApiTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripApiTargetType.swift; sourceTree = "<group>"; };
+		D630A30A285E79B100BF5FE5 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
+		D630A30E285E79CA00BF5FE5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		D630A310285E79D500BF5FE5 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		D630A312285E79E400BF5FE5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		D630A314285E79EE00BF5FE5 /* SettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntity.swift; sourceTree = "<group>"; };
 		D6329FDB284BC7DE00B35AC0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6329FDC284BC7DE00B35AC0 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		D693E0262848D1FA0083999C /* travelLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelLottie.json; sourceTree = "<group>"; };
@@ -378,6 +388,11 @@
 			children = (
 				D6329FDB284BC7DE00B35AC0 /* SettingsView.swift */,
 				D6329FDC284BC7DE00B35AC0 /* SettingsView.xib */,
+				D630A30A285E79B100BF5FE5 /* SettingsConfigurator.swift */,
+				D630A30E285E79CA00BF5FE5 /* SettingsPresenter.swift */,
+				D630A310285E79D500BF5FE5 /* SettingsInteractor.swift */,
+				D630A312285E79E400BF5FE5 /* SettingsRouter.swift */,
+				D630A314285E79EE00BF5FE5 /* SettingsEntity.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -532,12 +547,14 @@
 				D693E02A2848E0A80083999C /* LocationService.swift in Sources */,
 				BBC6B9CE2820472200AC0B3C /* DetailConfigurator.swift in Sources */,
 				BB78C3D52819B7F8009D868B /* MapPresenter.swift in Sources */,
+				D630A313285E79E400BF5FE5 /* SettingsRouter.swift in Sources */,
 				BB78C3DB2819B81E009D868B /* MapConfigurator.swift in Sources */,
 				BB78C3C52819A30D009D868B /* BaseInteractor.swift in Sources */,
 				BBF5CCDC281FDF630010C456 /* TripApiTargetType.swift in Sources */,
 				BB78C3AD28199972009D868B /* HomeView.swift in Sources */,
 				BBC6B9D4282047B100AC0B3C /* DetailRouter.swift in Sources */,
 				BB78C3DF2819C6B6009D868B /* FavouritesPresenter.swift in Sources */,
+				D630A30B285E79B100BF5FE5 /* SettingsConfigurator.swift in Sources */,
 				BBF5CCD8281EE5360010C456 /* TripApi.swift in Sources */,
 				BBC6B9D02820476300AC0B3C /* DetailInteractor.swift in Sources */,
 				BB78C38C28195C82009D868B /* ViewController.swift in Sources */,
@@ -548,13 +565,16 @@
 				BB617FE4281AF204000320BF /* FeedConfigurator.swift in Sources */,
 				BBC6B9CB282037C100AC0B3C /* DetailView.swift in Sources */,
 				BB78C3A22819635B009D868B /* TabBarView.swift in Sources */,
+				D630A315285E79EE00BF5FE5 /* SettingsEntity.swift in Sources */,
 				BB78C38A28195C82009D868B /* SceneDelegate.swift in Sources */,
 				BB78C3DD2819C6AA009D868B /* FavouritesInteractor.swift in Sources */,
 				BB78C3BF2819A2B2009D868B /* HomeEntity.swift in Sources */,
 				BB78C3C12819A2CA009D868B /* HomeConfigurator.swift in Sources */,
+				D630A311285E79D500BF5FE5 /* SettingsInteractor.swift in Sources */,
 				BB78C3C72819A316009D868B /* BasePresenter.swift in Sources */,
 				BB130D89281AEC78001E7679 /* FeedView.swift in Sources */,
 				D6329FDD284BC7DE00B35AC0 /* SettingsView.swift in Sources */,
+				D630A30F285E79CA00BF5FE5 /* SettingsPresenter.swift in Sources */,
 				BB617FDC281AF1D7000320BF /* FeedPresenter.swift in Sources */,
 				BBF5CCD1281E94580010C456 /* TableViewHeader.swift in Sources */,
 				BB78C3D92819B809009D868B /* MapEntity.swift in Sources */,

@@ -22,8 +22,8 @@ class TripApiNetwork {
     private let provider = MoyaProvider<TripApiTargetType>()
 
     private let apiKey = "5ae2e3f221c38a28845f05b6811ec1c8612b2b7b55d46425957df5a4"
-    private var radius = "100000"
-    private var limit = "10000"
+    private var radius = "10000000"
+    private var limit = "10000000"
 }
 
 extension TripApiNetwork: TripApiNetworkProtocol {
