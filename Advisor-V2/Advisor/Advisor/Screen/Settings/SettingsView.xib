@@ -3,6 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsView" customModule="Advisor_V2" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="LtO-9U-7vx" id="sEc-vf-yEg"/>
+                <outlet property="segmentedControlMapType" destination="3Ys-bz-PvR" id="Pi6-5v-uBR"/>
+                <outlet property="segmentedControlRate" destination="0wh-jP-ebI" id="was-Ba-QKz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +22,125 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тип карты:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxG-JB-OLo">
+                    <rect key="frame" x="16" y="60" width="382" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="3Ys-bz-PvR">
+                    <rect key="frame" x="16" y="97" width="382" height="32"/>
+                    <segments>
+                        <segment title="Стандарт"/>
+                        <segment title="Гибрид"/>
+                        <segment title="Спутник"/>
+                    </segments>
+                    <color key="selectedSegmentTintColor" name="tabBarTint"/>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категории:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mre-O2-ciW">
+                    <rect key="frame" x="16" y="144" width="382" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="LtO-9U-7vx">
+                    <rect key="frame" x="0.0" y="181" width="414" height="150"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="5ZH-lT-nYi"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="crL-46-K4z">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фильтр по популярности:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yua-ev-MCV">
+                    <rect key="frame" x="16" y="347" width="204" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0wh-jP-ebI">
+                    <rect key="frame" x="16" y="384" width="382" height="32"/>
+                    <segments>
+                        <segment title="1"/>
+                        <segment title="2"/>
+                        <segment title="3"/>
+                        <segment title="1h"/>
+                        <segment title="2h"/>
+                        <segment title="3h"/>
+                    </segments>
+                    <color key="selectedSegmentTintColor" name="tabBarTint"/>
+                </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-iu-7xV">
+                    <rect key="frame" x="162.5" y="831" width="89.5" height="31"/>
+                    <color key="tintColor" name="tabBarTint"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Показать">
+                        <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="ShowButtonDidTap:" destination="-1" eventType="touchUpInside" id="Qf0-nM-TxY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8s-p3-yzX">
+                    <rect key="frame" x="220" y="342" width="45" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain">
+                        <imageReference key="image" image="info.circle" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color name="tabBarTint"/>
+                                <color name="tabBarTint"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="infoButtonDidTap:" destination="-1" eventType="touchUpInside" id="ost-49-GOJ"/>
+                    </connections>
+                </button>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="0wh-jP-ebI" secondAttribute="trailing" constant="16" id="54U-xQ-vtO"/>
+                <constraint firstItem="cxG-JB-OLo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="5no-Bw-aCe"/>
+                <constraint firstItem="3Ys-bz-PvR" firstAttribute="top" secondItem="cxG-JB-OLo" secondAttribute="bottom" constant="16" id="7VV-OR-MgC"/>
+                <constraint firstItem="S8s-p3-yzX" firstAttribute="centerY" secondItem="Yua-ev-MCV" secondAttribute="centerY" id="D1l-hK-bXM"/>
+                <constraint firstItem="Yua-ev-MCV" firstAttribute="top" secondItem="LtO-9U-7vx" secondAttribute="bottom" constant="16" id="Efi-HN-agu"/>
+                <constraint firstItem="3Ys-bz-PvR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Gpr-Yu-efF"/>
+                <constraint firstItem="0Xx-iu-7xV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Jrm-oi-Eqh"/>
+                <constraint firstItem="LtO-9U-7vx" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="L4c-ei-ue4"/>
+                <constraint firstItem="0wh-jP-ebI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="L6N-fa-p6e"/>
+                <constraint firstItem="Mre-O2-ciW" firstAttribute="top" secondItem="3Ys-bz-PvR" secondAttribute="bottom" constant="16" id="NPP-xQ-dLi"/>
+                <constraint firstItem="Mre-O2-ciW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="UKH-tT-WGM"/>
+                <constraint firstItem="Yua-ev-MCV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="UpQ-kI-Hgb"/>
+                <constraint firstItem="S8s-p3-yzX" firstAttribute="leading" secondItem="Yua-ev-MCV" secondAttribute="trailing" id="b5t-oJ-iZ1"/>
+                <constraint firstItem="0Xx-iu-7xV" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="eAP-r8-gvf"/>
+                <constraint firstItem="LtO-9U-7vx" firstAttribute="top" secondItem="Mre-O2-ciW" secondAttribute="bottom" constant="16" id="edt-5U-fv5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cxG-JB-OLo" secondAttribute="trailing" constant="16" id="k0b-RU-5iD"/>
+                <constraint firstItem="LtO-9U-7vx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="k1i-0A-ilf"/>
+                <constraint firstItem="cxG-JB-OLo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="nXi-XL-lyw"/>
+                <constraint firstAttribute="trailing" secondItem="Mre-O2-ciW" secondAttribute="trailing" constant="16" id="r52-6t-NwA"/>
+                <constraint firstItem="0wh-jP-ebI" firstAttribute="top" secondItem="Yua-ev-MCV" secondAttribute="bottom" constant="16" id="udg-IY-VN8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3Ys-bz-PvR" secondAttribute="trailing" constant="16" id="xZg-JF-wkg"/>
+            </constraints>
             <point key="canvasLocation" x="132" y="101"/>
         </view>
     </objects>
     <resources>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="tabBarTint">
+            <color red="0.40784313725490196" green="0.65490196078431373" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

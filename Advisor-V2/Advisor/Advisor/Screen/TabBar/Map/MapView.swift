@@ -11,12 +11,14 @@ enum MapFlow {
     case all
     case category
     case oneObject
+    case userLocation
 }
 
 protocol MapViewProtocol: AnyObject {
     func showUserLocation()
     func showAlertError(message: String, title: String?, url:String?)
     func pinAnnotation(annotations: [Annotation])
+    func configureSettingsWith(indexMapType: Int, indexCollectionType: Int, indexRateType: String)
 }
 
 class MapView: UIViewController {
@@ -34,6 +36,7 @@ class MapView: UIViewController {
     var kind: String?
     var model: AttractionDetail?
     var mapFlow = MapFlow.all
+    let settings = SettingsView(nibName: SettingsView.identifier, bundle: nil)
     
     var span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 
@@ -61,11 +64,16 @@ class MapView: UIViewController {
     }
     
     private func setupMap() {
+        let indexMapType = UserDefaults.standard.integer(forKey: "MapViewTypeIndex")
+        settings.selectedIndexMapType = indexMapType
+        configureMapTypeWith(indexMapType: indexMapType)
+        
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         switch mapFlow {
         case .all:
             presenter?.presentMap()
+            settingsButton.isHidden = false
         case .category:
             if let rate = rate, let kind = kind {
                 presenter?.presentMapWith(rate: rate, kind: kind)
@@ -74,6 +82,8 @@ class MapView: UIViewController {
             if let model = model {
                 presenter?.presentOneObject(model: model)
             }
+        case .userLocation:
+            return
         }
     }
     
@@ -81,7 +91,9 @@ class MapView: UIViewController {
         [settingsButton, minusButton, plusButton, locationButton].forEach { buttons in
             buttons?.layer.cornerRadius = 6
         }
+        settings.delegate = self
     }
+    
     private func zoomMap(isZoomOut: Bool) {
         var region: MKCoordinateRegion = mapView.region
         if isZoomOut {
@@ -95,7 +107,7 @@ class MapView: UIViewController {
     }
     
     @IBAction func settingsButtonDidTap(_ sender: Any) {
-        let settings = SettingsView(nibName: SettingsView.identifier, bundle: nil)
+       
         if #available(iOS 15.0, *) {
             if let presentationController = settings.presentationController as? UISheetPresentationController {
                 presentationController.detents = [.medium()]
@@ -114,6 +126,7 @@ class MapView: UIViewController {
         zoomMap(isZoomOut: true)
     }
     @IBAction func locationButtonDidTap(_ sender: Any) {
+        mapFlow = .userLocation
         locationManager.startUpdatingLocation()
     }
 }
@@ -139,21 +152,42 @@ extension MapView: MapViewProtocol {
     }
     
     func pinAnnotation(annotations: [Annotation]) {
+        if !mapView.annotations.isEmpty {
+            mapView.removeAnnotations(mapView.annotations)
+        }
         mapView.addAnnotations(annotations)
+    }
+    
+    func configureMapTypeWith(indexMapType: Int) {
+        switch indexMapType {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .hybrid
+        case 2:
+            mapView.mapType = .satellite
+        default:
+            mapView.mapType = .standard
+        }
+    }
+    
+    func configureSettingsWith(indexMapType: Int, indexCollectionType: Int, indexRateType: String) {
+        UserDefaults.standard.set(indexMapType, forKey: "MapViewTypeIndex")
+        configureMapTypeWith(indexMapType: indexMapType)
+        presenter?.presentMapWith(rate: indexRateType, kind: collectionTypes[indexCollectionType])
     }
 }
 
 extension MapView: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        
         var coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: span)
         if let model = model, mapFlow == .oneObject {
             coordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: model.point!.lat, longitude: model.point!.lon), span: span)
         }
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.showsUserLocation = true
-        locationManager.stopUpdatingLocation()        
+        locationManager.stopUpdatingLocation()
     }
 }
 

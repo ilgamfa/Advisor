@@ -8,3 +8,11 @@
 import Foundation
 
 
+var collectionTypes: [String] = [
+    "interesting_places",
+    "tourist_facilities",
+    "amusements",
+    "accomodations",
+    "sport",
+    "adult"
+]
