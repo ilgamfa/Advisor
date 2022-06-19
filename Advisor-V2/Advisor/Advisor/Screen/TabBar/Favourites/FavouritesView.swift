@@ -7,6 +7,11 @@
 
 import UIKit
 
+struct FavoritesObject {
+    var xid: String?
+    var name: String?
+}
+
 protocol FavouritesViewProtocol: AnyObject {
     
 }
@@ -20,19 +25,21 @@ class FavouritesView: UIViewController {
     
     var presenter: FavouritesPresenterProtocol?
     var configurator = FavouritesConfigurator()
-    
-    var objects = 5
+    var store = StoreService()
+    var favorites = [FavoritesObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(view: self)
         setupTableView()
         setupNavigationBar()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        notObjectsLabel.isHidden = objects != 0
+        setupObjects()
+        
         if navigationController?.viewControllers.count == 1 {
             backButton.isHidden = true
         }
@@ -43,6 +50,25 @@ class FavouritesView: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
+    private func hideMessageLabel(hide: Bool) {
+       notObjectsLabel.isHidden = hide
+    }
+    
+    private func setupObjects() {
+        favorites.removeAll()
+        store.getAttractions { result in
+            switch result {
+            case .success(let attractions):
+                attractions.forEach { attaction in
+                    self.favorites.append(FavoritesObject(xid: attaction.xid, name: attaction.name))
+                }
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            }
+            self.tableView.reloadData()
+            self.hideMessageLabel(hide: !self.favorites.isEmpty)
+        }
+    }
     
     private func setupTableView() {
         let height = tableView.visibleSize.height / 5
@@ -75,18 +101,20 @@ extension FavouritesView: FavouritesViewProtocol {
 }
 
 extension FavouritesView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.presentDetailView(xid: favorites[indexPath.row].xid!)
+    }
 }
 
 extension FavouritesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects
+        return favorites.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableCell.identifier, for: indexPath) as? TableCell else { return UITableViewCell() }
-        cell.configureCell(label: "Save \(indexPath.row)")
+        cell.configureCell(label: favorites[indexPath.row].name ?? "")
         tableView.separatorStyle = .none
         return cell
     }
@@ -96,6 +124,36 @@ extension FavouritesView: UITableViewDataSource {
         let height = tableView.visibleSize.height / 7
         return height
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let xid = favorites[indexPath.row].xid {
+                store.deleteAttraction(xid: xid)
+                favorites.remove(at: indexPath.row)
+                hideMessageLabel(hide: !favorites.isEmpty)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        } else if editingStyle == .insert {
+
+        }
+    }
+    
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+//            -> UISwipeActionsConfiguration? {
+//            let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+//                if let xid = self.favorites[indexPath.row].xid {
+//                    self.store.deleteAttraction(xid: xid)
+//
+//                    completionHandler(true)
+//                }
+//
+//            }
+//            deleteAction.image = UIImage(systemName: "trash")
+//            deleteAction.backgroundColor = .systemRed
+//            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+//            return configuration
+//    }
+    
 }
 
 extension FavouritesView: UIScrollViewDelegate {

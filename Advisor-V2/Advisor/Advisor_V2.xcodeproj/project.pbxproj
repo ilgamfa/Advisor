@@ -74,6 +74,7 @@
 		D630A315285E79EE00BF5FE5 /* SettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D630A314285E79EE00BF5FE5 /* SettingsEntity.swift */; };
 		D6329FDD284BC7DE00B35AC0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6329FDB284BC7DE00B35AC0 /* SettingsView.swift */; };
 		D6329FDE284BC7DE00B35AC0 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6329FDC284BC7DE00B35AC0 /* SettingsView.xib */; };
+		D65B268B285F38CA00C48A66 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65B268A285F38CA00C48A66 /* StoreService.swift */; };
 		D693E0272848D1FA0083999C /* travelLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = D693E0262848D1FA0083999C /* travelLottie.json */; };
 		D693E02A2848E0A80083999C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E0292848E0A80083999C /* LocationService.swift */; };
 		D693E02C284913460083999C /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E02B284913460083999C /* Annotation.swift */; };
@@ -151,6 +152,7 @@
 		D630A314285E79EE00BF5FE5 /* SettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntity.swift; sourceTree = "<group>"; };
 		D6329FDB284BC7DE00B35AC0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6329FDC284BC7DE00B35AC0 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		D65B268A285F38CA00C48A66 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		D693E0262848D1FA0083999C /* travelLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = travelLottie.json; sourceTree = "<group>"; };
 		D693E0292848E0A80083999C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D693E02B284913460083999C /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		BB78C38628195C82009D868B /* Advisor */ = {
 			isa = PBXGroup;
 			children = (
+				D65B2689285F38BA00C48A66 /* StoreService */,
 				D693E0282848E09A0083999C /* LocationService */,
 				BBF5CCD6281EE5160010C456 /* Network */,
 				BB78C3A428196399009D868B /* Base */,
@@ -395,6 +398,14 @@
 				D630A314285E79EE00BF5FE5 /* SettingsEntity.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		D65B2689285F38BA00C48A66 /* StoreService */ = {
+			isa = PBXGroup;
+			children = (
+				D65B268A285F38CA00C48A66 /* StoreService.swift */,
+			);
+			path = StoreService;
 			sourceTree = "<group>";
 		};
 		D693E0282848E09A0083999C /* LocationService */ = {
@@ -571,6 +582,7 @@
 				BB78C3BF2819A2B2009D868B /* HomeEntity.swift in Sources */,
 				BB78C3C12819A2CA009D868B /* HomeConfigurator.swift in Sources */,
 				D630A311285E79D500BF5FE5 /* SettingsInteractor.swift in Sources */,
+				D65B268B285F38CA00C48A66 /* StoreService.swift in Sources */,
 				BB78C3C72819A316009D868B /* BasePresenter.swift in Sources */,
 				BB130D89281AEC78001E7679 /* FeedView.swift in Sources */,
 				D6329FDD284BC7DE00B35AC0 /* SettingsView.swift in Sources */,
@@ -738,6 +750,7 @@
 				DEVELOPMENT_TEAM = 9U2BQ8RU3L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Advisor;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need for checking your location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -751,7 +764,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.AdvisorV2;
+				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.Advisor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -772,6 +785,7 @@
 				DEVELOPMENT_TEAM = 9U2BQ8RU3L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Advisor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Advisor;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need for checking your location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -785,7 +799,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.AdvisorV2;
+				PRODUCT_BUNDLE_IDENTIFIER = ilgamfa.Advisor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

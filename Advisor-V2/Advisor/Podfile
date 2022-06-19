@@ -7,6 +7,7 @@ target 'Advisor_V2' do
   pod 'Moya'
   pod 'AlamofireImage'
   pod 'lottie-ios'
+  pod 'RealmSwift'
   # Pods for Advisor_V2
 
 end
