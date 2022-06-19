@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -57,7 +58,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фильтр по популярности:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yua-ev-MCV">
-                    <rect key="frame" x="16" y="347" width="382" height="21"/>
+                    <rect key="frame" x="16" y="347" width="204" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -85,6 +86,22 @@
                         <action selector="ShowButtonDidTap:" destination="-1" eventType="touchUpInside" id="Qf0-nM-TxY"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8s-p3-yzX">
+                    <rect key="frame" x="220" y="342" width="45" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain">
+                        <imageReference key="image" image="info.circle" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color name="tabBarTint"/>
+                                <color name="tabBarTint"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="infoButtonDidTap:" destination="-1" eventType="touchUpInside" id="ost-49-GOJ"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -92,6 +109,7 @@
                 <constraint firstAttribute="trailing" secondItem="0wh-jP-ebI" secondAttribute="trailing" constant="16" id="54U-xQ-vtO"/>
                 <constraint firstItem="cxG-JB-OLo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="5no-Bw-aCe"/>
                 <constraint firstItem="3Ys-bz-PvR" firstAttribute="top" secondItem="cxG-JB-OLo" secondAttribute="bottom" constant="16" id="7VV-OR-MgC"/>
+                <constraint firstItem="S8s-p3-yzX" firstAttribute="centerY" secondItem="Yua-ev-MCV" secondAttribute="centerY" id="D1l-hK-bXM"/>
                 <constraint firstItem="Yua-ev-MCV" firstAttribute="top" secondItem="LtO-9U-7vx" secondAttribute="bottom" constant="16" id="Efi-HN-agu"/>
                 <constraint firstItem="3Ys-bz-PvR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Gpr-Yu-efF"/>
                 <constraint firstItem="0Xx-iu-7xV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Jrm-oi-Eqh"/>
@@ -100,7 +118,7 @@
                 <constraint firstItem="Mre-O2-ciW" firstAttribute="top" secondItem="3Ys-bz-PvR" secondAttribute="bottom" constant="16" id="NPP-xQ-dLi"/>
                 <constraint firstItem="Mre-O2-ciW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="UKH-tT-WGM"/>
                 <constraint firstItem="Yua-ev-MCV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="UpQ-kI-Hgb"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yua-ev-MCV" secondAttribute="trailing" constant="16" id="bN8-gu-7h5"/>
+                <constraint firstItem="S8s-p3-yzX" firstAttribute="leading" secondItem="Yua-ev-MCV" secondAttribute="trailing" id="b5t-oJ-iZ1"/>
                 <constraint firstItem="0Xx-iu-7xV" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="eAP-r8-gvf"/>
                 <constraint firstItem="LtO-9U-7vx" firstAttribute="top" secondItem="Mre-O2-ciW" secondAttribute="bottom" constant="16" id="edt-5U-fv5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cxG-JB-OLo" secondAttribute="trailing" constant="16" id="k0b-RU-5iD"/>
@@ -114,11 +132,15 @@
         </view>
     </objects>
     <resources>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <namedColor name="tabBarTint">
             <color red="0.40784313725490196" green="0.65490196078431373" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

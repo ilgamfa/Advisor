@@ -110,7 +110,7 @@ class MapView: UIViewController {
        
         if #available(iOS 15.0, *) {
             if let presentationController = settings.presentationController as? UISheetPresentationController {
-                presentationController.detents = [.medium(), .large()]
+                presentationController.detents = [.medium()]
             }
         } else {
             settings.modalPresentationStyle = .formSheet

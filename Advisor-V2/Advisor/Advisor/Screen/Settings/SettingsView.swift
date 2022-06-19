@@ -52,6 +52,12 @@ class SettingsView: UIViewController {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: CategoryCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryCell.identifier)
     }
+    @IBAction func infoButtonDidTap(_ sender: Any) {
+        let alert = UIAlertController(title: "Фильтр по популярности", message: "Рейтинг известности объекта.\n1 - минимальный, 3- максимальный.\nh - объект является культурным наследием. ", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+    
     @IBAction func ShowButtonDidTap(_ sender: Any) {
         delegate?.configureSettingsWith(indexMapType: segmentedControlMapType.selectedSegmentIndex,
                                         indexCollectionType: selectedCollectionType,
