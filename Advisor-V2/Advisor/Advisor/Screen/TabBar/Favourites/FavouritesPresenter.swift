@@ -9,6 +9,7 @@ import Foundation
 
 protocol FavouritesPresenterProtocol: AnyObject {
     func dismissScreen()
+    func presentDetailView(xid: String)
 }
 
 class FavouritesPresenter: FavouritesPresenterProtocol {
@@ -23,5 +24,9 @@ class FavouritesPresenter: FavouritesPresenterProtocol {
     
     func dismissScreen() {
         router?.dismissScreen()
+    }
+    
+    func presentDetailView(xid: String) {
+        router?.routeToDetailView(xid: xid)
     }
 }

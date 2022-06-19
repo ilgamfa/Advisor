@@ -9,6 +9,7 @@ import Foundation
 
 protocol FavouritesRouterProtocol: AnyObject {
     func dismissScreen()
+    func routeToDetailView(xid: String)
 }
 
 class FavouritesRouter: FavouritesRouterProtocol {
@@ -20,5 +21,11 @@ class FavouritesRouter: FavouritesRouterProtocol {
     
     func dismissScreen() {
         view?.navigationController?.popViewController(animated: true)
+    }
+    
+    func routeToDetailView(xid: String) {
+        let detail = DetailView(nibName: DetailView.identifier, bundle: nil)
+        detail.xid = xid
+        view?.navigationController?.pushViewController(detail, animated: true)
     }
 }

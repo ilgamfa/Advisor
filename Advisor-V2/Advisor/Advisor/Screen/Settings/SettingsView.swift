@@ -62,6 +62,7 @@ class SettingsView: UIViewController {
         delegate?.configureSettingsWith(indexMapType: segmentedControlMapType.selectedSegmentIndex,
                                         indexCollectionType: selectedCollectionType,
                                         indexRateType: rateModels[segmentedControlRate.selectedSegmentIndex])
+        self.dismiss(animated: true)
     }
 }
 

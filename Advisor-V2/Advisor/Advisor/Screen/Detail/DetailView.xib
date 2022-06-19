@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,6 +17,7 @@
                 <outlet property="objectLabel" destination="j2a-y8-DOe" id="mRx-9b-08w"/>
                 <outlet property="saveButton" destination="cZg-iU-Xlm" id="jTa-5O-svy"/>
                 <outlet property="showOnMapButton" destination="BXC-zF-0ZW" id="re0-FE-LUl"/>
+                <outlet property="spinner" destination="TSv-eI-LMY" id="9m5-mb-Qac"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -93,12 +95,18 @@
                                 <constraint firstAttribute="trailing" secondItem="c0J-6i-2uK" secondAttribute="trailing" constant="16" id="we5-yx-APZ"/>
                             </constraints>
                         </view>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="TSv-eI-LMY">
+                            <rect key="frame" x="188.5" y="407.5" width="37" height="37"/>
+                            <color key="color" name="tabBarTint"/>
+                        </activityIndicatorView>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="TSv-eI-LMY" firstAttribute="centerY" secondItem="sTI-JO-dhe" secondAttribute="centerY" id="1xv-1X-OxI"/>
                         <constraint firstItem="oVG-ey-mVV" firstAttribute="leading" secondItem="sTI-JO-dhe" secondAttribute="leading" id="8tb-AR-nIC"/>
                         <constraint firstItem="oVG-ey-mVV" firstAttribute="trailing" secondItem="sTI-JO-dhe" secondAttribute="trailing" id="Emu-Yj-vGf"/>
                         <constraint firstItem="oVG-ey-mVV" firstAttribute="top" secondItem="sTI-JO-dhe" secondAttribute="top" id="NEe-fY-ihO"/>
                         <constraint firstItem="oVG-ey-mVV" firstAttribute="bottom" secondItem="sTI-JO-dhe" secondAttribute="bottom" id="Vag-Ol-QUQ"/>
+                        <constraint firstItem="TSv-eI-LMY" firstAttribute="centerX" secondItem="sTI-JO-dhe" secondAttribute="centerX" id="dIr-uz-WYL"/>
                         <constraint firstItem="oVG-ey-mVV" firstAttribute="width" secondItem="sTI-JO-dhe" secondAttribute="width" id="yiu-VH-9pH"/>
                     </constraints>
                 </scrollView>
@@ -115,6 +123,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="tabBarTint">
+            <color red="0.40784313725490196" green="0.65490196078431373" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

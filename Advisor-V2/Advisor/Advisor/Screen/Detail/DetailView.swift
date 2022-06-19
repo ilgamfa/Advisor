@@ -8,7 +8,9 @@
 import UIKit
 
 protocol DetailViewProtocol: AnyObject {
-    func configureDetailFlow(model: AttractionDetailModel)
+    func setButtonState(isExist: Bool)
+    func configureDetailFlow(model: AttractionDetailModel, isExist: Bool)
+    func showIndicator(show: Bool)
 }
 
 class DetailView: UIViewController {
@@ -19,6 +21,7 @@ class DetailView: UIViewController {
     @IBOutlet private weak var showOnMapButton: UIButton!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
     private var kinds = String()
     private var point: Point?
@@ -30,9 +33,11 @@ class DetailView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureButtons()
         setupNavigationBar()
         configurator.configure(view: self)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupDetailFlow()
     }
 
@@ -40,13 +45,6 @@ class DetailView: UIViewController {
         if navigationController?.viewControllers.count == 1 && navigationController?.viewControllers.last?.nibName == "MapView" {
             tabBarController?.tabBar.isHidden = false
         }
-    }
-    
-    private func configureButtons() {
-        showOnMapButton.tintColor = UIColor(named: "tabBarTint")
-        showOnMapButton.setTitle("Показать на карте", for: .normal)
-        saveButton.tintColor = UIColor(named: "tabBarTint")
-        saveButton.setTitle("В избранное", for: .normal)
     }
     
     private func setupDetailFlow() {
@@ -79,28 +77,41 @@ class DetailView: UIViewController {
     }
     
     @IBAction func saveDidTap(_ sender: Any) {
-        if saveButton.tintColor != .red {
-            saveButton.tintColor = .red
-            saveButton.setTitle("В избранном", for: .normal)
-        }
-        else {
-            saveButton.tintColor = UIColor(named: "tabBarTint")
-            saveButton.setTitle("В избранное", for: .normal)
-        }
+        guard let xid = xid else { return }
+       
+        
+        presenter?.saveDidTap(xid: xid, name: objectLabel.text)
     }
 }
 
 extension DetailView: DetailViewProtocol {
-    func configureDetailFlow(model: AttractionDetailModel) {
+    func showIndicator(show: Bool) {
+        show ? spinner.startAnimating() : spinner.stopAnimating()
+        saveButton.isHidden = show
+        showOnMapButton.isHidden = show
+    }
+    
+    func setButtonState(isExist: Bool) {
+        if isExist {
+            self.saveButton.tintColor = .red
+            self.saveButton.setTitle("В избранном", for: .normal)
+        } else {
+            self.saveButton.tintColor = UIColor(named: "tabBarTint")
+            self.saveButton.setTitle("В избранное", for: .normal)
+        }
+    }
+    
+    func configureDetailFlow(model: AttractionDetailModel, isExist: Bool) {
         DispatchQueue.main.async {
+            self.showOnMapButton.tintColor = UIColor(named: "tabBarTint")
+            self.showOnMapButton.setTitle("Показать на карте", for: .normal)
+            self.setButtonState(isExist: isExist)
             self.point = model.attractionDetail.point
             self.objectLabel.text = model.attractionDetail.name ?? "Пока нет названия"
             self.kinds = model.attractionDetail.kinds ?? ""
             self.descriptionLabel.text = model.attractionDetail.wikipedia_extracts?.text ?? self.kinds
             self.addressLabel.text = "\( model.attractionDetail.address?.state ?? "") \(model.attractionDetail.address?.city ?? "") \(model.attractionDetail.address?.road ?? "") \(model.attractionDetail.address?.house_number ?? "")"
-            guard let image = model.objectImage else {
-                return
-            }
+            guard let image = model.objectImage else { return }
             self.imageView.image = image
         }
     }
