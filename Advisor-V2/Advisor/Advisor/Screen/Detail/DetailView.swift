@@ -42,7 +42,7 @@ class DetailView: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        if navigationController?.viewControllers.count == 1 && navigationController?.viewControllers.last?.nibName == "MapView" {
+        if navigationController?.viewControllers.count == 1 && (navigationController?.viewControllers.last?.nibName == "MapView" || navigationController?.viewControllers.last?.nibName == "FavouritesView") {
             tabBarController?.tabBar.isHidden = false
         }
     }
