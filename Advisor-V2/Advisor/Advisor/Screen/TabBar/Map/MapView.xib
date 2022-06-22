@@ -3,6 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,6 +17,8 @@
                 <outlet property="minusButton" destination="hpQ-mW-IDL" id="jF5-g6-aed"/>
                 <outlet property="plusButton" destination="7di-8a-Dob" id="Fak-2p-XgB"/>
                 <outlet property="settingsButton" destination="jmv-7b-dEd" id="rXc-0p-Wh0"/>
+                <outlet property="transportTypeSegmentedControll" destination="Fx3-D0-gbY" id="KWV-Wt-DIl"/>
+                <outlet property="transportTypeStackView" destination="KOD-h8-f8T" id="Wg4-fK-02l"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -84,6 +88,35 @@
                         <action selector="locationButtonDidTap:" destination="-1" eventType="touchUpInside" id="Rm0-zY-Pb4"/>
                     </connections>
                 </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KOD-h8-f8T">
+                    <rect key="frame" x="108.5" y="44" width="197" height="31"/>
+                    <subviews>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fx3-D0-gbY">
+                            <rect key="frame" x="0.0" y="0.0" width="145" height="32"/>
+                            <segments>
+                                <segment title="Пешком"/>
+                                <segment title="Авто"/>
+                            </segments>
+                            <color key="selectedSegmentTintColor" name="tabBarTint"/>
+                            <connections>
+                                <action selector="transportTypeValueChanged:" destination="-1" eventType="valueChanged" id="ZlE-b4-6Ak"/>
+                            </connections>
+                        </segmentedControl>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12f-6q-DgF">
+                            <rect key="frame" x="155" y="0.0" width="42" height="31"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled">
+                                <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                <color key="baseForegroundColor" name="tabBarTint"/>
+                                <color key="baseBackgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="closeTransportTypeDidTap:" destination="-1" eventType="touchUpInside" id="wj2-yb-nmg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -91,9 +124,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hpQ-mW-IDL" secondAttribute="trailing" constant="5" id="3Y8-P6-e8C"/>
                 <constraint firstItem="7di-8a-Dob" firstAttribute="top" secondItem="jmv-7b-dEd" secondAttribute="bottom" constant="20" id="Gox-25-XXq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jmv-7b-dEd" secondAttribute="trailing" constant="5" id="Ncj-HX-2k1"/>
+                <constraint firstItem="KOD-h8-f8T" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="O1b-Q7-0p9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7di-8a-Dob" secondAttribute="trailing" constant="5" id="Yyz-bB-SyR"/>
                 <constraint firstAttribute="trailing" secondItem="GpF-fF-G6c" secondAttribute="trailing" id="faa-rj-q5S"/>
                 <constraint firstItem="yIl-EL-1w0" firstAttribute="top" secondItem="hpQ-mW-IDL" secondAttribute="bottom" constant="20" id="nGw-cP-khH"/>
+                <constraint firstItem="KOD-h8-f8T" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oNH-fC-fMd"/>
                 <constraint firstAttribute="bottom" secondItem="GpF-fF-G6c" secondAttribute="bottom" id="uZB-dm-Qdp"/>
                 <constraint firstItem="7di-8a-Dob" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-25" id="ukb-b0-yXB"/>
                 <constraint firstItem="GpF-fF-G6c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vub-TU-acb"/>
@@ -109,8 +144,15 @@
         <image name="minus" width="32" height="32"/>
         <image name="plus" width="32" height="32"/>
         <image name="settings" width="32" height="32"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="tabBarTint">
+            <color red="0.40784313725490196" green="0.65490196078431373" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

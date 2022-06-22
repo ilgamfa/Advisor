@@ -134,6 +134,7 @@ class AnnotationView: MKMarkerAnnotationView {
             canShowCallout = true
             calloutOffset = CGPoint(x: -5, y: 5)
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            rightCalloutAccessoryView?.tintColor = UIColor(named: "tabBarTint")
             
             image = artwork.image
             markerTintColor = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0,alpha:0.5).withAlphaComponent(0)

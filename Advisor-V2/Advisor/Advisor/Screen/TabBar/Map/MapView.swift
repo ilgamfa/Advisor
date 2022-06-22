@@ -28,6 +28,9 @@ class MapView: UIViewController {
     @IBOutlet private weak var plusButton: UIButton!
     @IBOutlet private weak var minusButton: UIButton!
     @IBOutlet private weak var locationButton: UIButton!
+    @IBOutlet private weak var transportTypeSegmentedControll: UISegmentedControl!
+    @IBOutlet private weak var transportTypeStackView: UIStackView!
+    
     
     var presenter: MapPresenterProtocol?
     var configurator = MapConfigurator()
@@ -37,6 +40,9 @@ class MapView: UIViewController {
     var model: AttractionDetail?
     var mapFlow = MapFlow.all
     let settings = SettingsView(nibName: SettingsView.identifier, bundle: nil)
+    var transportType: MKDirectionsTransportType = .walking
+    var annotation: Annotation?
+    var userCoordinate: CLLocationCoordinate2D?
     
     var span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 
@@ -46,6 +52,9 @@ class MapView: UIViewController {
         mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         configurator.configure(view: self)
         configureButtons()
+        transportTypeStackView.layer.cornerRadius = 6
+        transportTypeStackView.isHidden = true
+        setupSegmentedControlls()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,6 +115,22 @@ class MapView: UIViewController {
         mapView.setRegion(region, animated: true)
     }
     
+    private func setupSegmentedControlls() {
+        transportTypeSegmentedControll.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+    }
+    
+    @IBAction func transportTypeValueChanged(_ sender: Any) {
+        switch transportTypeSegmentedControll.selectedSegmentIndex {
+        case 0:
+            transportType = .walking
+        case 1:
+            transportType = .automobile
+        default:
+            transportType = .any
+        }
+        showRouteOnMap(pickupCoordinate: userCoordinate!, destinationCoordinate: annotation!.coordinate, transportType: transportType)
+    }
+    
     @IBAction func settingsButtonDidTap(_ sender: Any) {
        
         if #available(iOS 15.0, *) {
@@ -129,6 +154,13 @@ class MapView: UIViewController {
         mapFlow = .userLocation
         locationManager.startUpdatingLocation()
     }
+    
+    @IBAction func closeTransportTypeDidTap(_ sender: Any) {
+        transportTypeStackView.isHidden = true
+        mapView.removeOverlays(mapView.overlays)
+    }
+    
+    
 }
 
 extension MapView: MapViewProtocol {
@@ -176,6 +208,32 @@ extension MapView: MapViewProtocol {
         configureMapTypeWith(indexMapType: indexMapType)
         presenter?.presentMapWith(rate: indexRateType, kind: collectionTypes[indexCollectionType])
     }
+    
+    func showRouteOnMap(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, transportType: MKDirectionsTransportType) {
+        
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil))
+        request.requestsAlternateRoutes = true
+        request.transportType = transportType
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { [unowned self] response, error in
+            guard let unwrappedResponse = response else { return }
+            mapView.removeOverlays(self.mapView.overlays)
+            //for getting just one route
+            if let route = unwrappedResponse.routes.first {
+                //show on map
+                self.mapView.addOverlay(route.polyline)
+                //set the map area to show the route
+                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
+            }
+            transportTypeStackView.isHidden = false
+            //if you want to show multiple routes then you can get all routes in a loop in the following statement
+            //for route in unwrappedResponse.routes {}
+        }
+    }
 }
 
 extension MapView: CLLocationManagerDelegate {
@@ -194,6 +252,27 @@ extension MapView: CLLocationManagerDelegate {
 extension MapView: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let annotation = view.annotation as? Annotation else { return }
-        mapFlow == .oneObject ? presenter?.dismissScreen() : presenter?.presentDetailView(xid: annotation.xid)
+        self.annotation = annotation
+        self.userCoordinate = locationManager.location?.coordinate
+        
+        let ac = UIAlertController(title: annotation.title, message: nil, preferredStyle: .actionSheet)
+        ac.view.tintColor = UIColor(named: "tabBarTint")
+        ac.addAction(UIAlertAction(title: "Перейти к деталям", style: .default, handler: { [self] _ in
+            mapFlow == .oneObject ? presenter?.dismissScreen() : presenter?.presentDetailView(xid: annotation.xid)
+        }))
+        ac.addAction(UIAlertAction(title: "Построить маршрут", style: .default, handler: { [self] _ in
+            showRouteOnMap(pickupCoordinate: userCoordinate!, destinationCoordinate: annotation.coordinate, transportType: transportType)
+        }))
+        ac.addAction(UIAlertAction(title: "Назад", style: .cancel))
+            present(ac, animated: true)
+        
+       
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.red
+        renderer.lineWidth = 5.0
+        return renderer
     }
 }
