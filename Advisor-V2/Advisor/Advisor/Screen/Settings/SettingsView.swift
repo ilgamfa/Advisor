@@ -45,6 +45,7 @@ class SettingsView: UIViewController {
         configurator.configure(view: self)
         setupCollectionView()
         segmentedControlMapType.selectedSegmentIndex = selectedIndexMapType
+        setupSegmentedControlls()
     }
     
     private func setupCollectionView() {
@@ -52,8 +53,15 @@ class SettingsView: UIViewController {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: CategoryCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryCell.identifier)
     }
+    
+    private func setupSegmentedControlls() {
+        segmentedControlRate.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        segmentedControlMapType.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+    }
+    
     @IBAction func infoButtonDidTap(_ sender: Any) {
         let alert = UIAlertController(title: "Фильтр по популярности", message: "Рейтинг известности объекта.\n1 - минимальный, 3- максимальный.\nh - объект является культурным наследием. ", preferredStyle: .actionSheet)
+        alert.view.tintColor = UIColor(named: "tabBarTint")
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         self.present(alert, animated: true)
     }

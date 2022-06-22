@@ -63,7 +63,8 @@ class MapPresenter: MapPresenterProtocol {
                 }
                 self.view?.pinAnnotation(annotations: pins)
             case .failure(let error):
-                fatalError(error.localizedDescription)
+//                fatalError(error.localizedDescription)
+                print(error.localizedDescription)
             }
         })
     }

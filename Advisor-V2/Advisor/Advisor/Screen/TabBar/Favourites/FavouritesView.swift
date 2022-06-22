@@ -125,34 +125,36 @@ extension FavouritesView: UITableViewDataSource {
         return height
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if let xid = favorites[indexPath.row].xid {
-                store.deleteAttraction(xid: xid)
-                favorites.remove(at: indexPath.row)
-                hideMessageLabel(hide: !favorites.isEmpty)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        } else if editingStyle == .insert {
-
-        }
-    }
-    
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
-//            -> UISwipeActionsConfiguration? {
-//            let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
-//                if let xid = self.favorites[indexPath.row].xid {
-//                    self.store.deleteAttraction(xid: xid)
-//
-//                    completionHandler(true)
-//                }
-//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            if let xid = favorites[indexPath.row].xid {
+//                store.deleteAttraction(xid: xid)
+//                favorites.remove(at: indexPath.row)
+//                hideMessageLabel(hide: !favorites.isEmpty)
+//                tableView.deleteRows(at: [indexPath], with: .fade)
 //            }
-//            deleteAction.image = UIImage(systemName: "trash")
-//            deleteAction.backgroundColor = .systemRed
-//            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-//            return configuration
+//        } else if editingStyle == .insert {
+//
+//        }
 //    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+            -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+                if let xid = self.favorites[indexPath.row].xid {
+                    self.store.deleteAttraction(xid: xid)
+                    self.favorites.remove(at: indexPath.row)
+                    self.hideMessageLabel(hide: !self.favorites.isEmpty)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    completionHandler(true)
+                }
+
+            }
+            deleteAction.image = UIImage(systemName: "trash")
+            deleteAction.backgroundColor = .systemRed
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+            return configuration
+    }
     
 }
 
