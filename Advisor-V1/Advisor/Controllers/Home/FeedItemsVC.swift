@@ -540,5 +540,3 @@ extension FeedItemsVC: ShowAlertLocationDelegate {
 extension FeedItemsVC: CLLocationManagerDelegate {
     
 }
-
-

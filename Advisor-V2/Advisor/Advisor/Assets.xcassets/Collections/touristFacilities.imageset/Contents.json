@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "cable-car-cabin.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

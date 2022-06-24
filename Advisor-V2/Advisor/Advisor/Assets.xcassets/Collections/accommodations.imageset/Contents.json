@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "marina-bay-sands.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
